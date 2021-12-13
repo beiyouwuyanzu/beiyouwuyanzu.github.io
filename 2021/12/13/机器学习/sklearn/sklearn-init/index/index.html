@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		sklearn_init | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -163,7 +165,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sklearn/sklearn-init/index/">
                      
 										    index
@@ -191,54 +193,109 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	sklearn_init
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sklearn/sklearn-init/index/">
-				<h2 class="index-title">
-					sklearn_init
-				</h2>
-				<div class="index-brief">
-					������ҳ��Ч��
-��������������ҳ��Ч����
+		<span>
+			阅读量:<span id="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sklearn/sklearn-init/index/" class="leancloud_visitors" data-flag-title="sklearn_init"></span>
+		</span>
+	
+	<span>wang yaqi</span>
+	<span>2021-12-13 08:56:56</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
 
-1test
+    
+		<span>Tags：</span>
+            
+    
+		</div>
 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-12-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2021/12/12/hello-world/">
-				<h2 class="index-title">
-					Hello World
-				</h2>
-				<div class="index-brief">
-					Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-12-12</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-	</div>
 </div>
 
+<div id="article-content">
+	<h1 id="������ҳ��Ч��"><a href="#������ҳ��Ч��" class="headerlink" title="������ҳ��Ч��"></a>������ҳ��Ч��</h1><blockquote>
+<p>��������������ҳ��Ч����</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/12/12/hello-world/">
+                Hello World
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
