@@ -8,8 +8,6 @@
 	<!-- title -->
 	
 	<title>
-	
-		About | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -204,85 +202,48 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<h1 id="article-title">
-	About
-</h1>
-<div class="article-meta">
+		<div id="index">
 	
-		<span>
-			阅读量:<span id="/about/index.html" class="leancloud_visitors" data-flag-title="About"></span>
-		</span>
+		<div class="index-li">
+			<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+				<h2 class="index-title">
+					text_classification
+				</h2>
+				<div class="index-brief">
+					
+原文链接: https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook
+
+阅读笔记sklearn库
+sklearn.ensemble 集成学习的常用库
+
+bagging
+随机森林
+adaboost 主要侧重训练前面
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-12-13</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/nlp/">nlp</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
 	
-	<span>wang yaqi</span>
-	<span>2021-12-12 23:56:23</span>
-		<div id="article-categories">
-    
-
-    
-		</div>
-
+	
+	<div id="index-paginator">
+		
+	</div>
 </div>
 
-<div id="article-content">
-	
-</div>
-
-
-
-
-	<div id="vcomments"></div>
-
-
-<script>
-	
-		// 评论
-		new Valine({
-			el: '#vcomments',
-			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
-			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
-			placeholder: '请输入评论',
-			path: window.location.pathname,
-			avatar: 'retro',
-			highlight: false,
-      recordIP: true,
-      enableQQ: true,
-			requiredFields: ['nick','mail']
-		})
-	
-	
-    // 显示次数
-		function showTime(Counter) {
-			var query = new AV.Query("Counter");
-			if($(".leancloud_visitors").length > 0){
-				var url = $(".leancloud_visitors").attr('id').trim();
-				// where field
-				query.equalTo("words", url);
-				// count
-				query.count().then(function (number) {
-					// There are number instances of MyClass where words equals url.
-					$(document.getElementById(url)).text(number?  number : '--');
-				}, function (error) {
-					// error is an instance of AVError.
-				});
-			}
-		}
-		// 追加pv
-		function addCount(Counter) {
-			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
-			var Counter = AV.Object.extend("Counter");
-			var query = new Counter;
-			query.save({
-				words: url
-			}).then(function (object) {
-			})
-		}
-		$(function () {
-			var Counter = AV.Object.extend("Counter");
-			addCount(Counter);
-			showTime(Counter);
-		});
-	
-</script>
 	</div>
 	<div id="footer">
 	<p>
