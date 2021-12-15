@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		About | 
+		asr评估 | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
                      
 										    asr评估
@@ -227,28 +227,98 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	About
+	asr评估
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/about/index.html" class="leancloud_visitors" data-flag-title="About"></span>
+			阅读量:<span id="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/" class="leancloud_visitors" data-flag-title="asr评估"></span>
 		</span>
 	
 	<span>wang yaqi</span>
-	<span>2021-12-12 23:56:23</span>
+	<span>2021-12-15 22:14:26</span>
 		<div id="article-categories">
     
+		<span>Categories：</span>
+            
+    
 
+    
+		<span>Tags：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-tag" aria-hidden="true">
+                        <a href="/tags/asr/">asr</a>
+                        </i>
+                    </span>
+                
+            
     
 		</div>
 
 </div>
 
 <div id="article-content">
-	
+	<blockquote>
+<p>论文 《 Meaning Error Rate: ASR domain-specific metric framework》</p>
+</blockquote>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><h3 id="构建一个指标模型-考虑不同场景、不同词识别错误的不同损失-用来评估ASR识别质量"><a href="#构建一个指标模型-考虑不同场景、不同词识别错误的不同损失-用来评估ASR识别质量" class="headerlink" title="构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量"></a>构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量</h3><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>当前已有的ASR评估指标:<ul>
+<li>WER: 字错误率</li>
+<li>CER: 字符错误率</li>
+<li>间接评估法</li>
+</ul>
+</li>
+<li>当前指标缺陷:<ul>
+<li>无法体现出词语的重要性: 不同的词语, 不同的语境被识别错造成的损失不一样, </li>
+</ul>
+</li>
+</ul>
+<h3 id="指标定义"><a href="#指标定义" class="headerlink" title="指标定义"></a>指标定义</h3><p>$\alpha ( s , d )$ 定义为<br>$\alpha _ { i } ( s , d ) = ( \alpha _ { i } ^ { s } , \alpha _ { i } ^ { d } ) , i = 1 \ldots n _ { \alpha }$<br>代表两个序列之间的映射(s-&gt;d), 其中部分可能为空</p>
+<h4 id="WER定义"><a href="#WER定义" class="headerlink" title="WER定义"></a>WER定义</h4><p>$$\operatorname { WER } _ { \text { orig } } ( s , d ) = \operatorname { min } _ { \alpha \in A ( s , d ) } \frac { \sum _ { i = 1 } ^ { | \alpha | } 1 ( \alpha _ { i } ^ { s } \neq \alpha _ { i } ^ { d } ) } { | s | }$$<br>意思是两个序列对齐的最小diff率</p>
+<h4 id="WER改进版"><a href="#WER改进版" class="headerlink" title="WER改进版"></a>WER改进版</h4><p>$$\operatorname { gWER } ( s , d , h ) = \operatorname { min } _ { \alpha \in A ( s , d ) } \frac { 1 } { \operatorname { max } ( | s | , | d | ) } \sum _ { i = 1 } ^ { | \alpha | } h ( \alpha _ { i } ^ { s } , \alpha _ { i } ^ { d } )$$<br>相对上面的那个, 原来的两个词不相等就算错, 现在的由一个h(x)函数进行打分, 用来决定不相等的严重程度</p>
+<h3 id="意义损失"><a href="#意义损失" class="headerlink" title="意义损失"></a>意义损失</h3><ul>
+<li>不同知识领域标准不同</li>
+<li>基于人的标注来提供样本<ul>
+<li>由人来进行打分判断有没有损失意义</li>
+</ul>
+</li>
+</ul>
+<h4 id="意义损失公式"><a href="#意义损失公式" class="headerlink" title="意义损失公式"></a>意义损失公式</h4><p>$$\operatorname { MERa } ( s , d , \theta ) = \sigma ( \theta _ { 0 } + gWER ( s , d , h _ { \theta _ { 1 } } ) ) )$$</p>
+<ul>
+<li>gWER就是上面的WER改进版 在特定领域的意义损失</li>
+<li>𝜎(x) 就是Sigmoid 函数用来转化成概率</li>
+</ul>
+<h4 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h4><p>$$\left. \begin{array} { l }{ l ( s , d , j , \theta ) = 1 ( j &gt; 0 ) \operatorname { log } ( M E R a ( s , d , \theta ) ) + }\{ 1 ( j &lt; 0 ) \operatorname { log } ( 1 - \operatorname { MER } a ( s , d , \theta ) ) } \end{array} \right.$$</p>
+<h4 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h4><p>$$\hat { \theta } = \operatorname { arg } \operatorname { max } _ { \theta } \sum _ { ( s , d ) \in X } \frac { 1 } { | J _ { ( s , d ) } | } \sum _ { j _ { l } \in J _ { ( s , d ) } } l ( s , d , j _ { l } , \theta )$$</p>
+<ul>
+<li>目标函数确定</li>
+<li>未知变量只有$h _ { \theta _ { 1 } } ( \alpha _ { i } ^ { s } , \alpha _ { i } ^ { d } )$</li>
+<li>现在就是要做的就是假设一个h(x), 然后求目标函数最小的时候的h(x)参数的最小值</li>
+<li>论文里h(x)选用了线性模型<br>$$h _ { \theta _ { 1 } } ( \alpha _ { i } ) = \theta _ { 1 } ^ { T } \psi ( \alpha _ { i } )$$<br>意思就是每个ai都赋予一个错误程度系数<h3 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h3></li>
+<li>EM优化算法</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>样本需要人标</li>
+</ul>
+
 </div>
 
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+                text_classification
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
 
 
 
