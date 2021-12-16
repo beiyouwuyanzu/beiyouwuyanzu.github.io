@@ -77,7 +77,9 @@
 	
 
 	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
-<meta name="generator" content="Hexo 5.4.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
 	<script>
@@ -237,14 +239,14 @@ var _hmt = _hmt || [];
 					
 论文 《 Meaning Error Rate: ASR domain-specific metric framework》
 
- 目标
- 构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量
- 背景
+目标
+构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量
+背景
 
 当前已有的ASR评估指标:
 
 WER: 字错误率
-CER: 字符
+
 					...
 				</div>
 			</a>
@@ -290,5 +292,21 @@ CER: 字符
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
 	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>

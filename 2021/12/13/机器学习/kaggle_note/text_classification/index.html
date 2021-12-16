@@ -79,7 +79,9 @@
 	
 
 	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
-<meta name="generator" content="Hexo 5.4.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
 	<script>
@@ -264,47 +266,48 @@ var _hmt = _hmt || [];
 
 <div id="article-content">
 	<blockquote>
-<p>原文链接: <a target="_blank" rel="noopener" href="https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook">https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook</a></p>
+<p>原文链接: https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook</p>
 </blockquote>
-<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="sklearn库"><a href="#sklearn库" class="headerlink" title="sklearn库"></a>sklearn库</h3><ol>
-<li><p>sklearn.ensemble 集成学习的常用库</p>
+<h2 id="阅读笔记">阅读笔记</h2>
+<h3 id="sklearn库">sklearn库</h3>
+<ol style="list-style-type: decimal">
+<li>sklearn.ensemble 集成学习的常用库
 <ul>
 <li>bagging</li>
 <li>随机森林</li>
 <li>adaboost 主要侧重训练前面学习器学错的部分</li>
 <li>Gradient Tree Boosting, GBDT</li>
 <li>Histogram-Based Gradient Boosting, 对标LightGBM. 相对GBDT, 适合于大数量样本(上万), 可以自己补充缺失值</li>
-</ul>
-</li>
-<li><p>sklearn.feature_extraction.text</p>
+</ul></li>
+<li>sklearn.feature_extraction.text
 <ul>
 <li>从文本构建向量的库</li>
-<li>CountVectorizer<ul>
+<li>CountVectorizer
+<ul>
 <li>相当于把词汇列表的个数展开成向量的维数, 然后统计每个词汇出现的次数</li>
-</ul>
-</li>
-<li>HashingVectorizer<ul>
+</ul></li>
+<li>HashingVectorizer
+<ul>
 <li>优点, 不储存状态, 节省内存, 快</li>
+</ul></li>
 <li>缺点, 没法反解词语. 没有tf-idf特征</li>
-</ul>
-</li>
-<li>TfidfVectorizer<ul>
+<li>TfidfVectorizer
+<ul>
 <li>将原始文档转化成TF-IDF矩阵</li>
 <li>体现每个词在文档中的重要性程度</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 </ol>
-<h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><ol>
-<li>某一列的数据分布, 可以直接看hist分布图<ul>
+<h3 id="pandas">pandas</h3>
+<ol style="list-style-type: decimal">
+<li>某一列的数据分布, 可以直接看hist分布图
+<ul>
 <li>df_.y.hist(bins = 100)</li>
-</ul>
-</li>
-<li>枚举型的数据, 可以直接用value_counts()看分布统计<ul>
-<li>tmp_df[‘y’].value_counts()</li>
-</ul>
-</li>
+</ul></li>
+<li>枚举型的数据, 可以直接用value_counts()看分布统计
+<ul>
+<li>tmp_df['y'].value_counts()</li>
+</ul></li>
 </ol>
 
 </div>
@@ -412,5 +415,21 @@ var _hmt = _hmt || [];
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
 	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
