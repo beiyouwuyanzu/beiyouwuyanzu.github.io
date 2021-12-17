@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		CRF笔记 | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -182,7 +184,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
                      
 										    crf
@@ -250,42 +252,143 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	CRF笔记
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
-				<h2 class="index-title">
-					asr评估
-				</h2>
-				<div class="index-brief">
-					
-论文 《 Meaning Error Rate: ASR domain-specific metric framework》
-
-目标
-构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量
-背景
-
-当前已有的ASR评估指标:
-
-WER: 字错误率
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-12-15</span>
-                    
-                            
-                    
-                </div>
-		</div>	
+		<span>
+			阅读量:<span id="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/" class="leancloud_visitors" data-flag-title="CRF笔记"></span>
+		</span>
 	
-	
-	<div id="index-paginator">
-		
-	</div>
+	<span>wang yaqi</span>
+	<span>2021-12-17 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
 </div>
 
+<div id="article-content">
+	<blockquote>
+<p>参考: https://medium.com/ml2vec/overview-of-conditional-random-fields-68a2a20fa541</p>
+</blockquote>
+<h2 id="背景">背景</h2>
+<ul>
+<li>CRF用于切词, 序列标注等.</li>
+<li>普通的分类模型是对单个字词的分类任务, CRF考虑了前后文的联系, 对当前的片段进行分类</li>
+</ul>
+<h3 id="概述">概述</h3>
+<ul>
+<li>条件随机场是一种判别模型, 用于预测序列. 它使用标签的上下文信息, 从而增加了模型进行预测的信息量.</li>
+</ul>
+<p>以下分三个方面: 1. 判别模型和生成模型 2. 条件随机场的数学表达 3. crf和HMM的区别</p>
+<h4 id="判别模型和生成模型">判别模型和生成模型</h4>
+<ul>
+<li>判别模型, 给出某一个概率的分类. 比如二分类, A的概率是0.7, B类的概率是0.3. 非A则B</li>
+<li>生成模型, 是基于概率分布. 基于A类的概率分布得到的概率是0.9, B类概率分布得到的结果是0.6, 各项的概率之和大于1</li>
+<li>判别模型: 贝叶斯; 判别模型: 逻辑回归</li>
+</ul>
+<h4 id="条件随机场的数学表达">条件随机场的数学表达</h4>
+<p>条件分布建模如下: <span class="math display">\[\hat { y } = \operatorname { argmax } _ { y } P ( y | x )\]</span></p>
+<p>构建特征函数, 特征函数依赖如下输入: 1. 输入序列X 2. 预测点的位置i 3. 前一个位置i-1的label Li-1 4. 当前位置i的label Li</p>
+<p>最终构建的特征函数如下: <span class="math display">\[f ( X , i , l _ { i - 1 } , l _ { i } )\]</span></p>
+<p>特征函数的目的是表示数据序列的某些特征. 比如f (X, i, L{i - 1}, L{i} ) = 1 if L{i - 1} == 名词, else 0 if L{i} == 动词 同样的, f (X, i, L{i - 1}, L{i} ) = 1 if L{i - 1} == 动词, else 0 if L{i} == 形容词</p>
+<p>每个特征函数都基于上一个词和当前词的标签, 要么是0要么是1. 位了构建条件场, 我们给每个特征函数分配一个权重, 算法将学习这些权重 <span class="math display">\[P ( y , X , \lambda ) = \frac { 1 } { Z ( X ) } \operatorname { exp } \{ \sum _ { i = 1 } ^ { n } \sum _ { j } \lambda _ { j } f _ { i } ( X , i , y _ { i - 1 } , y _ { i } ) \}\]</span></p>
+<p><span class="math display">\[Z ( x ) = \sum _ { y ^ { \prime } \in y } \sum _ { i = 1 } ^ { n } \sum _ { j } \lambda _ { j } f _ { i } ( X , i , y _ { i - 1 } ^ { \prime } , y _ { i } ^ { \prime } )\]</span></p>
+<p>接下来位了获得估计参数 （λ）, 使用最大似然估计. 为了后续求偏导方便计算, 先取对数然后求负数. <span class="math display">\[\begin{array}{c}
+L(y, X, \lambda)=-\log \left\{\prod_{k=1}^{m} P\left(y^{k} \mid x^{k}, \lambda\right)\right\} \\
+=-\sum_{k=1}^{m} \log \left[\frac{1}{Z\left(x_{m}\right)} \exp \left\{\sum_{i=1}^{n} \sum_{j} \lambda_{j} f_{j}\left(X^{m}, i, y_{i-1}^{k}, y_{i}^{k}\right)\right]\right.
+\end{array}\]</span></p>
+<p>这个就是损失函数, 我们的目标是 求其最小值时候的λ值. 通过对λ求偏导, 得到:</p>
+<p><span class="math display">\[\frac{\partial L(X, y, \lambda)}{\partial \lambda}=\frac{-1}{m} \sum_{k=1}^{m} F_{j}\left(y^{k}, x^{k}\right)+\sum_{k=1}^{m} p\left(y \mid x^{k}, \lambda\right) F_{j}\left(y, x^{k}\right)\]</span></p>
+<p><span class="math display">\[\text { Where: } F_{j}(y, x)=\sum_{i=1}^{n} f_{i}\left(X, i, y_{i-1}, y_{i}\right)\]</span></p>
+<p>然后每次使用 当前的梯度下降去更新当前的λ值. <span class="math display">\[\lambda=\lambda+\alpha\left[\sum_{k=1}^{m} F_{j}\left(y^{k}, x^{k}\right)+\sum_{k=1}^{m} p\left(y \mid x^{k}, \lambda\right) F_{j}\left(y, x^{k}\right)\right]\]</span></p>
+<h3 id="总结">总结</h3>
+<p>使用条件随机场的过程: 先定义所需的特征函数, 然后初始化权重为随机值, 然后迭代应用梯度下降方法, 直到参数值收敛.这里为λ. CRF与逻辑回归类似, 都是用条件概率分布, 但是CRF在特征函数里引入序列信息拓展了算法</p>
+<h3 id="crf和hmm的区别">CRF和HMM的区别</h3>
+<p>HMM是生成式的, 通过对联合概率分布建模来输出. CRF不依赖独立性假设. HMM可以看作是条件随机场的一种特殊情况. 使用了常数转移概率. HMM是基于朴素贝叶斯的, 朴素贝叶斯可以从逻辑回归中推导出来, CRF 就是从逻辑回归中推导出来的.</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
+                asr评估
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
