@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		PEFT State-of-the-art Parameter-Efficient Fine-Tuning (PEFT) methods | 
+	 
+	Wangyaqi&#39;s personal site
+	</title>
+	
+	<!-- keywords,description -->
+	 
+		<meta name="description" content="about study notes" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">Wangyaqi's personal site</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										llm
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                     
+										    LLaMA模型架构
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/alpaca_lora_llama_LoRA/">
+                     
+										    alpaca_lora_llama_LoRA
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/llama_visualization/">
+                     
+										    llama_visualization
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2023/05/08/llm/peft_model/">
+                     
+										    peft_model
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										机器学习
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										kaggle_note
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+                     
+										    text_classification
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										nlp
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
+                     
+										    crf
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										paper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
+                     
+										    asr评估
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										项目集合
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
+                     
+										    llama_小学数学解题模型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	PEFT State-of-the-art Parameter-Efficient Fine-Tuning (PEFT) methods
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/2023/05/08/llm/peft_model/" class="leancloud_visitors" data-flag-title="PEFT State-of-the-art Parameter-Efficient Fine-Tuning (PEFT) methods"></span>
+		</span>
+	
+	<span>wang yaqi</span>
+	<span>2023-05-08 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<blockquote>
+<p>https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 <a target="_blank" rel="noopener" href="https://github.com/Facico/Chinese-Vicuna/blob/master/finetune.py">Chinese-Vicuna/finetune.py at master · Facico/Chinese-Vicuna (github.com)</a></p>
+</blockquote>
+<h2 id="特点">特点</h2>
+<p>Parameter-Efficient Fine-Tuning (PEFT) 方法可以使预训练语言模型 (PLM) 高效适应各种下游应用程序，而无需微调模型的所有参数。微调大型 PLM 的成本通常高得令人望而却步。在这方面，PEFT 方法仅微调少量（额外）模型参数，从而大大降低了计算和存储成本。最近最先进的 PEFT 技术实现了与完全微调相当的性能。</p>
+<h2 id="微调方法">微调方法</h2>
+<ol style="list-style-type: decimal">
+<li>LoRA: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.09685">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</a></li>
+<li>Prefix Tuning: <a target="_blank" rel="noopener" href="https://aclanthology.org/2021.acl-long.353/">Prefix-Tuning: Optimizing Continuous Prompts for Generation</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2110.07602.pdf">P-Tuning v2: Prompt Tuning Can Be Comparable to Fine-tuning Universally Across Scales and Tasks</a></li>
+<li>P-Tuning: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.10385">GPT Understands, Too</a></li>
+<li>Prompt Tuning: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.08691">The Power of Scale for Parameter-Efficient Prompt Tuning</a></li>
+<li>AdaLoRA: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.10512">Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning</a></li>
+</ol>
+<p>对应在peft代码里的实现</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">PEFT_TYPE_TO_MODEL_MAPPING  <span class="op">=</span> &#123;
+
+    PeftType.LORA: LoraModel,
+
+    PeftType.PROMPT_TUNING: PromptEmbedding,
+
+    PeftType.P_TUNING: PromptEncoder,
+
+    PeftType.PREFIX_TUNING: PrefixEncoder,
+
+    PeftType.ADALORA: AdaLoraModel,
+
+    PeftType.ADAPTION_PROMPT: AdaptionPromptModel,
+
+&#125;</code></pre></div>
+<h2 id="应用示例">应用示例</h2>
+<p>llama应用的, 也是peft中主流的优化方法是LoRA</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">model <span class="op">=</span> LlamaForCausalLM.from_pretrained(
+    args.model_path,
+    load_in_8bit<span class="op">=</span><span class="va">True</span>,
+    device_map<span class="op">=</span>device_map,
+)
+tokenizer <span class="op">=</span> LlamaTokenizer.from_pretrained(
+    args.model_path, add_eos_token<span class="op">=</span><span class="va">True</span>
+)
+
+model <span class="op">=</span> prepare_model_for_int8_training(model)
+
+config <span class="op">=</span> LoraConfig(
+    r<span class="op">=</span>LORA_R,
+    lora_alpha<span class="op">=</span>LORA_ALPHA,
+    target_modules<span class="op">=</span>TARGET_MODULES,
+    lora_dropout<span class="op">=</span>LORA_DROPOUT,
+    bias<span class="op">=</span><span class="st">&quot;none&quot;</span>,
+    task_type<span class="op">=</span><span class="st">&quot;CAUSAL_LM&quot;</span>,
+)
+model <span class="op">=</span> get_peft_model(model, config)</code></pre></div>
+<h2 id="实现解析">实现解析</h2>
+<p>在这里将base_model封装成lora结构的形式 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061729090.png" /></p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  llama_小学数学解题模型
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">wang yaqi</a>
+	|<a href="https://beian.miit.gov.cn" target="_blank">京ICP备2022000211号-1</a>	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>
