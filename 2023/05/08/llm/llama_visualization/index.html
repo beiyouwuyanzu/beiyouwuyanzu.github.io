@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		llama 模型结构 | 
+	 
+	Wangyaqi&#39;s personal site
+	</title>
+	
+	<!-- keywords,description -->
+	 
+		<meta name="description" content="about study notes" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">Wangyaqi's personal site</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										llm
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                     
+										    LLaMA模型架构
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/alpaca_lora_llama_LoRA/">
+                     
+										    alpaca_lora_llama_LoRA
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2023/05/08/llm/llama_visualization/">
+                     
+										    llama_visualization
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/peft_model/">
+                     
+										    peft_model
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										机器学习
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										kaggle_note
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+                     
+										    text_classification
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										nlp
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
+                     
+										    crf
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										paper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
+                     
+										    asr评估
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										项目集合
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
+                     
+										    llama_小学数学解题模型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	llama 模型结构
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/2023/05/08/llm/llama_visualization/" class="leancloud_visitors" data-flag-title="llama 模型结构"></span>
+		</span>
+	
+	<span>wang yaqi</span>
+	<span>2023-05-08 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<p>trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="er">PeftModelForCausalLM(</span>
+  <span class="er">(base_model):</span> <span class="er">LoraModel(</span>
+    <span class="er">(model):</span> <span class="er">LlamaForCausalLM(</span>
+      <span class="er">(model):</span> <span class="er">LlamaModel(</span>
+        <span class="er">(embed_tokens):</span> <span class="er">Embedding(32000,</span> <span class="er">4096,</span> <span class="er">padding_idx=31999)</span>
+        <span class="er">(layers):</span> <span class="er">ModuleList(</span>
+          <span class="er">(0-31):</span> <span class="er">32</span> <span class="er">x</span> <span class="er">LlamaDecoderLayer(</span>
+            <span class="er">(self_attn):</span> <span class="er">LlamaAttention(</span>
+              <span class="er">(q_proj):</span> <span class="er">Linear8bitLt(</span>
+                <span class="er">in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False</span>
+                <span class="er">(lora_dropout):</span> <span class="er">Dropout(p=0.05,</span> <span class="er">inplace=False)</span>
+                <span class="er">(lora_A):</span> <span class="er">Linear(in_features=4096,</span> <span class="er">out_features=8,</span> <span class="er">bias=False)</span>
+                <span class="er">(lora_B):</span> <span class="er">Linear(in_features=8,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">)</span>
+              <span class="er">(k_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">(v_proj):</span> <span class="er">Linear8bitLt(</span>
+                <span class="er">in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False</span>
+                <span class="er">(lora_dropout):</span> <span class="er">Dropout(p=0.05,</span> <span class="er">inplace=False)</span>
+                <span class="er">(lora_A):</span> <span class="er">Linear(in_features=4096,</span> <span class="er">out_features=8,</span> <span class="er">bias=False)</span>
+                <span class="er">(lora_B):</span> <span class="er">Linear(in_features=8,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">)</span>
+              <span class="er">(o_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">(rotary_emb):</span> <span class="er">LlamaRotaryEmbedding()</span>
+            <span class="er">)</span>
+            <span class="er">(mlp):</span> <span class="er">LlamaMLP(</span>
+              <span class="er">(gate_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=11008,</span> <span class="er">bias=False)</span>
+              <span class="er">(down_proj):</span> <span class="er">Linear8bitLt(in_features=11008,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">(up_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=11008,</span> <span class="er">bias=False)</span>
+              <span class="er">(act_fn):</span> <span class="er">SiLUActivation()</span>
+            <span class="er">)</span>
+            <span class="er">(input_layernorm):</span> <span class="er">LlamaRMSNorm()</span>
+            <span class="er">(post_attention_layernorm):</span> <span class="er">LlamaRMSNorm()</span>
+          <span class="er">)</span>
+        <span class="er">)</span>
+        <span class="er">(norm):</span> <span class="er">LlamaRMSNorm()</span>
+      <span class="er">)</span>
+      <span class="er">(lm_head):</span> <span class="er">Linear(in_features=4096,</span> <span class="er">out_features=32000,</span> <span class="er">bias=False)</span>
+    <span class="er">)</span>
+  <span class="er">)</span>
+<span class="er">)</span></code></pre></div>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/05/08/llm/peft_model/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">wang yaqi</a>
+	|<a href="https://beian.miit.gov.cn" target="_blank">京ICP备2022000211号-1</a>	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>
