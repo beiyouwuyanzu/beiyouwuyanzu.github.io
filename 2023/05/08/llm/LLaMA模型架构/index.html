@@ -361,8 +361,10 @@ var _hmt = _hmt || [];
 <p>https://www.ai-contentlab.com/2023/03/swishglu-activation-function.html</p>
 </blockquote>
 <ul>
-<li>Swish(x) = x * sigmoid(beta * x) <code>Swish 已被证明在许多应用程序中表现优于 ReLU，尤其是在深度网络中。 Swish 的主要优点是它比 ReLU 更平滑，可以带来更好的优化和更快的收敛。</code></li>
-<li>GLU(x) = x * sigmoid(Wx + b) <code>GLU 与 Swish 类似，它结合了线性函数和非线性函数。然而，在 GLU 中，线性函数由 sigmoid 激活函数门控。</code></li>
+<li>Swish(x) = x * sigmoid(beta * x)</li>
+</ul>
+<p><code>Swish 已被证明在许多应用程序中表现优于 ReLU，尤其是在深度网络中。 Swish 的主要优点是它比 ReLU 更平滑，可以带来更好的优化和更快的收敛。</code> - GLU(x) = x * sigmoid(Wx + b) <code>GLU 与 Swish 类似，它结合了线性函数和非线性函数。然而，在 GLU 中，线性函数由 sigmoid 激活函数门控。</code></p>
+<ul>
 <li>SwiGLU(x) = x * sigmoid(beta * x) + (1 - sigmoid(beta * x)) * (Wx + b) <code>在SwiGLU中，Swish函数用于对GLU的线性函数进行门控。这使得 SwiGLU 可以兼顾 Swish 和 GLU 的优势，同时克服各自的劣势。</code></li>
 </ul>
 <h3 id="特点-1">特点</h3>
