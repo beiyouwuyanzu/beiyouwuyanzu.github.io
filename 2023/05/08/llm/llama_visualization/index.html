@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		About | 
+		llama_visualization | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -155,7 +155,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/llm/llama_visualization/">
                      
 										    llama_visualization
@@ -286,48 +286,95 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	About
+	llama_visualization
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/about/index.html" class="leancloud_visitors" data-flag-title="About"></span>
+			阅读量:<span id="/2023/05/08/llm/llama_visualization/" class="leancloud_visitors" data-flag-title=""></span>
 		</span>
 	
 	<span>wang yaqi</span>
-	<span>2021-12-12 23:56:23</span>
+	<span>2023-05-08 21:53:08</span>
 		<div id="article-categories">
     
+		<span>Categories：</span>
+            
+    
 
+    
+		<span>Tags：</span>
+            
     
 		</div>
 
 </div>
 
 <div id="article-content">
-	<h2 id="llama-小学数学解题模型">llama 小学数学解题模型</h2>
-<h2 id="效果展示">效果展示</h2>
-<h4 id="简单的运算没有问题">简单的运算没有问题</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.41.37.gif" />
+	<h1 id="llama-模型结构">llama 模型结构</h1>
+<p>trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="er">PeftModelForCausalLM(</span>
+  <span class="er">(base_model):</span> <span class="er">LoraModel(</span>
+    <span class="er">(model):</span> <span class="er">LlamaForCausalLM(</span>
+      <span class="er">(model):</span> <span class="er">LlamaModel(</span>
+        <span class="er">(embed_tokens):</span> <span class="er">Embedding(32000,</span> <span class="er">4096,</span> <span class="er">padding_idx=31999)</span>
+        <span class="er">(layers):</span> <span class="er">ModuleList(</span>
+          <span class="er">(0-31):</span> <span class="er">32</span> <span class="er">x</span> <span class="er">LlamaDecoderLayer(</span>
+            <span class="er">(self_attn):</span> <span class="er">LlamaAttention(</span>
+              <span class="er">(q_proj):</span> <span class="er">Linear8bitLt(</span>
+                <span class="er">in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False</span>
+                <span class="er">(lora_dropout):</span> <span class="er">Dropout(p=0.05,</span> <span class="er">inplace=False)</span>
+                <span class="er">(lora_A):</span> <span class="er">Linear(in_features=4096,</span> <span class="er">out_features=8,</span> <span class="er">bias=False)</span>
+                <span class="er">(lora_B):</span> <span class="er">Linear(in_features=8,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">)</span>
+              <span class="er">(k_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">(v_proj):</span> <span class="er">Linear8bitLt(</span>
+                <span class="er">in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False</span>
+                <span class="er">(lora_dropout):</span> <span class="er">Dropout(p=0.05,</span> <span class="er">inplace=False)</span>
+                <span class="er">(lora_A):</span> <span class="er">Linear(in_features=4096,</span> <span class="er">out_features=8,</span> <span class="er">bias=False)</span>
+                <span class="er">(lora_B):</span> <span class="er">Linear(in_features=8,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">)</span>
+              <span class="er">(o_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">(rotary_emb):</span> <span class="er">LlamaRotaryEmbedding()</span>
+            <span class="er">)</span>
+            <span class="er">(mlp):</span> <span class="er">LlamaMLP(</span>
+              <span class="er">(gate_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=11008,</span> <span class="er">bias=False)</span>
+              <span class="er">(down_proj):</span> <span class="er">Linear8bitLt(in_features=11008,</span> <span class="er">out_features=4096,</span> <span class="er">bias=False)</span>
+              <span class="er">(up_proj):</span> <span class="er">Linear8bitLt(in_features=4096,</span> <span class="er">out_features=11008,</span> <span class="er">bias=False)</span>
+              <span class="er">(act_fn):</span> <span class="er">SiLUActivation()</span>
+            <span class="er">)</span>
+            <span class="er">(input_layernorm):</span> <span class="er">LlamaRMSNorm()</span>
+            <span class="er">(post_attention_layernorm):</span> <span class="er">LlamaRMSNorm()</span>
+          <span class="er">)</span>
+        <span class="er">)</span>
+        <span class="er">(norm):</span> <span class="er">LlamaRMSNorm()</span>
+      <span class="er">)</span>
+      <span class="er">(lm_head):</span> <span class="er">Linear(in_features=4096,</span> <span class="er">out_features=32000,</span> <span class="er">bias=False)</span>
+    <span class="er">)</span>
+  <span class="er">)</span>
+<span class="er">)</span></code></pre></div>
 
 </div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.47.46.gif" />
 
-</div>
-<h4 id="复杂的题目可以算出等式-结果会计算有误">复杂的题目可以算出等式, 结果会计算有误</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.52.56.gif" />
 
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.58.44.gif" />
-
-</div>
-
-</div>
-
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/05/08/llm/peft_model/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  peft_model
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/05/08/llm/alpaca_lora_llama_LoRA/">
+                alpaca_lora_llama_LoRA
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
 
 
 
