@@ -356,75 +356,75 @@ var _hmt = _hmt || [];
 
 </div>
 <pre><code>                  左：GeLU，右：Swish</code></pre>
-<table style="width:8%;">
-<colgroup>
-<col width="8%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>&gt; https://www.ai-contentlab.com/2023/03/swishglu-activation-function.html - Swish(x) = x * sigmoid(beta * x) <code>Swish 已被证明在许多应用程序中表现优于 ReLU，尤其是在深度网络中。 Swish 的主要优点是它比 ReLU 更平滑，可以带来更好的优化和更快的收敛。</code> - GLU(x) = x * sigmoid(Wx + b) <code>GLU 与 Swish 类似，它结合了线性函数和非线性函数。然而，在 GLU 中，线性函数由 sigmoid 激活函数门控。</code> - SwiGLU(x) = x * sigmoid(beta * x) + (1 - sigmoid(beta * x)) * (Wx + b) <code>在SwiGLU中，Swish函数用于对GLU的线性函数进行门控。这使得 SwiGLU 可以兼顾 Swish 和 GLU 的优势，同时克服各自的劣势。</code> ### 特点 1. Swish 的主要优点是它比 ReLU 更平滑，可以带来更好的优化和更快的收敛 2. GLU 与 Swish 类似，它结合了线性函数和非线性函数。然而，在 GLU 中，线性函数由 sigmoid 激活函数门控。 3. 在SwiGLU中，Swish函数用于对GLU的线性函数进行门控。这使得 SwiGLU 可以兼顾 Swish 和 GLU 的优势，同时克服各自的劣势。</td>
-</tr>
-<tr class="even">
-<td>### 与其他激活函数相比，SwiGLU 的主要优点是： 1. 平滑度：SwiGLU 比 ReLU 更平滑，可以带来更好的优化和更快的收敛。 2. 非单调性：SwiGLU 是非单调的，这使其能够捕获输入和输出之间复杂的非线性关系。 3. 门控：SwiGLU 使用门控机制，允许它根据接收到的输入有选择地激活神经元。这有助于减少过度拟合并提高泛化能力。 4. 性能：SwiGLU 已被证明在各种任务中优于其他激活函数，包括 Swish 和 GLU。</td>
-</tr>
-<tr class="odd">
-<td>### 代码实现 ``` class SwiGLU(tf.keras.layers.Layer): def <strong>init</strong>(self, bias=True, dim=-1, <strong>kwargs): &quot;&quot;&quot; SwiGLU Activation Layer &quot;&quot;&quot; super(SwiGLU, self).<strong>init</strong>(</strong>kwargs) self.bias = bias self.dim = dim self.dense = tf.keras.layers.Dense(2, use_bias=bias)</td>
-</tr>
-<tr class="even">
-<td>def call(self, x): out, gate = tf.split(x, num_split=2, axis=self.dim) gate = tf.keras.activations.swish(gate) x = tf.multiply(out, gate) return x ```</td>
-</tr>
-<tr class="odd">
-<td>## 3. RoPE 1. RoPE 使用旋转矩阵对绝对位置进行编码，同时将显式相对位置依赖性纳入自注意公式中。 2. RoPE 具有多个优点：序列长度的灵活性、随着相对距离的增加而衰减的令牌间依赖性，以及为线性自注意力配备相对位置编码的能力。</td>
-</tr>
-<tr class="even">
-<td>在位置编码上，删除了绝对位置嵌入，而在网络的每一层增加了苏剑林等人(2021)提出的旋转位置嵌入(RoPE)，其思想是采用绝对位置编码的形式，实现相对位置编码</td>
-</tr>
-<tr class="odd">
-<td>RoPE主要借助了复数的思想，为了引入复数，首先假设了在加入位置信息之前，原有的编码向量是二维行向量<embed src="https://latex.codecogs.com/gif.latex?q_m" />和<embed src="https://latex.codecogs.com/gif.latex?k_n" />，其中<embed src="https://latex.codecogs.com/gif.latex?m" />和<embed src="https://latex.codecogs.com/gif.latex?n" />是绝对位置，现在需要构造一个变换，将<embed src="https://latex.codecogs.com/gif.latex?m" />和<embed src="https://latex.codecogs.com/gif.latex?n" />引入到<embed src="https://latex.codecogs.com/gif.latex?q_m" />和<embed src="https://latex.codecogs.com/gif.latex?k_n" />中，即寻找变换： <span class="math display">\[
+<hr />
+<blockquote>
+<p>https://www.ai-contentlab.com/2023/03/swishglu-activation-function.html</p>
+</blockquote>
+<ul>
+<li>Swish(x) = x * sigmoid(beta * x) <code>Swish 已被证明在许多应用程序中表现优于 ReLU，尤其是在深度网络中。 Swish 的主要优点是它比 ReLU 更平滑，可以带来更好的优化和更快的收敛。</code></li>
+<li>GLU(x) = x * sigmoid(Wx + b) <code>GLU 与 Swish 类似，它结合了线性函数和非线性函数。然而，在 GLU 中，线性函数由 sigmoid 激活函数门控。</code></li>
+<li>SwiGLU(x) = x * sigmoid(beta * x) + (1 - sigmoid(beta * x)) * (Wx + b) <code>在SwiGLU中，Swish函数用于对GLU的线性函数进行门控。这使得 SwiGLU 可以兼顾 Swish 和 GLU 的优势，同时克服各自的劣势。</code></li>
+</ul>
+<h3 id="特点-1">特点</h3>
+<ol style="list-style-type: decimal">
+<li>Swish 的主要优点是它比 ReLU 更平滑，可以带来更好的优化和更快的收敛</li>
+<li>GLU 与 Swish 类似，它结合了线性函数和非线性函数。然而，在 GLU 中，线性函数由 sigmoid 激活函数门控。</li>
+<li>在SwiGLU中，Swish函数用于对GLU的线性函数进行门控。这使得 SwiGLU 可以兼顾 Swish 和 GLU 的优势，同时克服各自的劣势。</li>
+</ol>
+<h3 id="与其他激活函数相比swiglu-的主要优点是">与其他激活函数相比，SwiGLU 的主要优点是：</h3>
+<ol style="list-style-type: decimal">
+<li>平滑度：SwiGLU 比 ReLU 更平滑，可以带来更好的优化和更快的收敛。</li>
+<li>非单调性：SwiGLU 是非单调的，这使其能够捕获输入和输出之间复杂的非线性关系。</li>
+<li>门控：SwiGLU 使用门控机制，允许它根据接收到的输入有选择地激活神经元。这有助于减少过度拟合并提高泛化能力。</li>
+<li>性能：SwiGLU 已被证明在各种任务中优于其他激活函数，包括 Swish 和 GLU。</li>
+</ol>
+<h3 id="代码实现">代码实现</h3>
+<pre><code>class SwiGLU(tf.keras.layers.Layer):
+    def __init__(self, bias=True, dim=-1, **kwargs):
+        &quot;&quot;&quot;
+ SwiGLU Activation Layer
+ &quot;&quot;&quot;
+        super(SwiGLU, self).__init__(**kwargs)
+        self.bias = bias
+        self.dim = dim
+        self.dense = tf.keras.layers.Dense(2, use_bias=bias)
+
+    def call(self, x):
+        out, gate = tf.split(x, num_split=2, axis=self.dim)
+        gate = tf.keras.activations.swish(gate)
+        x = tf.multiply(out, gate)
+        return x</code></pre>
+<h2 id="rope">3. RoPE</h2>
+<ol style="list-style-type: decimal">
+<li>RoPE 使用旋转矩阵对绝对位置进行编码，同时将显式相对位置依赖性纳入自注意公式中。</li>
+<li>RoPE 具有多个优点：序列长度的灵活性、随着相对距离的增加而衰减的令牌间依赖性，以及为线性自注意力配备相对位置编码的能力。</li>
+</ol>
+<p>在位置编码上，删除了绝对位置嵌入，而在网络的每一层增加了苏剑林等人(2021)提出的旋转位置嵌入(RoPE)，其思想是采用绝对位置编码的形式，实现相对位置编码</p>
+<p>RoPE主要借助了复数的思想，为了引入复数，首先假设了在加入位置信息之前，原有的编码向量是二维行向量<embed src="https://latex.codecogs.com/gif.latex?q_m" />和<embed src="https://latex.codecogs.com/gif.latex?k_n" />，其中<embed src="https://latex.codecogs.com/gif.latex?m" />和<embed src="https://latex.codecogs.com/gif.latex?n" />是绝对位置，现在需要构造一个变换，将<embed src="https://latex.codecogs.com/gif.latex?m" />和<embed src="https://latex.codecogs.com/gif.latex?n" />引入到<embed src="https://latex.codecogs.com/gif.latex?q_m" />和<embed src="https://latex.codecogs.com/gif.latex?k_n" />中，即寻找变换： <span class="math display">\[
 \tilde{q_m}=f(q, m), \tilde{k_n}=f(k, n)
-\]</span></td>
-</tr>
-<tr class="even">
-<td>考虑到Attention的核心计算是内积： <span class="math display">\[
+\]</span></p>
+<p>考虑到Attention的核心计算是内积： <span class="math display">\[
 \operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V
-\]</span></td>
-</tr>
-<tr class="odd">
-<td>所以，寻求的这个<embed src="https://latex.codecogs.com/gif.latex?f%28*%29" />变换，应该具有特性： <span class="math display">\[
+\]</span></p>
+<p>所以，寻求的这个<embed src="https://latex.codecogs.com/gif.latex?f%28*%29" />变换，应该具有特性： <span class="math display">\[
 \langle f(q, m), f(k, n)\rangle=g(q, k, m-n)
-\]</span></td>
-</tr>
-<tr class="even">
-<td>这里直接说结论，寻求的变换就是<embed src="https://latex.codecogs.com/gif.latex?q_me%5E%7Bim%5Ctheta%7D" /> 也就是给<embed src="https://latex.codecogs.com/gif.latex?q_m" />乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bim%5Ctheta%7D" />，相应地，<embed src="https://latex.codecogs.com/gif.latex?k_n" />乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bin%5Ctheta%7D" /></td>
-</tr>
-<tr class="odd">
-<td>做了这样一个变换之后，根据复数的特性，有： <span class="math display">\[
+\]</span></p>
+<p>这里直接说结论，寻求的变换就是<embed src="https://latex.codecogs.com/gif.latex?q_me%5E%7Bim%5Ctheta%7D" /> 也就是给<embed src="https://latex.codecogs.com/gif.latex?q_m" />乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bim%5Ctheta%7D" />，相应地，<embed src="https://latex.codecogs.com/gif.latex?k_n" />乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bin%5Ctheta%7D" /></p>
+<p>做了这样一个变换之后，根据复数的特性，有： <span class="math display">\[
 \left\langle q_m, k_n\right\rangle=\operatorname{Re}\left[q_m k_n^*\right]
-\]</span></td>
-</tr>
-<tr class="even">
-<td>也就是，如果把二维向量看做复数，那么它们的内积，等于一个复数乘以另一个复数的共轭，得到的结果再取实部，代入上面的变换，也就有： <span class="math display">\[
+\]</span></p>
+<p>也就是，如果把二维向量看做复数，那么它们的内积，等于一个复数乘以另一个复数的共轭，得到的结果再取实部，代入上面的变换，也就有： <span class="math display">\[
 \left\langle q_m e^{i m \theta}, k_n e^{i n \theta}\right\rangle=\operatorname{Re}\left[\left(q_m e^{i m \theta}\right)\left(k_n e^{i n \theta}\right)^*\right]=\operatorname{Re}\left[q_m k_n^* e^{i(m-n) \theta}\right]
-\]</span></td>
-</tr>
-<tr class="odd">
-<td>这样一来，内积的结果就只依赖于<embed src="https://latex.codecogs.com/gif.latex?%28m-n%29" />，也就是相对位置了</td>
-</tr>
-<tr class="even">
-<td>换言之，经过这样一番操作，通过给Embedding添加绝对位置信息，可以使得两个token的编码，经过内积变换（self-attn）之后，得到结果是受它们位置的差值，即相对位置影响的</td>
-</tr>
-<tr class="odd">
-<td>于是对于任意的位置为<embed src="https://latex.codecogs.com/gif.latex?m" />的二维向量<embed src="https://latex.codecogs.com/gif.latex?%5Bx%2C%20y%5D" />，把它看做复数，乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bim%5Ctheta%7D" />，而根据欧拉公式，有： <span class="math display">\[
+\]</span></p>
+<p>这样一来，内积的结果就只依赖于<embed src="https://latex.codecogs.com/gif.latex?%28m-n%29" />，也就是相对位置了</p>
+<p>换言之，经过这样一番操作，通过给Embedding添加绝对位置信息，可以使得两个token的编码，经过内积变换（self-attn）之后，得到结果是受它们位置的差值，即相对位置影响的</p>
+<p>于是对于任意的位置为<embed src="https://latex.codecogs.com/gif.latex?m" />的二维向量<embed src="https://latex.codecogs.com/gif.latex?%5Bx%2C%20y%5D" />，把它看做复数，乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bim%5Ctheta%7D" />，而根据欧拉公式，有： <span class="math display">\[
 e^{i m \theta}=\cos m \theta+i \sin m \theta
-\]</span></td>
-</tr>
-<tr class="even">
-<td>于是上述的相乘变换也就变成了： <span class="math display">\[
+\]</span></p>
+<p>于是上述的相乘变换也就变成了： <span class="math display">\[
 (x+i y) e^{i m \theta}=(x \cos m \theta-y \sin m \theta)+i(x \sin m \theta+y \cos m \theta)
-\]</span></td>
-</tr>
-<tr class="odd">
-<td>把上述式子写成矩阵形式： <span class="math display">\[
+\]</span></p>
+<p>把上述式子写成矩阵形式： <span class="math display">\[
 f\left(\left(q_0, q_1\right), m\right)=\left[\begin{array}{cc}
 \cos m \theta &amp; -\sin m \theta \\
 \sin m \theta &amp; \cos m \theta
@@ -432,13 +432,9 @@ f\left(\left(q_0, q_1\right), m\right)=\left[\begin{array}{cc}
 q_0 \\
 q_1
 \end{array}\right]
-\]</span></td>
-</tr>
-<tr class="even">
-<td>而这个变换的几何意义，就是在二维坐标系下，对向量<embed src="https://latex.codecogs.com/gif.latex?%28q_0%2C%20q_1%29" />进行了旋转，因而这种位置编码方法，被称为旋转位置编码</td>
-</tr>
-<tr class="odd">
-<td>根据刚才的结论，结合内积的线性叠加性，可以将结论推广到高维的情形。可以理解为，每两个维度一组，进行了上述的“旋转”操作，然后再拼接在一起： <span class="math display">\[
+\]</span></p>
+<p>而这个变换的几何意义，就是在二维坐标系下，对向量<embed src="https://latex.codecogs.com/gif.latex?%28q_0%2C%20q_1%29" />进行了旋转，因而这种位置编码方法，被称为旋转位置编码</p>
+<p>根据刚才的结论，结合内积的线性叠加性，可以将结论推广到高维的情形。可以理解为，每两个维度一组，进行了上述的“旋转”操作，然后再拼接在一起： <span class="math display">\[
 \left[\begin{array}{ccccccc}
 \cos m \theta_0 &amp; -\sin m \theta_0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
 \sin m \theta_0 &amp; \cos m \theta_0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
@@ -456,13 +452,9 @@ q_3 \\
 q_{d-2} \\
 q_{d-1}
 \end{array}\right]
-\]</span></td>
-</tr>
-<tr class="even">
-<td>由于矩阵的稀疏性，会造成计算上的浪费，所以在计算时采用逐位相乘再相加的方式进行：</td>
-</tr>
-<tr class="odd">
-<td><span class="math display">\[
+\]</span></p>
+<p>由于矩阵的稀疏性，会造成计算上的浪费，所以在计算时采用逐位相乘再相加的方式进行：</p>
+<p><span class="math display">\[
 \left[\begin{array}{c}
 q_0 \\
 q_1 \\
@@ -496,10 +488,8 @@ q_{d-2}
 \sin m \theta_{d / 2-1} \\
 \sin m \theta_{d / 2-1}
 \end{array}\right]
-\]</span></td>
-</tr>
-</tbody>
-</table>
+\]</span></p>
+<hr />
 <p>另一份解释: &gt; https://nn.labml.ai/transformers/rope/index.html</p>
 <p>旋转编码通过在 2D 平面中旋转来变换特征对。也就是说，它将 d 特征组织为 d/2​ 对。每对都可 以被认为是 2D 平面中的一个坐标，编码将根据令牌的位置将其旋转一个角度。 设 <span class="math inline">\(x_m^{(1)}\)</span>和 <span class="math inline">\(x_m^{(2)}\)</span> 是 m 位置处任意头的键或查询的两个特征。或者为简单起见，假设 x 只有两个特征。那么转变就是， <span class="math display">\[
 \begin{aligned}
@@ -548,7 +538,7 @@ x_m^{\left(i+\frac{d}{2}\right)} \cos m \theta_i+x_m^{(i)} \sin m \theta_i
             
               <a href="/2023/05/08/llm/peft_model/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  PEFT State-of-the-art Parameter-Efficient Fine-Tuning (PEFT) methods
+                  PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
               </a>
             
         </div>
