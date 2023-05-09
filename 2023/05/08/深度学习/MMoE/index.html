@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		CRF笔记 | 
+		MMoE 模型 | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -228,7 +228,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
                      
 										    crf
@@ -276,7 +276,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
                      
 										    MMoE
@@ -330,16 +330,16 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	CRF笔记
+	MMoE 模型
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/" class="leancloud_visitors" data-flag-title="CRF笔记"></span>
+			阅读量:<span id="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/" class="leancloud_visitors" data-flag-title="MMoE 模型"></span>
 		</span>
 	
 	<span>wang yaqi</span>
-	<span>2021-12-17 21:04:50</span>
+	<span>2023-05-08 21:04:50</span>
 		<div id="article-categories">
     
 		<span>Categories：</span>
@@ -355,44 +355,75 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<blockquote>
-<p>参考: https://medium.com/ml2vec/overview-of-conditional-random-fields-68a2a20fa541</p>
-</blockquote>
-<h2 id="背景">背景</h2>
+	<h1 id="mmoe-模型">MMoE 模型</h1>
+<p>多任务学习的三种架构：1) 共享底部模型，2) 单门混合专家模型 (MoE)，以及 3) 多门混合专家模型 (MMoE)。前两个架构提供上下文并显示最终 MMoE 架构的增量步骤。 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305092028382.png" /></p>
+<ol style="list-style-type: decimal">
+<li><h2 id="shared-bottom-model">Shared-bottom model</h2>
+共享底部模型是最简单和最常见的多任务学习架构。该模型有一个单一的基础（共享底部），所有特定于任务的子网络都从该基础开始。这意味着这种单一表示用于所有任务，与其他任务相比，单个任务无法调整它们从共享底部获得的信息。</li>
+<li><h2 id="mixture-of-experts-model-moe">Mixture-of-experts model (MoE)</h2>
+<p><img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305092032003.png" /> 专家混合架构通过创建多个专家网络并添加门控网络来对每个专家网络的输出进行加权，从而改进了共享底部模型。 每个专家网络本质上都是一个独特的共享底层网络，每个网络都使用相同的网络架构。假设每个专家网络都能够学习数据中的不同模式并专注于不同的事物。 门控网络然后生成一个加权方案，使得任务能够使用专家网络输出的加权平均值，以输入数据为条件。门控网络的最后一层是 <span class="math inline">\(softmax\)</span> 层 (<span class="math inline">\(g(x)\)</span>)，用于生成专家网络输出 (<span class="math inline">\(y\)</span>) 的线性组合。 <span class="math display">\[
+y=\sum_{i=1}^n g(x)_i f_i(x)
+\]</span> 这种架构的主要创新在于，该模型能够在每个样本的基础上以不同方式激活网络的各个部分。由于门控网络以输入数据为条件（由于门控网络作为整体模型训练的一部分进行训练），该模型能够学习如何根据输入数据的属性对每个专家网络进行加权。</p></li>
+<li><h2 id="multi-gate-mixture-of-experts-model-mmoe">Multi-gate mixture-of-experts model (MMoE)</h2>
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305092035859.png" /> MMoE 架构类似于 MoE 架构，不同之处在于它为每个任务提供了一个单独的门控网络，而不是为整个模型提供一个单独的门控网络。 这允许模型学习每个专家网络的每个任务和每个样本的权重，而不仅仅是每个样本的权重。这允许 MMoE 学习建模不同任务之间的关系。彼此之间几乎没有共同点的任务将导致每个任务的门控网络学习使用不同的专家网络。 MMoE 的作者通过在具有不同任务相关性级别的合成数据集上比较共享底部、MoE 和 MMoE 架构来验证这一结论。 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305092036448.png" /></li>
+</ol>
 <ul>
-<li>CRF用于切词, 序列标注等.</li>
-<li>普通的分类模型是对单个字词的分类任务, CRF考虑了前后文的联系, 对当前的片段进行分类</li>
+<li>首先，我们看到共享底部模型在所有情况下都低于 MoE 和 MMoE 模型。</li>
+<li>接下来，我们可以看到 MoE 和 MMoE 模型之间的性能差距随着任务之间相关性的降低而增加。</li>
+<li>这表明 MMoE 能够更好地处理任务彼此无关的情况。任务多样性越大，MMoE 相对于共享底部或 MoE 架构的优势就越大。</li>
 </ul>
-<h3 id="概述">概述</h3>
+<h2 id="代码实现">代码实现</h2>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> torch
+<span class="im">import</span> torch.nn <span class="im">as</span> nn
+<span class="im">import</span> torch.nn.functional <span class="im">as</span> F
+
+<span class="kw">class</span> MMoE(nn.Module):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, num_experts, num_tasks, hidden_units):
+        <span class="bu">super</span>(MMoE, <span class="va">self</span>).<span class="fu">__init__</span>()
+        <span class="va">self</span>.num_experts <span class="op">=</span> num_experts
+        <span class="va">self</span>.num_tasks <span class="op">=</span> num_tasks
+        
+        <span class="va">self</span>.expert_networks <span class="op">=</span> nn.ModuleList()
+        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_experts):
+            expert_network <span class="op">=</span> nn.Sequential(
+                nn.Linear(input_dim, hidden_units),
+                nn.ReLU(),
+                nn.Linear(hidden_units, hidden_units),
+                nn.ReLU(),
+                nn.Linear(hidden_units, hidden_units),
+                nn.ReLU(),
+                nn.Linear(hidden_units, hidden_units)
+            )
+            <span class="va">self</span>.expert_networks.append(expert_network)
+        
+        <span class="va">self</span>.gate_networks <span class="op">=</span> nn.ModuleList()
+        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_tasks):
+            gate_network <span class="op">=</span> nn.Sequential(
+                nn.Linear(hidden_units, num_experts),
+                nn.Softmax(dim<span class="op">=-</span><span class="dv">1</span>)
+            )
+            <span class="va">self</span>.gate_networks.append(gate_network)
+        
+    <span class="kw">def</span> forward(<span class="va">self</span>, x):
+        expert_outputs <span class="op">=</span> []
+        <span class="cf">for</span> expert_network <span class="kw">in</span> <span class="va">self</span>.expert_networks:
+            expert_output <span class="op">=</span> expert_network(x)
+            expert_outputs.append(expert_output)
+        expert_outputs <span class="op">=</span> torch.stack(expert_outputs, dim<span class="op">=</span><span class="dv">2</span>)
+        gate_outputs <span class="op">=</span> []
+        <span class="cf">for</span> gate_network <span class="kw">in</span> <span class="va">self</span>.gate_networks:
+            gate_output <span class="op">=</span> gate_network(expert_outputs)
+            gate_outputs.append(gate_output)
+        gate_outputs <span class="op">=</span> torch.stack(gate_outputs, dim<span class="op">=</span><span class="dv">1</span>)
+        weighted_expert_outputs <span class="op">=</span> torch.bmm(gate_outputs, expert_outputs)
+        final_output <span class="op">=</span> torch.<span class="bu">sum</span>(weighted_expert_outputs, dim<span class="op">=</span><span class="dv">2</span>)
+        <span class="cf">return</span> final_output</code></pre></div>
 <ul>
-<li>条件随机场是一种判别模型, 用于预测序列. 它使用标签的上下文信息, 从而增加了模型进行预测的信息量.</li>
+<li>先创建专家层，这是由一组全连接层组成的。我们可以使用PyTorch中的<code>nn.Linear</code>模块创建这些层。专家层的数量和每个专家层中的隐藏单元数可以作为<code>MMoE</code>类构造函数的输入参数进行指定。专家层的输入维度可以从输入数据的形状中获得</li>
+<li>接下来创建门层，它由一组门网络组成。每个门网络以专家输出作为输入，产生一组用于组合专家输出的权重。我们也可以使用<code>nn.Linear</code>模块来创建门网络。门网络的数量应该等于多任务学习问题中的任务数。</li>
+<li>最后，我们需要使用门网络产生的权重将专家输出组合起来，以产生最终的输出。我们可以使用<code>torch.bmm</code>函数来完成批量矩阵乘法，从而将专家输出与门网络产生的权重相乘，并将结果相加以获得最终的输出。</li>
+<li>在代码<code>torch.stack(expert_outputs, dim=2)</code>中，<code>dim=2</code>表示在第2个维度上进行连接。具体来说，在这个例子中，<code>expert_outputs</code>是一个形状为<code>(batch_size, num_experts, expert_output_size)</code>的3D张量</li>
 </ul>
-<p>以下分三个方面: 1. 判别模型和生成模型 2. 条件随机场的数学表达 3. crf和HMM的区别</p>
-<h4 id="判别模型和生成模型">判别模型和生成模型</h4>
-<ul>
-<li>判别模型, 给出某一个概率的分类. 比如二分类, A的概率是0.7, B类的概率是0.3. 非A则B</li>
-<li>生成模型, 是基于概率分布. 基于A类的概率分布得到的概率是0.9, B类概率分布得到的结果是0.6, 各项的概率之和大于1</li>
-<li>判别模型: 贝叶斯; 判别模型: 逻辑回归</li>
-</ul>
-<h4 id="条件随机场的数学表达">条件随机场的数学表达</h4>
-<p>条件分布建模如下: <span class="math display">\[\hat { y } = \operatorname { argmax } _ { y } P ( y | x )\]</span></p>
-<p>构建特征函数, 特征函数依赖如下输入: 1. 输入序列X 2. 预测点的位置i 3. 前一个位置i-1的label Li-1 4. 当前位置i的label Li</p>
-<p>最终构建的特征函数如下: <span class="math display">\[f ( X , i , l _ { i - 1 } , l _ { i } )\]</span></p>
-<p>特征函数的目的是表示数据序列的某些特征. 比如f (X, i, L{i - 1}, L{i} ) = 1 if L{i - 1} == 名词, else 0 if L{i} == 动词 同样的, f (X, i, L{i - 1}, L{i} ) = 1 if L{i - 1} == 动词, else 0 if L{i} == 形容词</p>
-<p>每个特征函数都基于上一个词和当前词的标签, 要么是0要么是1. 位了构建条件场, 我们给每个特征函数分配一个权重, 算法将学习这些权重 <span class="math display">\[P ( y , X , \lambda ) = \frac { 1 } { Z ( X ) } \operatorname { exp } \{ \sum _ { i = 1 } ^ { n } \sum _ { j } \lambda _ { j } f _ { i } ( X , i , y _ { i - 1 } , y _ { i } ) \}\]</span></p>
-<p><span class="math display">\[Z ( x ) = \sum _ { y ^ { \prime } \in y } \sum _ { i = 1 } ^ { n } \sum _ { j } \lambda _ { j } f _ { i } ( X , i , y _ { i - 1 } ^ { \prime } , y _ { i } ^ { \prime } )\]</span></p>
-<p>接下来位了获得估计参数 （λ）, 使用最大似然估计. 为了后续求偏导方便计算, 先取对数然后求负数. <span class="math display">\[\begin{array}{c}
-L(y, X, \lambda)=-\log \left\{\prod_{k=1}^{m} P\left(y^{k} \mid x^{k}, \lambda\right)\right\} \\
-=-\sum_{k=1}^{m} \log \left[\frac{1}{Z\left(x_{m}\right)} \exp \left\{\sum_{i=1}^{n} \sum_{j} \lambda_{j} f_{j}\left(X^{m}, i, y_{i-1}^{k}, y_{i}^{k}\right)\right]\right.
-\end{array}\]</span></p>
-<p>这个就是损失函数, 我们的目标是 求其最小值时候的λ值. 通过对λ求偏导, 得到:</p>
-<p><span class="math display">\[\frac{\partial L(X, y, \lambda)}{\partial \lambda}=\frac{-1}{m} \sum_{k=1}^{m} F_{j}\left(y^{k}, x^{k}\right)+\sum_{k=1}^{m} p\left(y \mid x^{k}, \lambda\right) F_{j}\left(y, x^{k}\right)\]</span></p>
-<p><span class="math display">\[\text { Where: } F_{j}(y, x)=\sum_{i=1}^{n} f_{i}\left(X, i, y_{i-1}, y_{i}\right)\]</span></p>
-<p>然后每次使用 当前的梯度下降去更新当前的λ值. <span class="math display">\[\lambda=\lambda+\alpha\left[\sum_{k=1}^{m} F_{j}\left(y^{k}, x^{k}\right)+\sum_{k=1}^{m} p\left(y \mid x^{k}, \lambda\right) F_{j}\left(y, x^{k}\right)\right]\]</span></p>
-<h3 id="总结">总结</h3>
-<p>使用条件随机场的过程: 先定义所需的特征函数, 然后初始化权重为随机值, 然后迭代应用梯度下降方法, 直到参数值收敛.这里为λ. CRF与逻辑回归类似, 都是用条件概率分布, 但是CRF在特征函数里引入序列信息拓展了算法</p>
-<h3 id="crf和hmm的区别">CRF和HMM的区别</h3>
-<p>HMM是生成式的, 通过对联合概率分布建模来输出. CRF不依赖独立性假设. HMM可以看作是条件随机场的一种特殊情况. 使用了常数转移概率. HMM是基于朴素贝叶斯的, 朴素贝叶斯可以从逻辑回归中推导出来, CRF 就是从逻辑回归中推导出来的.</p>
 
 </div>
 
@@ -400,16 +431,16 @@ L(y, X, \lambda)=-\log \left\{\prod_{k=1}^{m} P\left(y^{k} \mid x^{k}, \lambda\r
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
+              <a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  知识蒸馏（Knowledge Distillation）
+                  LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
-                asr评估
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
+                知识蒸馏（Knowledge Distillation）
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

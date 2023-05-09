@@ -272,6 +272,39 @@ var _hmt = _hmt || [];
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
+										深度学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
+                     
+										    MMoE
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
+                     
+										    知识蒸馏
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
 										项目集合
 									</a>
 									
@@ -402,25 +435,25 @@ var _hmt = _hmt || [];
 <li>RoPE 具有多个优点：序列长度的灵活性、随着相对距离的增加而衰减的令牌间依赖性，以及为线性自注意力配备相对位置编码的能力。</li>
 </ol>
 <p>在位置编码上，删除了绝对位置嵌入，而在网络的每一层增加了苏剑林等人(2021)提出的旋转位置嵌入(RoPE)，其思想是采用绝对位置编码的形式，实现相对位置编码</p>
-<p>RoPE主要借助了复数的思想，为了引入复数，首先假设了在加入位置信息之前，原有的编码向量是二维行向量<embed src="https://latex.codecogs.com/gif.latex?q_m" />和<embed src="https://latex.codecogs.com/gif.latex?k_n" />，其中<embed src="https://latex.codecogs.com/gif.latex?m" />和<embed src="https://latex.codecogs.com/gif.latex?n" />是绝对位置，现在需要构造一个变换，将<embed src="https://latex.codecogs.com/gif.latex?m" />和<embed src="https://latex.codecogs.com/gif.latex?n" />引入到<embed src="https://latex.codecogs.com/gif.latex?q_m" />和<embed src="https://latex.codecogs.com/gif.latex?k_n" />中，即寻找变换： <span class="math display">\[
+<p>RoPE主要借助了复数的思想，为了引入复数，首先假设了在加入位置信息之前，原有的编码向量是二维行向量<span class="math inline">\(q_m\)</span>和<span class="math inline">\(k_n\)</span>，其中<span class="math inline">\(m\)</span>和<span class="math inline">\(n\)</span>是绝对位置，现在需要构造一个变换，将<span class="math inline">\(m\)</span>和<span class="math inline">\(n\)</span>引入到<span class="math inline">\(q_m\)</span>和<span class="math inline">\(k_n\)</span>中，即寻找变换： <span class="math display">\[
 \tilde{q_m}=f(q, m), \tilde{k_n}=f(k, n)
 \]</span></p>
 <p>考虑到Attention的核心计算是内积： <span class="math display">\[
 \operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V
 \]</span></p>
-<p>所以，寻求的这个<embed src="https://latex.codecogs.com/gif.latex?f%28*%29" />变换，应该具有特性： <span class="math display">\[
+<p>所以，寻求的这个<span class="math inline">\(f(*)\)</span>变换，应该具有特性： <span class="math display">\[
 \langle f(q, m), f(k, n)\rangle=g(q, k, m-n)
 \]</span></p>
-<p>这里直接说结论，寻求的变换就是<embed src="https://latex.codecogs.com/gif.latex?q_me%5E%7Bim%5Ctheta%7D" /> 也就是给<embed src="https://latex.codecogs.com/gif.latex?q_m" />乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bim%5Ctheta%7D" />，相应地，<embed src="https://latex.codecogs.com/gif.latex?k_n" />乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bin%5Ctheta%7D" /></p>
+<p>这里直接说结论，寻求的变换就是<span class="math inline">\(q_me^{im\theta}\)</span> 也就是给<span class="math inline">\(q_m\)</span>乘以<span class="math inline">\(e^{im\theta}\)</span>，相应地，<span class="math inline">\(k_n\)</span>乘以<span class="math inline">\(e^{in\theta}\)</span></p>
 <p>做了这样一个变换之后，根据复数的特性，有： <span class="math display">\[
 \left\langle q_m, k_n\right\rangle=\operatorname{Re}\left[q_m k_n^*\right]
 \]</span></p>
 <p>也就是，如果把二维向量看做复数，那么它们的内积，等于一个复数乘以另一个复数的共轭，得到的结果再取实部，代入上面的变换，也就有： <span class="math display">\[
 \left\langle q_m e^{i m \theta}, k_n e^{i n \theta}\right\rangle=\operatorname{Re}\left[\left(q_m e^{i m \theta}\right)\left(k_n e^{i n \theta}\right)^*\right]=\operatorname{Re}\left[q_m k_n^* e^{i(m-n) \theta}\right]
 \]</span></p>
-<p>这样一来，内积的结果就只依赖于<embed src="https://latex.codecogs.com/gif.latex?%28m-n%29" />，也就是相对位置了</p>
+<p>这样一来，内积的结果就只依赖于<span class="math inline">\((m-n)\)</span>，也就是相对位置了</p>
 <p>换言之，经过这样一番操作，通过给Embedding添加绝对位置信息，可以使得两个token的编码，经过内积变换（self-attn）之后，得到结果是受它们位置的差值，即相对位置影响的</p>
-<p>于是对于任意的位置为<embed src="https://latex.codecogs.com/gif.latex?m" />的二维向量<embed src="https://latex.codecogs.com/gif.latex?%5Bx%2C%20y%5D" />，把它看做复数，乘以<embed src="https://latex.codecogs.com/gif.latex?e%5E%7Bim%5Ctheta%7D" />，而根据欧拉公式，有： <span class="math display">\[
+<p>于是对于任意的位置为<span class="math inline">\(m\)</span>的二维向量<span class="math inline">\([x, y]\)</span>，把它看做复数，乘以<span class="math inline">\(e^{im\theta}\)</span>，而根据欧拉公式，有： <span class="math display">\[
 e^{i m \theta}=\cos m \theta+i \sin m \theta
 \]</span></p>
 <p>于是上述的相乘变换也就变成了： <span class="math display">\[
@@ -435,7 +468,7 @@ q_0 \\
 q_1
 \end{array}\right]
 \]</span></p>
-<p>而这个变换的几何意义，就是在二维坐标系下，对向量<embed src="https://latex.codecogs.com/gif.latex?%28q_0%2C%20q_1%29" />进行了旋转，因而这种位置编码方法，被称为旋转位置编码</p>
+<p>而这个变换的几何意义，就是在二维坐标系下，对向量<span class="math inline">\((q_0, q_1)\)</span>进行了旋转，因而这种位置编码方法，被称为旋转位置编码</p>
 <p>根据刚才的结论，结合内积的线性叠加性，可以将结论推广到高维的情形。可以理解为，每两个维度一组，进行了上述的“旋转”操作，然后再拼接在一起： <span class="math display">\[
 \left[\begin{array}{ccccccc}
 \cos m \theta_0 &amp; -\sin m \theta_0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
@@ -546,8 +579,8 @@ x_m^{\left(i+\frac{d}{2}\right)} \cos m \theta_i+x_m^{(i)} \sin m \theta_i
         </div>
         <div class="item right">
             
-              <a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
-                CRF笔记
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
+                MMoE 模型
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
