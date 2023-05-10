@@ -8,8 +8,6 @@
 	<!-- title -->
 	
 	<title>
-	
-		text_classification | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -206,7 +204,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
                      
 										    text_classification
@@ -351,158 +349,80 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<h1 id="article-title">
-	text_classification
-</h1>
-<div class="article-meta">
+		<div id="index">
 	
-		<span>
-			阅读量:<span id="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/" class="leancloud_visitors" data-flag-title="text_classification"></span>
-		</span>
+		<div class="index-li">
+			<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
+				<h2 class="index-title">
+					asr评估
+				</h2>
+				<div class="index-brief">
+					
+论文 《 Meaning Error Rate: ASR domain-specific metric framework》
+
+目标
+构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量
+背景
+
+当前已有的ASR评估指标:
+
+WER: 字错误率
+
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-12-15</span>
+                    
+                            
+                    
+                </div>
+		</div>	
 	
-	<span>wang yaqi</span>
-	<span>2021-12-13 21:47:55</span>
-		<div id="article-categories">
-    
-		<span>Categories：</span>
-            
-                
-                    <span>
-                        <i class="fa fa-folder" aria-hidden="true">
-                        <a href="/categories/nlp/">nlp</a>
-                        </i>
-                      
-                    </span>
-                
-            
-    
+		<div class="index-li">
+			<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+				<h2 class="index-title">
+					text_classification
+				</h2>
+				<div class="index-brief">
+					
+原文链接: https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook
 
-    
-		<span>Tags：</span>
-            
-    
-		</div>
+阅读笔记
+sklearn库
 
+sklearn.ensemble 集成学习的常用库
+
+bagging
+随机森林
+adabo
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2021-12-13</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/nlp/">nlp</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+	
+	<div id="index-paginator">
+		
+			<a class="extend prev" rel="prev" href="/">&lt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+		
+	</div>
 </div>
 
-<div id="article-content">
-	<blockquote>
-<p>原文链接: https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook</p>
-</blockquote>
-<h2 id="阅读笔记">阅读笔记</h2>
-<h3 id="sklearn库">sklearn库</h3>
-<ol style="list-style-type: decimal">
-<li>sklearn.ensemble 集成学习的常用库
-<ul>
-<li>bagging</li>
-<li>随机森林</li>
-<li>adaboost 主要侧重训练前面学习器学错的部分</li>
-<li>Gradient Tree Boosting, GBDT</li>
-<li>Histogram-Based Gradient Boosting, 对标LightGBM. 相对GBDT, 适合于大数量样本(上万), 可以自己补充缺失值</li>
-</ul></li>
-<li>sklearn.feature_extraction.text
-<ul>
-<li>从文本构建向量的库</li>
-<li>CountVectorizer
-<ul>
-<li>相当于把词汇列表的个数展开成向量的维数, 然后统计每个词汇出现的次数</li>
-</ul></li>
-<li>HashingVectorizer
-<ul>
-<li>优点, 不储存状态, 节省内存, 快</li>
-</ul></li>
-<li>缺点, 没法反解词语. 没有tf-idf特征</li>
-<li>TfidfVectorizer
-<ul>
-<li>将原始文档转化成TF-IDF矩阵</li>
-<li>体现每个词在文档中的重要性程度</li>
-</ul></li>
-</ul></li>
-</ol>
-<h3 id="pandas">pandas</h3>
-<ol style="list-style-type: decimal">
-<li>某一列的数据分布, 可以直接看hist分布图
-<ul>
-<li>df_.y.hist(bins = 100)</li>
-</ul></li>
-<li>枚举型的数据, 可以直接用value_counts()看分布统计
-<ul>
-<li>tmp_df['y'].value_counts()</li>
-</ul></li>
-</ol>
-
-</div>
-
-
-    <div class="post-guide">
-        <div class="item left">
-            
-              <a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  asr评估
-              </a>
-            
-        </div>
-        <div class="item right">
-            
-        </div>
-    </div>
-
-
-
-	<div id="vcomments"></div>
-
-
-<script>
-	
-		// 评论
-		new Valine({
-			el: '#vcomments',
-			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
-			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
-			placeholder: '请输入评论',
-			path: window.location.pathname,
-			avatar: 'retro',
-			highlight: false,
-      recordIP: true,
-      enableQQ: true,
-			requiredFields: ['nick','mail']
-		})
-	
-	
-    // 显示次数
-		function showTime(Counter) {
-			var query = new AV.Query("Counter");
-			if($(".leancloud_visitors").length > 0){
-				var url = $(".leancloud_visitors").attr('id').trim();
-				// where field
-				query.equalTo("words", url);
-				// count
-				query.count().then(function (number) {
-					// There are number instances of MyClass where words equals url.
-					$(document.getElementById(url)).text(number?  number : '--');
-				}, function (error) {
-					// error is an instance of AVError.
-				});
-			}
-		}
-		// 追加pv
-		function addCount(Counter) {
-			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
-			var Counter = AV.Object.extend("Counter");
-			var query = new Counter;
-			query.save({
-				words: url
-			}).then(function (object) {
-			})
-		}
-		$(function () {
-			var Counter = AV.Object.extend("Counter");
-			addCount(Counter);
-			showTime(Counter);
-		});
-	
-</script>
 	</div>
 	<div id="footer">
 	<p>

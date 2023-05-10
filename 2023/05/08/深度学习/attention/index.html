@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		注意力机制 | 
+	 
+	Wangyaqi&#39;s personal site
+	</title>
+	
+	<!-- keywords,description -->
+	 
+		<meta name="description" content="about study notes" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">Wangyaqi's personal site</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										llm
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                     
+										    LLaMA模型架构
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/alpaca_lora_llama_LoRA/">
+                     
+										    alpaca_lora_llama_LoRA
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/llama_visualization/">
+                     
+										    llama_visualization
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/llm/peft_model/">
+                     
+										    peft_model
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										机器学习
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										kaggle_note
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+                     
+										    text_classification
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										nlp
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
+                     
+										    crf
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										paper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
+                     
+										    asr评估
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										深度学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/GBRANK/">
+                     
+										    GBRANK
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
+                     
+										    MMoE
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/attention/">
+                     
+										    attention
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
+                     
+										    知识蒸馏
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										项目集合
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
+                     
+										    llama_小学数学解题模型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	注意力机制
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/attention/" class="leancloud_visitors" data-flag-title="注意力机制"></span>
+		</span>
+	
+	<span>wang yaqi</span>
+	<span>2023-05-08 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="注意力机制">注意力机制</h1>
+<h2 id="概述">概述</h2>
+<p>注意力机制（Attention Mechanism）是一种在深度学习中广泛使用的技术，它允许模型在处理输入序列时，能够更加准确地关注与输出有关的信息，提高模型的性能</p>
+<p>假设我们有一个输入序列 <span class="math inline">\(x_1, x_2, ..., x_n\)</span> 和一个输出序列 <span class="math inline">\(y_1, y_2, ..., y_m\)</span>。为了计算每个输出 <span class="math inline">\(y_i\)</span> 和所有输入 <span class="math inline">\(x_j\)</span> 之间的关系，我们引入一个注意力向量 <span class="math inline">\(a_i \in \mathbb{R}^n\)</span>，其中 <span class="math inline">\(a_{i,j}\)</span> 表示 <span class="math inline">\(y_i\)</span> 对 <span class="math inline">\(x_j\)</span> 的注意力权重。</p>
+<p>现在，我们定义每个输出 <span class="math inline">\(y_i\)</span> 为输入序列的加权和，权重由对应的注意力向量 <span class="math inline">\(a_i\)</span> 来确定：</p>
+<p><span class="math display">\[
+y_i = \sum_{j=1}^{n} a_{i,j} x_j
+\]</span></p>
+<p>在实现注意力机制时，最常见的方法是使用点积注意力（Dot-Product Attention）。在点积注意力中，我们首先将输入和输出映射到低维空间（通常是一个固定大小的向量空间），然后通过点积来计算注意力权重。具体地，对于每个输出 <span class="math inline">\(y_i\)</span>，我们计算其对输入 <span class="math inline">\(x_j\)</span> 的注意力权重 <span class="math inline">\(a_{i,j}\)</span> 如下：</p>
+<p><span class="math display">\[
+a_{i,j} = \frac{\exp\left(\mathrm{score}(y_i, x_j)\right)}{\sum_{k=1}^{n} \exp\left(\mathrm{score}(y_i, x_k)\right)}
+\]</span></p>
+<p>其中，<span class="math inline">\(\mathrm{score}(y_i, x_j)\)</span> 是一个衡量 <span class="math inline">\(y_i\)</span> 和 <span class="math inline">\(x_j\)</span> 之间相似度的函数，常见的有点积、加性、和双线性等。点积注意力中的 <span class="math inline">\(\mathrm{score}(y_i, x_j)\)</span> 定义为两个向量的点积：</p>
+<p><span class="math display">\[
+\mathrm{score}(y_i, x_j) = y_i \cdot x_j
+\]</span></p>
+<p>通过以上公式，我们可以计算出每个输出 <span class="math inline">\(y_i\)</span> 对应的注意力权重 <span class="math inline">\(a_i\)</span>，然后使用加权和来计算 <span class="math inline">\(y_i\)</span>。需要注意的是，在实际应用中，我们通常还会对注意力权重进行一些调整，例如添加一个缩放因子、使用多头注意力等，以提高模型的性能和鲁棒性。</p>
+<h2 id="代码实现">代码实现</h2>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> torch
+<span class="im">import</span> torch.nn <span class="im">as</span> nn
+<span class="im">import</span> torch.nn.functional <span class="im">as</span> F
+
+<span class="kw">class</span> DotProductAttention(nn.Module):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, hidden_dim<span class="op">=</span><span class="va">None</span>):
+        <span class="bu">super</span>(DotProductAttention, <span class="va">self</span>).<span class="fu">__init__</span>()
+        <span class="cf">if</span> hidden_dim <span class="kw">is</span> <span class="va">None</span>:
+            hidden_dim <span class="op">=</span> input_dim
+        <span class="va">self</span>.query <span class="op">=</span> nn.Linear(input_dim, hidden_dim, bias<span class="op">=</span><span class="va">False</span>)
+        <span class="va">self</span>.key <span class="op">=</span> nn.Linear(input_dim, hidden_dim, bias<span class="op">=</span><span class="va">False</span>)
+        <span class="va">self</span>.value <span class="op">=</span> nn.Linear(input_dim, hidden_dim, bias<span class="op">=</span><span class="va">False</span>)
+        
+    <span class="kw">def</span> forward(<span class="va">self</span>, query, key, value, mask<span class="op">=</span><span class="va">None</span>):
+        Q <span class="op">=</span> <span class="va">self</span>.query(query)  <span class="co"># shape: (batch_size, hidden_dim)</span>
+        K <span class="op">=</span> <span class="va">self</span>.key(key)  <span class="co"># shape: (batch_size, seq_len, hidden_dim)</span>
+        V <span class="op">=</span> <span class="va">self</span>.value(value)  <span class="co"># shape: (batch_size, seq_len, hidden_dim)</span>
+        
+        <span class="co"># Compute attention scores</span>
+        scores <span class="op">=</span> torch.bmm(Q.unsqueeze(<span class="dv">1</span>), K.transpose(<span class="dv">1</span>, <span class="dv">2</span>)).squeeze(<span class="dv">1</span>)  <span class="co"># shape: (batch_size, seq_len)</span>
+        
+        <span class="co"># Mask out padding positions</span>
+        <span class="cf">if</span> mask <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:
+            scores.masked_fill_(mask <span class="op">==</span> <span class="dv">0</span>, <span class="bu">float</span>(<span class="st">&#39;-inf&#39;</span>))
+        
+        <span class="co"># Compute attention weights and apply to values</span>
+        attn_weights <span class="op">=</span> F.softmax(scores, dim<span class="op">=-</span><span class="dv">1</span>)  <span class="co"># shape: (batch_size, seq_len)</span>
+        attn_values <span class="op">=</span> torch.bmm(attn_weights.unsqueeze(<span class="dv">1</span>), V).squeeze(<span class="dv">1</span>)  <span class="co"># shape: (batch_size, hidden_dim)</span>
+        
+        <span class="cf">return</span> attn_values, attn_weights</code></pre></div>
+<p>在上面的代码中，<code>DotProductAttention</code> 类封装了点积注意力机制的实现。在构造函数中，我们定义了三个线性层 <code>query</code>、<code>key</code> 和 <code>value</code>，分别用于将输入序列映射到隐藏空间中。在 <code>forward</code> 方法中，我们将输入的查询向量 <code>query</code>、键向量 <code>key</code> 和值向量 <code>value</code> 作为输入，然后分别将它们通过线性层映射到隐藏空间中，并计算它们之间的点积注意力得分。</p>
+<p>在计算注意力得分时，我们使用了 PyTorch 中的 <code>bmm</code> 函数，它可以高效地进行批矩阵乘法。具体地，我们将查询向量 <span class="math inline">\(Q\)</span> 与键向量 <span class="math inline">\(K\)</span> 的转置相乘，得到每个查询向量对键向量的注意力得分。</p>
+<p>接下来，我们可以使用 Softmax 函数将注意力得分转换为注意力权重，并将它们应用到值向量上，得到最终的注意力向量。需要注意的是，在实际使用中，我们通常还需要对注意力权重进行缩放、加入残差连接等操作，以提高模型的性能和稳定性。</p>
+<h2 id="传统rnn模型中注意力机制的实现">传统RNN模型中注意力机制的实现</h2>
+<p>在传统的 GRU 模型中，可以使用 Bahdanau 注意力机制来增强模型的表现力和泛化能力。Bahdanau 注意力机制的公式形式如下： <span class="math display">\[\alpha_{i,j} = \frac{\exp(e_{i,j})}{\sum_{k=1}^T \exp(e_{i,k})}\]</span> <span class="math display">\[c_i = \sum_{j=1}^T \alpha_{i,j}h_j\]</span> 其中，<span class="math inline">\(T\)</span> 表示输入序列的长度，<span class="math inline">\(h_j\)</span> 表示编码器在时间步 <span class="math inline">\(j\)</span> 的隐藏状态，<span class="math inline">\(c_i\)</span> 表示在时间步 <span class="math inline">\(i\)</span> 的上下文向量，<span class="math inline">\(\alpha_{i,j}\)</span> 表示在时间步 <span class="math inline">\(i\)</span>，编码器的隐藏状态 <span class="math inline">\(h_j\)</span> 对上下文向量的贡献权重，<span class="math inline">\(e_{i,j}\)</span> 是一个可学习的向量，用于计算注意力权重。 在具体实现时，可以使用一个全连接层或线性层来计算 <span class="math inline">\(e_{i,j}\)</span>，然后使用 softmax 函数将 <span class="math inline">\(e_{i,j}\)</span> 转化为注意力权重 <span class="math inline">\(\alpha_{i,j}\)</span>。最终的上下文向量 <span class="math inline">\(c_i\)</span> 则是编码器的隐藏状态 <span class="math inline">\(h_j\)</span> 的加权和。</p>
+<p>下面是一个示例代码，展示了如何在传统的 GRU 模型中使用注意力机制：</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> torch
+<span class="im">import</span> torch.nn <span class="im">as</span> nn
+<span class="im">import</span> torch.nn.functional <span class="im">as</span> F
+
+<span class="kw">class</span> GRUAttention(nn.Module):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, hidden_dim, output_dim):
+        <span class="bu">super</span>(GRUAttention, <span class="va">self</span>).<span class="fu">__init__</span>()
+        <span class="va">self</span>.hidden_dim <span class="op">=</span> hidden_dim
+        
+        <span class="co"># Define the bidirectional GRU layer</span>
+        <span class="va">self</span>.gru <span class="op">=</span> nn.GRU(input_dim, hidden_dim, bidirectional<span class="op">=</span><span class="va">True</span>)
+        
+        <span class="co"># Define the attention mechanism</span>
+        <span class="va">self</span>.attention <span class="op">=</span> nn.Linear(hidden_dim <span class="op">*</span> <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>)
+        
+        <span class="co"># Define the output layer</span>
+        <span class="va">self</span>.output <span class="op">=</span> nn.Linear(hidden_dim <span class="op">*</span> <span class="dv">2</span>, output_dim)
+        
+    <span class="kw">def</span> forward(<span class="va">self</span>, <span class="bu">input</span>):
+        <span class="co"># Pass the input sequence through the bidirectional GRU layer</span>
+        outputs, hidden <span class="op">=</span> <span class="va">self</span>.gru(<span class="bu">input</span>)  <span class="co"># outputs shape: (seq_len, batch_size, hidden_dim * 2)</span>
+        
+        <span class="co"># Compute attention weights</span>
+        weights <span class="op">=</span> <span class="va">self</span>.attention(outputs.transpose(<span class="dv">0</span>, <span class="dv">1</span>))  <span class="co"># shape: (batch_size, seq_len, 1)</span>
+        weights <span class="op">=</span> F.softmax(weights, dim<span class="op">=</span><span class="dv">1</span>)  <span class="co"># shape: (batch_size, seq_len, 1)</span>
+        
+        <span class="co"># Compute the weighted sum of the GRU outputs</span>
+        context <span class="op">=</span> torch.bmm(outputs.transpose(<span class="dv">0</span>, <span class="dv">1</span>), weights)  <span class="co"># shape: (batch_size, hidden_dim * 2, 1)</span>
+        context <span class="op">=</span> context.squeeze(<span class="dv">2</span>)  <span class="co"># shape: (batch_size, hidden_dim * 2)</span>
+        
+        <span class="co"># Pass the context vector through the output layer</span>
+        output <span class="op">=</span> <span class="va">self</span>.output(context)  <span class="co"># shape: (batch_size, output_dim)</span>
+        
+        <span class="cf">return</span> output</code></pre></div>
+<p>在上面的代码中，我们定义了一个名为 <code>GRUAttention</code> 的类，它继承自 PyTorch 中的 <code>nn.Module</code> 类。在构造函数中，我们首先定义了一个双向 GRU 层，用于对输入序列进行编码。然后，我们定义了一个线性层，用于计算注意力权重，并定义了一个输出层，用于将上下文向量映射到输出空间中。</p>
+<p>在前向传递过程中，我们将输入序列作为输入传递给双向 GRU 层，并获取每个时间步的输出。然后，我们将这些输出传递给注意力层，用于计算注意力权重。接着，我们使用注意力权重将 GRU 输出加权求和，得到上下文向量。最后，我们将上下文向量作为输入传递给输出层，得到最终的输出结果。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/GBRANK/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  GBRANK
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
+                MMoE 模型
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">wang yaqi</a>
+	|<a href="https://beian.miit.gov.cn" target="_blank">京ICP备2022000211号-1</a>	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>
