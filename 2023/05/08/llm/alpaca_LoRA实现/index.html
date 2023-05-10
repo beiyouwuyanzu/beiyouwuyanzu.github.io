@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		alpaca-lora实现 | 
 	 
 	Wangyaqi&#39;s personal site
 	</title>
@@ -153,7 +155,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/llm/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
                      
 										    alpaca_LoRA实现
@@ -349,247 +351,151 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	alpaca-lora实现
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2023/05/08/llm/peft_model/">
-				<h2 class="index-title">
-					PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
-				</h2>
-				<div class="index-brief">
-					
-https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 Ch
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
+		<span>
+			阅读量:<span id="/2023/05/08/llm/alpaca_LoRA%E5%AE%9E%E7%8E%B0/" class="leancloud_visitors" data-flag-title="alpaca-lora实现"></span>
+		</span>
 	
-		<div class="index-li">
-			<a href="/2023/05/08/llm/llama_visualization/">
-				<h2 class="index-title">
-					llama 模型结构
-				</h2>
-				<div class="index-brief">
-					trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model)
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
-				<h2 class="index-title">
-					llama 小学数学解题模型
-				</h2>
-				<div class="index-brief">
-					简单的运算没有问题
+	<span>wang yaqi</span>
+	<span>2023-05-08 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
 
+    
+		<span>Tags：</span>
+            
+    
+		</div>
 
-
-
-
-
-
-
-复杂的题目可以算出等式, 结果会计算有误
-
-
-
-
-
-
-
-
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/llm/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
-				<h2 class="index-title">
-					LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
-				</h2>
-				<div class="index-brief">
-					1. RMSNorm(均方根)（Root Mean Square）：对每个Transformer子层的输入进行归一化
-RMSNorm计算公式: \(y = \frac{x}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_i^2+\epsilon}}\)
-其中，\(x\)是输入
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
-				<h2 class="index-title">
-					知识蒸馏（Knowledge Distillation）
-				</h2>
-				<div class="index-brief">
-					知识蒸馏（Knowledge Distillation）
-概述
-知识蒸馏（Knowledge Distillation）是一种将大型深度神经网络（Teacher Network）的知识压缩到小型深度神经网络（Student Network）中的方法。它的目的是在保持模型精度的同时，减少模型的大小
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/GBRANK/">
-				<h2 class="index-title">
-					GBRANK
-				</h2>
-				<div class="index-brief">
-					GBRANK
-概述
-GBRank 是一种基于梯度提升决策树（Gradient Boosting Decision Tree，简称 GBDT）的排序模型，其主要思想是通过构造排序损失函数，将排序问题转化为回归问题，然后使用 GBDT 模型进行拟合。
-GBRank 的核心思想是将排序问题视为一种回
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/attention/">
-				<h2 class="index-title">
-					注意力机制
-				</h2>
-				<div class="index-brief">
-					注意力机制
-概述
-注意力机制（Attention Mechanism）是一种在深度学习中广泛使用的技术，它允许模型在处理输入序列时，能够更加准确地关注与输出有关的信息，提高模型的性能
-假设我们有一个输入序列 \(x_1, x_2, ..., x_n\) 和一个输出序列 \(y_1, y_2, 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/llm/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
-				<h2 class="index-title">
-					alpaca-lora实现
-				</h2>
-				<div class="index-brief">
-					
-羊驼模型发展历史 
-
-lora代码实现
-
-调用
-  &gt;&gt;&gt; from peft import LoraModel, LoraConfig
-
-  &gt;&gt;&gt; config = LoraConfig(
-  ...     peft_type=&quot
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
-				<h2 class="index-title">
-					MMoE 模型
-				</h2>
-				<div class="index-brief">
-					MMoE 模型
-多任务学习的三种架构：1) 共享底部模型，2) 单门混合专家模型 (MoE)，以及 3) 多门混合专家模型 (MMoE)。前两个架构提供上下文并显示最终 MMoE 架构的增量步骤。 
-
-Shared-bottom model
-共享底部模型是最简单和最常见的多任务学习架构。该模
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-07</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
-				<h2 class="index-title">
-					CRF笔记
-				</h2>
-				<div class="index-brief">
-					
-参考: https://medium.com/ml2vec/overview-of-conditional-random-fields-68a2a20fa541
-
-背景
-
-CRF用于切词, 序列标注等.
-普通的分类模型是对单个字词的分类任务, CRF考虑了前后文的联系, 对当前的片段进
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-12-17</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
-		
-	</div>
 </div>
 
+<div id="article-content">
+	<blockquote>
+<p>羊驼模型发展历史 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061919018.png" /></p>
+</blockquote>
+<h2 id="lora代码实现">lora代码实现</h2>
+<ul>
+<li><p>调用</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">  <span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> peft <span class="im">import</span> LoraModel, LoraConfig
+
+  <span class="op">&gt;&gt;&gt;</span> config <span class="op">=</span> LoraConfig(
+  ...     peft_type<span class="op">=</span><span class="st">&quot;LORA&quot;</span>,
+  ...     task_type<span class="op">=</span><span class="st">&quot;SEQ_2_SEQ_LM&quot;</span>,
+  ...     r<span class="op">=</span><span class="dv">8</span>,
+  ...     lora_alpha<span class="op">=</span><span class="dv">32</span>,
+  ...     target_modules<span class="op">=</span>[<span class="st">&quot;q&quot;</span>, <span class="st">&quot;v&quot;</span>],
+  ...     lora_dropout<span class="op">=</span><span class="fl">0.01</span>,
+  ... )
+
+  <span class="op">&gt;&gt;&gt;</span> model <span class="op">=</span> AutoModelForSeq2SeqLM.from_pretrained(<span class="st">&quot;t5-base&quot;</span>)
+  <span class="op">&gt;&gt;&gt;</span> lora_model <span class="op">=</span> LoraModel(config, model)</code></pre></div></li>
+<li>内部实现</li>
+<li><blockquote>
+<p>https://github1s.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/tuners/lora.py#L107-L119</p>
+</blockquote></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061744459.png" /> 1. 传入base_model 2. 执行add_adapter方法, 在里面把<code>lora_config.target_modules</code> 中的 层 替换为 LoraConfig 中定义的结构 3. 保留只有lora层是训练参数可变的</p>
+<h2 id="实现细节">实现细节</h2>
+<p>他是根据models的key去找target层, 然后替换成lora layer, 以llama模型为例, 看一下找的过程</p>
+<pre><code>target_modules= [&quot;q_proj&quot;, &quot;v_proj&quot;]
+cnt = 0
+for key in key_list:
+  target_module_found = any(key.endswith(target_key) for target_key in target_modules)
+  if target_module_found:
+    cnt += 1
+    print(key)
+
+print(cnt)</code></pre>
+<p>可以看到主要改的就是这些q, v 的层 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061812220.png" /></p>
+<p>找到了之后就进行替换</p>
+<pre><code>self._replace_module(parent, target_name, new_module, target)</code></pre>
+<h2 id="llama-模型结构">llama 模型结构</h2>
+<p>从整体的模型结构也可以看出来 只有q, v 的liner被改动了. <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061851354.png" /></p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/attention/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  注意力机制
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
+                MMoE 模型
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
