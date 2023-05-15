@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		llama 小学数学解题模型 | 
+		激活函数 | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -364,7 +364,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
                      
 										    激活函数
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
                      
 										    llama_小学数学解题模型
@@ -429,12 +429,12 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	llama 小学数学解题模型
+	激活函数
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/" class="leancloud_visitors" data-flag-title="llama 小学数学解题模型"></span>
+			阅读量:<span id="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="leancloud_visitors" data-flag-title="激活函数"></span>
 		</span>
 	
 	<span>wang yaqi</span>
@@ -454,24 +454,176 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h4 id="简单的运算没有问题">简单的运算没有问题</h4>
+	<h2 id="总览">总览</h2>
+<h2 id="section"><img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141653102.png" /></h2>
+<blockquote>
+<p>以下内容摘自<a target="_blank" rel="noopener" href="https://paddlepedia.readthedocs.io/en/latest/tutorials/deep_learning/activation_functions/Activation_Function.html">paddledoc</a> ## 1. sigmoid <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141656564.png" /> 优点：</p>
+</blockquote>
+<ul>
+<li><p>函数的输出映射在 (0,1)之间，单调连续，输出范围有限，优化稳定，可以用作输出层；</p></li>
+<li><p>求导容易；</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>由于其软饱和性，一旦落入饱和区梯度就会接近于0，根据反向传播的链式法则，容易产生梯度消失，导致训练出现问题；</p></li>
+<li><p>Sigmoid函数的输出恒大于0。非零中心化的输出会使得其后一层的神经元的输入发生偏置偏移（Bias Shift），并进一步使得梯度下降的收敛速度变慢；</p></li>
+<li><p>计算时，由于具有幂运算，计算复杂度较高，运算速度较慢。</p></li>
+</ul>
+<h2 id="tanh">2. tanh</h2>
 <div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.41.37.gif" />
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141659373.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>𝑡𝑎𝑛ℎ比 𝑠𝑖𝑔𝑚𝑜𝑖𝑑函数收敛速度更快；</p></li>
+<li><p>相比 𝑠𝑖𝑔𝑚𝑜𝑖𝑑函数，𝑡𝑎𝑛ℎ是以 0为中心的；</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>与 𝑠𝑖𝑔𝑚𝑜𝑖𝑑函数相同，由于饱和性容易产生的梯度消失；</p></li>
+<li><p>与𝑠𝑖𝑔𝑚𝑜𝑖𝑑函数相同，由于具有幂运算，计算复杂度较高，运算速度较慢。</p></li>
+</ul>
+<h2 id="relu">3. ReLU</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141700048.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>收敛速度快；</p></li>
+<li><p>相较于 𝑠𝑖𝑔𝑚𝑜𝑖𝑑和 𝑡𝑎𝑛ℎ中涉及了幂运算，导致计算复杂度高ReLU可以更加简单的实现；</p></li>
+<li><p>当输入 𝑥&gt;=0时，ReLU 的导数为常数，这样可有效缓解梯度消失问题；</p></li>
+<li><p>当 𝑥&lt;0时，ReLU​ 的梯度总是 0，提供了神经网络的稀疏表达能力；</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>ReLU​ 的输出不是以 0为中心的；</p></li>
+<li><p>神经元坏死现象，某些神经元可能永远不会被激活，导致相应参数永远不会被更新；</p></li>
+<li><p>不能避免梯度爆炸问题；</p></li>
+</ul>
+<h2 id="lrelu">4. LReLU</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141702809.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>避免梯度消失；</p></li>
+<li><p>由于导数总是不为零，因此可减少死神经元的出现；</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>LReLU​ 表现并不一定比 ReLU​ 好；</p></li>
+<li><p>无法避免梯度爆炸问题；</p></li>
+</ul>
+<h2 id="prelu">5. PReLU</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141703232.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>PReLU​ 是 LReLU 的改进，可以自适应地从数据中学习参数；</p></li>
+<li><p>收敛速度快、错误率低；</p></li>
+<li><p>PReLU 可以用于反向传播的训练，可以与其他层同时优化；</p></li>
+</ul>
+<h2 id="rrelu">6. RReLU</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141704734.png" />
+
+</div>
+<p>优点：为负值输入添加了一个线性项，这个线性项的斜率在每一个节点上都是随机分配的（通常服从均匀分布）。</p>
+<h2 id="elu">7. ELU</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141705343.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>导数收敛为零，从而提高学习效率；</p></li>
+<li><p>能得到负值输出，这能帮助网络向正确的方向推动权重和偏置变化；</p></li>
+<li><p>防止死神经元出现。</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>计算量大，其表现并不一定比 ReLU 好；</p></li>
+<li><p>无法避免梯度爆炸问题；</p></li>
+</ul>
+<h2 id="selu">8. SELU</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141706935.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>SELU 是 ELU 的一个变种。其中 λ 和 α 是固定数值（分别为 1.0507和 1.6726）;</p></li>
+<li><p>经过该激活函数后使得样本分布自动归一化到 0均值和单位方差;</p></li>
+<li><p>不会出现梯度消失或爆炸问题;</p></li>
+</ul>
+<h1 id="softsign">9. softsign</h1>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141707210.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>𝑠𝑜𝑓𝑡𝑠𝑖𝑔𝑛是 𝑡𝑎𝑛ℎ激活函数的另一个替代选择；</p></li>
+<li><p>𝑠𝑜𝑓𝑡𝑠𝑖𝑔𝑛是反对称、去中心、可微分，并返回 −1和 1之间的值；</p></li>
+<li><p>𝑠𝑜𝑓𝑡𝑠𝑖𝑔𝑛更平坦的曲线与更慢的下降导数表明它可以更高效地学习；</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>导数的计算比𝑡𝑎𝑛ℎ更麻烦；</li>
+</ul>
+<h2 id="softplus">10. softplus</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141709106.png" />
+
+</div>
+<p>优点：</p>
+<ul>
+<li><p>作为 𝑟𝑒𝑙𝑢的一个不错的替代选择，𝑠𝑜𝑓𝑡𝑝𝑙𝑢𝑠能够返回任何大于 0的值。</p></li>
+<li><p>与 𝑟𝑒𝑙𝑢不同，𝑠𝑜𝑓𝑡𝑝𝑙𝑢𝑠的导数是连续的、非零的，无处不在，从而防止出现死神经元。</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>导数常常小于 1，也可能出现梯度消失的问题。</li>
+<li>𝑠𝑜𝑓𝑡𝑝𝑙𝑢𝑠另一个不同于 𝑟𝑒𝑙𝑢的地方在于其不对称性，不以零为中心，可能会妨碍学习。</li>
+</ul>
+<h2 id="swish">11. swish</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141711270.png" />
 
 </div>
 <div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.47.46.gif" />
-
-</div>
-<h4 id="复杂的题目可以算出等式-结果会计算有误">复杂的题目可以算出等式, 结果会计算有误</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.52.56.gif" />
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141712929.png" />
 
 </div>
 <div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.58.44.gif" />
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305141712358.png" />
 
 </div>
+<p>优点：</p>
+<ul>
+<li><p>当 𝑥&gt;0时，不存在梯度消失的情况；当 𝑥&lt;0时，神经元也不会像 ReLU 一样出现死亡的情况；</p></li>
+<li><p>𝑠𝑤𝑖𝑠ℎ处处可导，连续光滑；</p></li>
+<li><p>𝑠𝑤𝑖𝑠ℎ并非一个单调的函数；</p></li>
+<li><p>提升了模型的性能；</p></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>计算量大；</li>
+</ul>
+<h2 id="激活函数的选择">激活函数的选择</h2>
+<ul>
+<li><p>浅层网络在分类器时，𝑠𝑖𝑔𝑚𝑜𝑖𝑑函数及其组合通常效果更好。</p></li>
+<li><p>由于梯度消失问题，有时要避免使用 𝑠𝑖𝑔𝑚𝑜𝑖𝑑和 𝑡𝑎𝑛ℎ函数。</p></li>
+<li><p>𝑟𝑒𝑙𝑢函数是一个通用的激活函数，目前在大多数情况下使用。</p></li>
+<li><p>如果神经网络中出现死神经元，那么 𝑝𝑟𝑒𝑙𝑢函数就是最好的选择。</p></li>
+<li><p>𝑟𝑒𝑙𝑢函数只能在隐藏层中使用。</p></li>
+<li><p>通常，可以从 𝑟𝑒𝑙𝑢函数开始，如果 𝑟𝑒𝑙𝑢函数没有提供最优结果，再尝试其他激活函数。</p></li>
+</ul>
 
 </div>
 
@@ -479,11 +631,16 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  损失函数
+              </a>
+            
         </div>
         <div class="item right">
             
-              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
-                知识蒸馏（Knowledge Distillation）
+              <a href="/2023/05/08/LargeLanguageModels/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

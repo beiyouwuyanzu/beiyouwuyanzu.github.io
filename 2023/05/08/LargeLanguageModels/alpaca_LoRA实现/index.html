@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		llama 小学数学解题模型 | 
+		alpaca-lora实现 | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -166,7 +166,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
                      
 										    alpaca_LoRA实现
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
                      
 										    llama_小学数学解题模型
@@ -429,12 +429,12 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	llama 小学数学解题模型
+	alpaca-lora实现
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/" class="leancloud_visitors" data-flag-title="llama 小学数学解题模型"></span>
+			阅读量:<span id="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/" class="leancloud_visitors" data-flag-title="alpaca-lora实现"></span>
 		</span>
 	
 	<span>wang yaqi</span>
@@ -454,24 +454,47 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h4 id="简单的运算没有问题">简单的运算没有问题</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.41.37.gif" />
+	<blockquote>
+<p>羊驼模型发展历史 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061919018.png" /></p>
+</blockquote>
+<h2 id="lora代码实现">lora代码实现</h2>
+<ul>
+<li><p>调用</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">  <span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> peft <span class="im">import</span> LoraModel, LoraConfig
 
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.47.46.gif" />
+  <span class="op">&gt;&gt;&gt;</span> config <span class="op">=</span> LoraConfig(
+  ...     peft_type<span class="op">=</span><span class="st">&quot;LORA&quot;</span>,
+  ...     task_type<span class="op">=</span><span class="st">&quot;SEQ_2_SEQ_LM&quot;</span>,
+  ...     r<span class="op">=</span><span class="dv">8</span>,
+  ...     lora_alpha<span class="op">=</span><span class="dv">32</span>,
+  ...     target_modules<span class="op">=</span>[<span class="st">&quot;q&quot;</span>, <span class="st">&quot;v&quot;</span>],
+  ...     lora_dropout<span class="op">=</span><span class="fl">0.01</span>,
+  ... )
 
-</div>
-<h4 id="复杂的题目可以算出等式-结果会计算有误">复杂的题目可以算出等式, 结果会计算有误</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.52.56.gif" />
+  <span class="op">&gt;&gt;&gt;</span> model <span class="op">=</span> AutoModelForSeq2SeqLM.from_pretrained(<span class="st">&quot;t5-base&quot;</span>)
+  <span class="op">&gt;&gt;&gt;</span> lora_model <span class="op">=</span> LoraModel(config, model)</code></pre></div></li>
+<li>内部实现</li>
+<li><blockquote>
+<p>https://github1s.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/tuners/lora.py#L107-L119</p>
+</blockquote></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061744459.png" /> 1. 传入base_model 2. 执行add_adapter方法, 在里面把<code>lora_config.target_modules</code> 中的 层 替换为 LoraConfig 中定义的结构 3. 保留只有lora层是训练参数可变的</p>
+<h2 id="实现细节">实现细节</h2>
+<p>他是根据models的key去找target层, 然后替换成lora layer, 以llama模型为例, 看一下找的过程</p>
+<pre><code>target_modules= [&quot;q_proj&quot;, &quot;v_proj&quot;]
+cnt = 0
+for key in key_list:
+  target_module_found = any(key.endswith(target_key) for target_key in target_modules)
+  if target_module_found:
+    cnt += 1
+    print(key)
 
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.58.44.gif" />
-
-</div>
+print(cnt)</code></pre>
+<p>可以看到主要改的就是这些q, v 的层 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061812220.png" /></p>
+<p>找到了之后就进行替换</p>
+<pre><code>self._replace_module(parent, target_name, new_module, target)</code></pre>
+<h2 id="llama-模型结构">llama 模型结构</h2>
+<p>从整体的模型结构也可以看出来 只有q, v 的liner被改动了. <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061851354.png" /></p>
 
 </div>
 
@@ -479,11 +502,16 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
+              <a href="/2023/05/08/LargeLanguageModels/LoRA/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  LoRA
+              </a>
+            
         </div>
         <div class="item right">
             
-              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
-                知识蒸馏（Knowledge Distillation）
+              <a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
+                llama 模型结构
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		常见网络的代码实现 | 
+	 
+	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
+	</title>
+	
+	<!-- keywords,description -->
+	 
+		<meta name="description" content="about study notes" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+	<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">Wangyaqi's personal site [notice:图片浏览须科学上网,公式渲染需要刷新]</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	
+
+	
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										LargeLanguageModels
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/LargeLanguageModels/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
+                     
+										    LLaMA模型架构
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/LargeLanguageModels/LoRA/">
+                     
+										    LoRA
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
+                     
+										    alpaca_LoRA实现
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
+                     
+										    llama_visualization
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/LargeLanguageModels/peft_model/">
+                     
+										    peft_model
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/LargeLanguageModels/transformer/">
+                     
+										    transformer
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										机器学习
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										kaggle_note
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
+                     
+										    text_classification
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										nlp
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
+                     
+										    crf
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										paper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
+                     
+										    asr评估
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										深度学习
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/GBRANK/">
+                     
+										    GBRANK
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
+                     
+										    MMoE
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/attention/">
+                     
+										    attention
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E5%99%A8/">
+                     
+										    优化器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+                     
+										    常见网络的代码实现
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+                     
+										    损失函数
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
+                     
+										    激活函数
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
+                     
+										    知识蒸馏
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										项目集合
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
+                     
+										    llama_小学数学解题模型
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/stableDiffusion/">
+                     
+										    stableDiffusion
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	常见网络的代码实现
+</h1>
+<div class="article-meta">
+	
+		<span>
+			阅读量:<span id="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="leancloud_visitors" data-flag-title="常见网络的代码实现"></span>
+		</span>
+	
+	<span>wang yaqi</span>
+	<span>2023-05-08 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h3 id="全连接">全连接</h3>
+<p>以下是一个使用numpy实现的全连接神经网络的Python代码，其中包括了前向传播和反向传播的实现。代码中的神经网络包含了两个隐藏层和一个输出层，其中每个隐藏层包含了256个神经元，输出层包含了10个神经元，用于识别手写数字。</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> NeuralNetwork:
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_size, hidden_size, output_size):
+        <span class="va">self</span>.input_size <span class="op">=</span> input_size
+        <span class="va">self</span>.hidden_size <span class="op">=</span> hidden_size
+        <span class="va">self</span>.output_size <span class="op">=</span> output_size
+
+        <span class="va">self</span>.W1 <span class="op">=</span> np.random.randn(input_size, hidden_size) <span class="op">*</span> <span class="fl">0.01</span>
+        <span class="va">self</span>.b1 <span class="op">=</span> np.zeros(hidden_size)
+
+        <span class="va">self</span>.W2 <span class="op">=</span> np.random.randn(hidden_size, output_size) <span class="op">*</span> <span class="fl">0.01</span>
+        <span class="va">self</span>.b2 <span class="op">=</span> np.zeros(output_size)
+
+    <span class="kw">def</span> sigmoid(<span class="va">self</span>, x):
+        <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))
+
+    <span class="kw">def</span> softmax(<span class="va">self</span>, x):
+        exps <span class="op">=</span> np.exp(x <span class="op">-</span> np.<span class="bu">max</span>(x, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>))
+        <span class="cf">return</span> exps <span class="op">/</span> np.<span class="bu">sum</span>(exps, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)
+
+    <span class="kw">def</span> forward(<span class="va">self</span>, X):
+        Z1 <span class="op">=</span> np.dot(X, <span class="va">self</span>.W1) <span class="op">+</span> <span class="va">self</span>.b1
+        A1 <span class="op">=</span> <span class="va">self</span>.sigmoid(Z1)
+
+        Z2 <span class="op">=</span> np.dot(A1, <span class="va">self</span>.W2) <span class="op">+</span> <span class="va">self</span>.b2
+        A2 <span class="op">=</span> <span class="va">self</span>.softmax(Z2)
+
+        <span class="cf">return</span> A1, A2
+
+    <span class="kw">def</span> backward(<span class="va">self</span>, X, y_true, A1, A2):
+        m <span class="op">=</span> X.shape[<span class="dv">0</span>]
+
+        dZ2 <span class="op">=</span> A2 <span class="op">-</span> y_true
+        dW2 <span class="op">=</span> np.dot(A1.T, dZ2) <span class="op">/</span> m
+        db2 <span class="op">=</span> np.<span class="bu">sum</span>(dZ2, axis<span class="op">=</span><span class="dv">0</span>) <span class="op">/</span> m
+
+        dA1 <span class="op">=</span> np.dot(dZ2, <span class="va">self</span>.W2.T)
+        dZ1 <span class="op">=</span> dA1 <span class="op">*</span> A1 <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> A1)
+        dW1 <span class="op">=</span> np.dot(X.T, dZ1) <span class="op">/</span> m
+        db1 <span class="op">=</span> np.<span class="bu">sum</span>(dZ1, axis<span class="op">=</span><span class="dv">0</span>) <span class="op">/</span> m
+
+        <span class="cf">return</span> dW1, db1, dW2, db2
+
+
+
+input_size <span class="op">=</span> <span class="dv">784</span>
+hidden_size <span class="op">=</span> <span class="dv">32</span>
+output_size <span class="op">=</span> <span class="dv">10</span>
+
+X <span class="op">=</span> np.random.randn(<span class="dv">100</span>, input_size)
+y <span class="op">=</span> np.random.randint(output_size, size<span class="op">=</span><span class="dv">100</span>)
+y_true <span class="op">=</span> np.eye(output_size)[y]
+
+nn <span class="op">=</span> NeuralNetwork(input_size, hidden_size, output_size)
+
+A1, A2 <span class="op">=</span> nn.forward(X)
+
+dW1, db1, dW2, db2 <span class="op">=</span> nn.backward(X, y_true, A1, A2)</code></pre></div>
+<h3 id="矩阵求导注意点">矩阵求导注意点</h3>
+<p>求导的参数在dot()的什么位置, delta(左值)就在什么位置</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">Z1 <span class="op">=</span> np.dot(X, <span class="va">self</span>.W1) <span class="op">+</span> <span class="va">self</span>.b1</code></pre></div>
+<p><span class="math inline">\(d_{w1}\)</span>=<span class="math inline">\(\frac{d_{z1}}{d_x}\)</span> = np.dot(x.T, dz1)</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">Z2 <span class="op">=</span> np.dot(A1, <span class="va">self</span>.W2) <span class="op">+</span> <span class="va">self</span>.b2</code></pre></div>
+<p><span class="math inline">\(d_{a1}\)</span>=<span class="math inline">\(\frac{d_{z2}}{d_{w2}}\)</span> = np.dot(dz2, w2.T)</p>
+<p>至于bias求到就是误差总和评分 <code>db2 = np.sum(dZ2, axis=0) / m</code></p>
+<h3 id="卷积神经网络实现">卷积神经网络实现</h3>
+<p>具体来说，假设网络的输出为<span class="math inline">\(y\)</span>，真实标签为<span class="math inline">\(t\)</span>，则输出层的误差可以使用均方误差（Mean Square Error，MSE）函数来计算：</p>
+<p><span class="math display">\[
+E = \frac{1}{2}\sum_i(y_i-t_i)^2
+\]</span></p>
+<p>其中<span class="math inline">\(i\)</span>表示输出层的神经元编号。然后，通过链式法则将误差逐层向前传递，计算每个权重和偏置的梯度。以卷积层为例，设输入为<span class="math inline">\(x\)</span>，输出为<span class="math inline">\(y\)</span>，卷积核为<span class="math inline">\(w\)</span>，则卷积层的梯度计算如下：</p>
+<p><span class="math display">\[
+\frac{\partial E}{\partial w} = \frac{\partial E}{\partial y}\cdot \frac{\partial y}{\partial w}
+\]</span></p>
+<p>其中<span class="math inline">\(\frac{\partial E}{\partial y}\)</span>表示输出误差对输出值的偏导数，可以通过前向传播计算得到；<span class="math inline">\(\frac{\partial y}{\partial w}\)</span>表示输出值对卷积核的偏导数，可以通过卷积操作计算得到。最终，通过梯度下降算法更新权重和偏置。</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># 定义卷积函数</span>
+<span class="kw">def</span> convolve(X, W, b):
+    h, w, c <span class="op">=</span> X.shape
+    kh, kw, kc, nc <span class="op">=</span> W.shape
+    Y <span class="op">=</span> np.zeros((h<span class="op">-</span>kh<span class="op">+</span><span class="dv">1</span>, w<span class="op">-</span>kw<span class="op">+</span><span class="dv">1</span>, nc))
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(h<span class="op">-</span>kh<span class="op">+</span><span class="dv">1</span>):
+        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(w<span class="op">-</span>kw<span class="op">+</span><span class="dv">1</span>):
+            <span class="co"># 对每个位置进行卷积操作</span>
+            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(nc):
+                Y[i,j,k] <span class="op">=</span> np.<span class="bu">sum</span>(X[i:i<span class="op">+</span>kh,j:j<span class="op">+</span>kw,:]<span class="op">*</span>W[:,:,:,k])<span class="op">+</span>b[k]
+    <span class="cf">return</span> Y
+
+
+<span class="co"># 定义反向传播函数</span>
+<span class="kw">def</span> backward(X, Y, Z, O, t, W, V, b, c, lr):
+    <span class="co"># 计算卷积层和全连接层的梯度</span>
+    dY <span class="op">=</span> Y <span class="op">-</span> t
+    dO <span class="op">=</span> dY.dot(V.T)
+    dV <span class="op">=</span> Z.T.dot(dY)
+    dc <span class="op">=</span> np.<span class="bu">sum</span>(dY, axis<span class="op">=</span><span class="dv">0</span>)
+    dZ <span class="op">=</span> dO
+    dZ[Z<span class="op">&lt;=</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>
+    dW <span class="op">=</span> np.zeros(W.shape)
+    h, w, c <span class="op">=</span> X.shape
+    kh, kw, kc, nc <span class="op">=</span> W.shape
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(h<span class="op">-</span>kh<span class="op">+</span><span class="dv">1</span>):
+        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(w<span class="op">-</span>kw<span class="op">+</span><span class="dv">1</span>):
+            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(nc):
+                dW[:,:,:,k] <span class="op">+=</span> X[i:i<span class="op">+</span>kh,j:j<span class="op">+</span>kw,:]<span class="op">*</span>dZ[i,j,k]
+    db <span class="op">=</span> np.<span class="bu">sum</span>(dZ, axis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>))
+    <span class="co"># 更新卷积层和全连接层的权重和偏置</span>
+    W <span class="op">-=</span> lr<span class="op">*</span>dW
+    b <span class="op">-=</span> lr<span class="op">*</span>db
+    V <span class="op">-=</span> lr<span class="op">*</span>dV
+    c <span class="op">-=</span> lr<span class="op">*</span>dc
+    <span class="cf">return</span> W, b, V, c</code></pre></div>
+<h3 id="注意力实现">注意力实现</h3>
+<ol style="list-style-type: decimal">
+<li>Scaled Dot-Product Attention ```python import torch import torch.nn.functional as F</li>
+</ol>
+<p>class ScaledDotProductAttention(torch.nn.Module): def <strong>init</strong>(self, d_k): super(ScaledDotProductAttention, self).<strong>init</strong>() self.d_k = d_k</p>
+<pre><code>def forward(self, q, k, v, mask=None):
+    # 计算点积
+    scores = torch.matmul(q, k.transpose(-2, -1)) / torch.sqrt(torch.tensor(self.d_k, dtype=torch.float32))
+    # 应用掩码
+    if mask is not None:
+        scores = scores.masked_fill(mask == 0, -1e9)
+    # softmax归一化
+    p_attn = F.softmax(scores, dim=-1)
+    # 加权求和
+    attn_output = torch.matmul(p_attn, v)
+    return attn_output, p_attn</code></pre>
+<p>```</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Multi-Head Attention ```python import torch import torch.nn as nn</li>
+</ol>
+<p>class MultiHeadAttention(nn.Module): def <strong>init</strong>(self, d_model, n_heads): super(MultiHeadAttention, self).<strong>init</strong>() self.d_model = d_model self.n_heads = n_heads self.d_k = d_model // n_heads self.query = nn.Linear(d_model, d_model) self.key = nn.Linear(d_model, d_model) self.value = nn.Linear(d_model, d_model) self.fc = nn.Linear(d_model, d_model)</p>
+<pre><code>def forward(self, x, mask=None):
+    batch_size = x.size(0)
+    # Compute queries, keys, and values
+    Q = self.query(x).view(batch_size, -1, self.n_heads, self.d_k).transpose(1, 2)
+    K = self.key(x).view(batch_size, -1, self.n_heads, self.d_k).transpose(1, 2)
+    V = self.value(x).view(batch_size, -1, self.n_heads, self.d_k).transpose(1, 2)
+    # Compute attention scores
+    scores = torch.matmul(Q, K.transpose(-2, -1)) / torch.sqrt(torch.tensor(self.d_k).float())
+    if mask is not None:
+        scores = scores.masked_fill(mask == 0, -1e9)
+    attn_weights = nn.functional.softmax(scores, dim=-1)
+    # Apply attention weights to values
+    attn_output = torch.matmul(attn_weights, V)
+    # Merge attention heads
+    attn_output = attn_output.transpose(1, 2).contiguous().view(batch_size, -1, self.d_model)
+    # Apply final linear layer
+    output = self.fc(attn_output)
+    return output</code></pre>
+<p><code>3. 传统seq2seq的注意力</code>python import torch import torch.nn as nn</p>
+<p>class Encoder(nn.Module): def <strong>init</strong>(self, input_dim, emb_dim, hid_dim, n_layers, dropout): super(Encoder, self).<strong>init</strong>() self.input_dim = input_dim self.emb_dim = emb_dim self.hid_dim = hid_dim self.n_layers = n_layers self.dropout = dropout self.embedding = nn.Embedding(input_dim, emb_dim) self.rnn = nn.LSTM(emb_dim, hid_dim, n_layers, dropout=dropout)</p>
+<pre><code>def forward(self, src):
+    embedded = self.embedding(src)
+    embedded = nn.functional.dropout(embedded, p=self.dropout, training=self.training)
+    output, (hidden, cell) = self.rnn(embedded)
+    return output, hidden, cell</code></pre>
+<p>class Attention(nn.Module): def <strong>init</strong>(self, enc_hid_dim, dec_hid_dim): super(Attention, self).<strong>init</strong>() self.enc_hid_dim = enc_hid_dim self.dec_hid_dim = dec_hid_dim self.attn = nn.Linear(enc_hid_dim + dec_hid_dim, dec_hid_dim) self.v = nn.Linear(dec_hid_dim, 1, bias=False)</p>
+<pre><code>def forward(self, hidden, encoder_outputs):
+    batch_size = encoder_outputs.shape[0]
+    src_len = encoder_outputs.shape[1]
+    repeated_hidden = hidden.unsqueeze(1).repeat(1, src_len, 1)
+    energy = torch.tanh(self.attn(torch.cat((repeated_hidden, encoder_outputs), dim=2)))
+    attention = self.v(energy).squeeze(2)
+    return nn.functional.softmax(attention, dim=1)</code></pre>
+<p>class Decoder(nn.Module): def <strong>init</strong>(self, output_dim, emb_dim, hid_dim, n_layers, dropout, attention): super(Decoder, self).<strong>init</strong>() self.output_dim = output_dim self.emb_dim = emb_dim self.hid_dim = hid_dim self.n_layers = n_layers self.dropout = dropout self.attention = attention self.embedding = nn.Embedding(output_dim, emb_dim) self.rnn = nn.LSTM(emb_dim + hid_dim, hid_dim, n_layers, dropout=dropout) self.fc_out = nn.Linear(emb_dim + hid_dim * 2, output_dim)</p>
+<pre><code>def forward(self, input, hidden, cell, encoder_outputs):
+    input = input.unsqueeze(0)
+    embedded = self.embedding(input)
+    embedded = nn.functional.dropout(embedded, p=self.dropout, training=self.training)
+    attn_weights = self.attention(hidden[-1], encoder_outputs)
+    attn_weights = attn_weights.unsqueeze(1)
+    weighted = torch.bmm(attn_weights, encoder_outputs)
+    rnn_input = torch.cat((embedded, weighted), dim=2)
+    output, (hidden, cell) = self.rnn(rnn_input, (hidden, cell))
+    output = torch.cat((embedded, hidden, weighted), dim=2)
+    prediction = self.fc_out(output.squeeze(0))
+    return prediction, hidden, cell</code></pre>
+<p>class Seq2Seq(nn.Module): def <strong>init</strong>(self, encoder, decoder, device): super(Seq2Seq, self).<strong>init</strong>() self.encoder = encoder self.decoder = decoder self.device = device</p>
+<pre><code>def forward(self, src, trg, teacher_forcing_ratio=0.5):
+    batch_size = src.shape[1]
+    trg_len = trg.shape[0]
+    trg_vocab_size = self.decoder.output_dim
+    outputs = torch.zeros(trg_len, batch_size, trg_vocab_size).to(self.device)
+    encoder_outputs, hidden, cell = self.encoder(src)
+    input = trg[0,:]
+    for t in range(1, trg_len):
+        output, hidden, cell = self.decoder(input, hidden, cell, encoder_outputs)
+        outputs[t] = output
+        teacher_force = torch.rand(1).item() &lt; teacher_forcing_ratio
+        top1 = output.argmax(1)
+        input = trg[t] if teacher_force else top1
+    return outputs</code></pre>
+<p>```</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E5%99%A8/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  优化器
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+                损失函数
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">wang yaqi</a>
+	|<a href="https://beian.miit.gov.cn" target="_blank">京ICP备2022000211号-1</a>	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>

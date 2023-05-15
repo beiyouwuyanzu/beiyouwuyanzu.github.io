@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		llama 小学数学解题模型 | 
+		优化器 | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -331,7 +331,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E5%99%A8/">
                      
 										    优化器
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
                      
 										    llama_小学数学解题模型
@@ -429,12 +429,12 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	llama 小学数学解题模型
+	优化器
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/" class="leancloud_visitors" data-flag-title="llama 小学数学解题模型"></span>
+			阅读量:<span id="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E5%99%A8/" class="leancloud_visitors" data-flag-title="优化器"></span>
 		</span>
 	
 	<span>wang yaqi</span>
@@ -454,24 +454,178 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h4 id="简单的运算没有问题">简单的运算没有问题</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.41.37.gif" />
-
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.47.46.gif" />
-
-</div>
-<h4 id="复杂的题目可以算出等式-结果会计算有误">复杂的题目可以算出等式, 结果会计算有误</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.52.56.gif" />
-
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.58.44.gif" />
-
-</div>
+	<h2 id="总览">总览</h2>
+<blockquote>
+<p>总览摘自<a target="_blank" rel="noopener" href="https://paddlepedia.readthedocs.io/en/latest/tutorials/deep_learning/optimizers/gd.html">paddledoc</a></p>
+</blockquote>
+<p>在NLP领域AdamW（AdamWeightDecayOptimizer）使用比较普遍，CV领域SGD和momentum使用比较普遍，推荐领域比较杂，强化学习领域Adam使用比较普遍。</p>
+<table>
+<thead>
+<tr class="header">
+<th>模型</th>
+<th>优化器</th>
+<th>领域</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BERT</td>
+<td>AdamWeightDecayOptimizer</td>
+<td>NLP</td>
+</tr>
+<tr class="even">
+<td>ELECTRA</td>
+<td>AdamWeightDecayOptimizer</td>
+<td>NLP</td>
+</tr>
+<tr class="odd">
+<td>XLNet</td>
+<td>AdamWeightDecayOptimizer,AdamOptimizer</td>
+<td>NLP</td>
+</tr>
+<tr class="even">
+<td>ZFNet</td>
+<td>MomentumOptimizer</td>
+<td>CV</td>
+</tr>
+<tr class="odd">
+<td>VGGNet</td>
+<td>SGD</td>
+<td>CV</td>
+</tr>
+<tr class="even">
+<td>GoogLeNet</td>
+<td>SGD</td>
+<td>CV</td>
+</tr>
+<tr class="odd">
+<td>ResNet</td>
+<td>momentum</td>
+<td>CV</td>
+</tr>
+<tr class="even">
+<td>EfficientNet</td>
+<td>rmsprop</td>
+<td>CV</td>
+</tr>
+<tr class="odd">
+<td>DenseNet</td>
+<td>Nesterov, momentum</td>
+<td>CV</td>
+</tr>
+<tr class="even">
+<td>Faster R-CNN</td>
+<td>momentum</td>
+<td>CV</td>
+</tr>
+<tr class="odd">
+<td>Mask R-CNN</td>
+<td>SGD</td>
+<td>CV</td>
+</tr>
+<tr class="even">
+<td>YOLOv3,YOLOv5</td>
+<td>Adam,SGD</td>
+<td>CV</td>
+</tr>
+<tr class="odd">
+<td>RetinaNet</td>
+<td>SGD</td>
+<td>CV</td>
+</tr>
+<tr class="even">
+<td>YoutubeDNN</td>
+<td>Adam</td>
+<td>RS</td>
+</tr>
+<tr class="odd">
+<td>DSSM</td>
+<td>adagrad</td>
+<td>RS</td>
+</tr>
+<tr class="even">
+<td>DeepFM</td>
+<td>adam,adagrad,gd,momentum</td>
+<td>RS</td>
+</tr>
+<tr class="odd">
+<td>DQN</td>
+<td>Adam</td>
+<td>RL</td>
+</tr>
+<tr class="even">
+<td>DDPG</td>
+<td>Adam</td>
+<td>RL</td>
+</tr>
+<tr class="odd">
+<td>A2C</td>
+<td>Adam</td>
+<td>RL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="momentum">Momentum</h2>
+<p>为了抑制SGD的震荡，SGDM认为梯度下降过程可以加入惯性。可以简单理解为：当我们将一个小球从山上滚下来时，没有阻力的话，它的动量会越来越大，但是如果遇到了阻力，速度就会变小。SGDM全称是SGD with momentum，在SGD基础上引入了一阶动量：</p>
+<p>Momentum优化器是一种基于梯度的优化算法，与标准的随机梯度下降（SGD）算法相比，Momentum优化器在更新参数时增加了一个动量项，以使得参数更新更加平滑和稳定。Momentum优化器的公式如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{v}_t &amp;= \beta \mathbf{v}_{t-1} + (1 - \beta) \nabla_{\mathbf{\theta}} J(\mathbf{\theta}) \\
+\mathbf{\theta}_t &amp;= \mathbf{\theta}_{t-1} - \alpha \mathbf{v}_t
+\end{aligned}
+\]</span></p>
+<p>其中，<span class="math inline">\(\mathbf{\theta}\)</span> 表示需要优化的参数向量，<span class="math inline">\(J(\mathbf{\theta})\)</span> 表示损失函数，<span class="math inline">\(\nabla_{\mathbf{\theta}} J(\mathbf{\theta})\)</span> 表示损失函数关于参数的梯度，<span class="math inline">\(\alpha\)</span> 表示学习率，<span class="math inline">\(\beta\)</span> 是动量因子，<span class="math inline">\(\mathbf{v}\)</span> 是动量项向量。</p>
+<p>在Momentum优化器中，动量项 <span class="math inline">\(\mathbf{v}\)</span> 起到一个平滑器的作用，使得梯度的方向更加稳定。动量因子 <span class="math inline">\(\beta\)</span> 通常设置为一个较小的值，如0.9或0.99，以平衡动量项的影响。在更新参数时，动量项和梯度的加权和被用于更新参数向量 <span class="math inline">\(\mathbf{\theta}\)</span>。</p>
+<p>Momentum优化器的优点是可以减少梯度下降算法中的震荡，并使得梯度更新更加稳定，从而提高训练的效率和性能。</p>
+<h2 id="自适应梯度优化器adaptive-gradientadagrad">自适应梯度优化器（Adaptive Gradient,Adagrad）</h2>
+<p>自适应梯度优化器（Adaptive Gradient Optimizer，AdaGrad）是一种基于梯度的优化算法，它使用每个参数的历史梯度信息来调整学习率，以提高模型的收敛速度和效果。AdaGrad的公式如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{g}_t &amp;= \nabla_{\mathbf{\theta}} J(\mathbf{\theta}) \\
+\mathbf{s}_t &amp;= \sum_{i=1}^t \mathbf{g}_i \odot \mathbf{g}_i \\
+\mathbf{\theta}_t &amp;= \mathbf{\theta}_{t-1} - \frac{\alpha}{\sqrt{\mathbf{s}_t + \epsilon}} \odot \mathbf{g}_t
+\end{aligned}
+\]</span></p>
+<p>其中，<span class="math inline">\(\mathbf{\theta}\)</span> 表示需要优化的参数向量，<span class="math inline">\(J(\mathbf{\theta})\)</span> 表示损失函数，<span class="math inline">\(\nabla_{\mathbf{\theta}} J(\mathbf{\theta})\)</span> 表示损失函数关于参数的梯度，<span class="math inline">\(\alpha\)</span> 表示学习率，<span class="math inline">\(\mathbf{g}\)</span> 表示梯度向量，<span class="math inline">\(\odot\)</span> 表示向量的逐元素乘积，<span class="math inline">\(\mathbf{s}\)</span> 是历史梯度平方和的累积向量，<span class="math inline">\(\epsilon\)</span> 是为了数值稳定而添加的一个小常数。</p>
+<p>在AdaGrad中，每个参数的学习率都是动态调整的，它与历史梯度的平方和成反比。这意味着对于具有较大历史梯度平方和的参数，学习率将变得更小，以避免过度更新。另一方面，对于具有较小历史梯度平方和的参数，学习率将变得更大，以提高收敛速度。</p>
+<p>AdaGrad的优点是可以自适应地调整每个参数的学习率，适应不同参数的梯度分布。但是，AdaGrad在处理稀疏梯度时存在问题，因为历史梯度平方和的累积可能导致学习率过小。因此，AdaGrad的改进算法，如RMSprop和Adam，被广泛应用于深度学习中。</p>
+<h2 id="自适应矩估计优化器adaptive-moment-estimationadam">自适应矩估计优化器（Adaptive Moment Estimation，Adam）</h2>
+<blockquote>
+<p>相对于AdaGrad，RMSprop使用指数加权移动平均的方式估计梯度的方差，从而调整每个参数的学习率</p>
+</blockquote>
+<p>自适应矩估计优化器（Root Mean Square Propagation，RMSprop）是一种基于梯度的优化算法，它使用指数加权移动平均（Exponential Moving Average，EMA）的方式估计梯度的方差，从而调整每个参数的学习率。RMSprop的公式如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{g}_t &amp;= \nabla_{\mathbf{\theta}} J(\mathbf{\theta}) \\
+\mathbf{s}_t &amp;= \beta \mathbf{s}_{t-1} + (1 - \beta) \mathbf{g}_t \odot \mathbf{g}_t \\
+\mathbf{\theta}_t &amp;= \mathbf{\theta}_{t-1} - \frac{\alpha}{\sqrt{\mathbf{s}_t + \epsilon}} \odot \mathbf{g}_t
+\end{aligned}
+\]</span></p>
+<p>其中，<span class="math inline">\(\mathbf{\theta}\)</span> 表示需要优化的参数向量，<span class="math inline">\(J(\mathbf{\theta})\)</span> 表示损失函数，<span class="math inline">\(\nabla_{\mathbf{\theta}} J(\mathbf{\theta})\)</span> 表示损失函数关于参数的梯度，<span class="math inline">\(\alpha\)</span> 表示学习率，<span class="math inline">\(\mathbf{g}\)</span> 表示梯度向量，<span class="math inline">\(\odot\)</span> 表示向量的逐元素乘积，<span class="math inline">\(\mathbf{s}\)</span> 是历史梯度平方的指数加权平均，<span class="math inline">\(\epsilon\)</span> 是为了数值稳定而添加的一个小常数，<span class="math inline">\(\beta\)</span> 是指数加权平均的系数，通常取值为0.9。</p>
+<p>在RMSprop中，每个参数的学习率是自适应调整的，它与历史梯度平方的指数加权平均的平方根成反比。这意味着对于具有较大历史梯度平方的参数，学习率将变得更小，以避免过度更新。另一方面，对于具有较小历史梯度平方的参数，学习率将变得更大，以提高收敛速度。</p>
+<p>RMSprop的优点是可以自适应地调整每个参数的学习率，并且能够有效地处理稀疏梯度。此外，RMSprop相对于AdaGrad和Momentum等算法具有更快的收敛速度。但是，RMSprop仍然存在某些限制，如难以处理非凸函数和鞍点问题等。因此，在实际应用中，可以结合其他优化算法进行改进，如Adam等。</p>
+<h2 id="adamw">adamW</h2>
+<blockquote>
+<p>AdamW本质上就是在损失函数里面加入了L2正则项，然后计算梯度和更新参数的时候都需要考虑这个正则项</p>
+</blockquote>
+<p>AdamW是一种基于Adam优化器的变种，它在Adam优化器的基础上增加了权重衰减（weight decay）的正则化项，以避免过拟合。AdamW的公式如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{g}_t &amp;= \nabla_{\mathbf{\theta}} J(\mathbf{\theta}) \\
+\mathbf{m}_t &amp;= \beta_1 \mathbf{m}_{t-1} + (1 - \beta_1) \mathbf{g}_t \\
+\mathbf{v}_t &amp;= \beta_2 \mathbf{v}_{t-1} + (1 - \beta_2) \mathbf{g}_t \odot \mathbf{g}_t \\
+\hat{\mathbf{m}}_t &amp;= \frac{\mathbf{m}_t}{1 - \beta_1^t} \\
+\hat{\mathbf{v}}_t &amp;= \frac{\mathbf{v}_t}{1 - \beta_2^t} \\
+\mathbf{\theta}_t &amp;= \mathbf{\theta}_{t-1} - \frac{\alpha}{\sqrt{\hat{\mathbf{v}}_t} + \epsilon} \odot \hat{\mathbf{m}}_t - \lambda \mathbf{\theta}_{t-1}
+\end{aligned}
+\]</span></p>
+<p>其中，<span class="math inline">\(\mathbf{\theta}\)</span> 表示需要优化的参数向量，<span class="math inline">\(J(\mathbf{\theta})\)</span> 表示损失函数，<span class="math inline">\(\nabla_{\mathbf{\theta}} J(\mathbf{\theta})\)</span> 表示损失函数关于参数的梯度，<span class="math inline">\(\alpha\)</span> 表示学习率，<span class="math inline">\(\mathbf{g}\)</span> 表示梯度向量，<span class="math inline">\(\odot\)</span> 表示向量的逐元素乘积，<span class="math inline">\(\beta_1\)</span> 和 <span class="math inline">\(\beta_2\)</span> 分别是一阶和二阶矩的指数加权平均系数，通常取值为0.9和0.999，<span class="math inline">\(\mathbf{m}\)</span> 和 <span class="math inline">\(\mathbf{v}\)</span> 分别表示一阶和二阶矩的指数加权平均值，<span class="math inline">\(\hat{\mathbf{m}}\)</span> 和 <span class="math inline">\(\hat{\mathbf{v}}\)</span> 分别表示经过偏差修正后的一阶和二阶矩估计值，<span class="math inline">\(\epsilon\)</span> 是为了数值稳定而添加的一个小常数，<span class="math inline">\(\lambda\)</span> 是权重衰减的系数。</p>
+<p>权重衰减是一种正则化技术，用于控制模型复杂度和避免过拟合。它通过向损失函数添加一个正则化项，惩罚参数的大小，从而鼓励模型使用较小的权重来表示数据。</p>
+<p>具体来说，权重衰减的正则化项是指在优化目标中添加一个惩罚项，以防止参数取值过大。它通常表示为<span class="math inline">\(L_2\)</span>正则化项，形式如下：</p>
+<p><span class="math display">\[
+\mathcal{L}_{reg} = \frac{\lambda}{2}\sum_{i=1}^{n}\|\mathbf{w}_i\|^2
+\]</span></p>
+<p>其中，<span class="math inline">\(\mathbf{w}_i\)</span> 表示模型的第 <span class="math inline">\(i\)</span> 个参数，<span class="math inline">\(\lambda\)</span> 是正则化系数，用于控制正则化的强度。</p>
 
 </div>
 
@@ -479,11 +633,16 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/attention/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  注意力机制
+              </a>
+            
         </div>
         <div class="item right">
             
-              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
-                知识蒸馏（Knowledge Distillation）
+              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+                常见网络的代码实现
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

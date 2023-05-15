@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		llama 小学数学解题模型 | 
+		PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -188,7 +188,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/05/08/LargeLanguageModels/peft_model/">
                      
 										    peft_model
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/">
                      
 										    llama_小学数学解题模型
@@ -429,12 +429,12 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	llama 小学数学解题模型
+	PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/llama_%E5%B0%8F%E5%AD%A6%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%A2%98%E6%A8%A1%E5%9E%8B/" class="leancloud_visitors" data-flag-title="llama 小学数学解题模型"></span>
+			阅读量:<span id="/2023/05/08/LargeLanguageModels/peft_model/" class="leancloud_visitors" data-flag-title="PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods"></span>
 		</span>
 	
 	<span>wang yaqi</span>
@@ -454,24 +454,59 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h4 id="简单的运算没有问题">简单的运算没有问题</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.41.37.gif" />
+	<blockquote>
+<p>https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 <a target="_blank" rel="noopener" href="https://github.com/Facico/Chinese-Vicuna/blob/master/finetune.py">Chinese-Vicuna/finetune.py at master · Facico/Chinese-Vicuna (github.com)</a></p>
+</blockquote>
+<h2 id="特点">特点</h2>
+<p>Parameter-Efficient Fine-Tuning (PEFT) 方法可以使预训练语言模型 (PLM) 高效适应各种下游应用程序，而无需微调模型的所有参数。微调大型 PLM 的成本通常高得令人望而却步。在这方面，PEFT 方法仅微调少量（额外）模型参数，从而大大降低了计算和存储成本。最近最先进的 PEFT 技术实现了与完全微调相当的性能。</p>
+<h2 id="微调方法">微调方法</h2>
+<ol style="list-style-type: decimal">
+<li>LoRA: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.09685">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</a></li>
+<li>Prefix Tuning: <a target="_blank" rel="noopener" href="https://aclanthology.org/2021.acl-long.353/">Prefix-Tuning: Optimizing Continuous Prompts for Generation</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2110.07602.pdf">P-Tuning v2: Prompt Tuning Can Be Comparable to Fine-tuning Universally Across Scales and Tasks</a></li>
+<li>P-Tuning: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.10385">GPT Understands, Too</a></li>
+<li>Prompt Tuning: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.08691">The Power of Scale for Parameter-Efficient Prompt Tuning</a></li>
+<li>AdaLoRA: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.10512">Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning</a></li>
+</ol>
+<p>对应在peft代码里的实现</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">PEFT_TYPE_TO_MODEL_MAPPING  <span class="op">=</span> &#123;
 
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.47.46.gif" />
+    PeftType.LORA: LoraModel,
 
-</div>
-<h4 id="复杂的题目可以算出等式-结果会计算有误">复杂的题目可以算出等式, 结果会计算有误</h4>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.52.56.gif" />
+    PeftType.PROMPT_TUNING: PromptEmbedding,
 
-</div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/Kapture%202023-05-05%20at%2017.58.44.gif" />
+    PeftType.P_TUNING: PromptEncoder,
 
-</div>
+    PeftType.PREFIX_TUNING: PrefixEncoder,
+
+    PeftType.ADALORA: AdaLoraModel,
+
+    PeftType.ADAPTION_PROMPT: AdaptionPromptModel,
+
+&#125;</code></pre></div>
+<h2 id="应用示例">应用示例</h2>
+<p>llama应用的, 也是peft中主流的优化方法是LoRA</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">model <span class="op">=</span> LlamaForCausalLM.from_pretrained(
+    args.model_path,
+    load_in_8bit<span class="op">=</span><span class="va">True</span>,
+    device_map<span class="op">=</span>device_map,
+)
+tokenizer <span class="op">=</span> LlamaTokenizer.from_pretrained(
+    args.model_path, add_eos_token<span class="op">=</span><span class="va">True</span>
+)
+
+model <span class="op">=</span> prepare_model_for_int8_training(model)
+
+config <span class="op">=</span> LoraConfig(
+    r<span class="op">=</span>LORA_R,
+    lora_alpha<span class="op">=</span>LORA_ALPHA,
+    target_modules<span class="op">=</span>TARGET_MODULES,
+    lora_dropout<span class="op">=</span>LORA_DROPOUT,
+    bias<span class="op">=</span><span class="st">&quot;none&quot;</span>,
+    task_type<span class="op">=</span><span class="st">&quot;CAUSAL_LM&quot;</span>,
+)
+model <span class="op">=</span> get_peft_model(model, config)</code></pre></div>
+<h2 id="实现解析">实现解析</h2>
+<p>在这里将base_model封装成lora结构的形式 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061729090.png" /></p>
 
 </div>
 
@@ -479,11 +514,16 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
+              <a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  llama 模型结构
+              </a>
+            
         </div>
         <div class="item right">
             
-              <a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">
-                知识蒸馏（Knowledge Distillation）
+              <a href="/2023/05/08/LargeLanguageModels/transformer/">
+                transformer
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
