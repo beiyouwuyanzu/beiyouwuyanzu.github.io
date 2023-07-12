@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		q-learning | 
+		llama bloom chatglm对比 | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -177,7 +177,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/07/08/LargeLanguageModels/llama_bloom_chatglm%E5%8C%BA%E5%88%AB/">
                      
 										    llama_bloom_chatglm区别
@@ -353,7 +353,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2023/07/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/q-learning/">
                      
 										    q-learning
@@ -473,12 +473,12 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	q-learning
+	llama bloom chatglm对比
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2023/07/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/q-learning/" class="leancloud_visitors" data-flag-title="q-learning"></span>
+			阅读量:<span id="/2023/07/08/LargeLanguageModels/llama_bloom_chatglm%E5%8C%BA%E5%88%AB/" class="leancloud_visitors" data-flag-title="llama bloom chatglm对比"></span>
 		</span>
 	
 	<span>wang yaqi</span>
@@ -498,31 +498,99 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<p>Q-learning是一种经典的强化学习算法，用于学习最优策略的值函数。以下是Q-learning的基本流程：</p>
+	<h1 id="llama-bloom-chatglm对比">llama bloom chatglm对比</h1>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307101650272.png" />
+
+</div>
+<h2 id="casual-decoder-vs-prefix-decoder">Casual Decoder vs Prefix Decoder</h2>
+<p><img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307101655098.png" /> 蓝色：the attention between prefix tokens 绿色：the attention between prefix and target tokens 黄色：the attention betweetn target tokens and masked attention <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307101705035.png" /></p>
+<h3 id="二者区别">二者区别</h3>
+<p>以下是一些考虑因素： 1. <strong>实时性要求</strong>：如果需要实时处理和输出部分解码结果，Casual decoder可能更适合。它能够即时处理和输出部分解码结果，而不需要等待所有输入符号。这对于实时通信和流式数据处理很有用。 2. <strong>唯一解码要求</strong>：如果解码结果必须是唯一的，即给定一个输入序列只能有一种正确的解码方式，那么Prefix decoder是更合适的选择。前缀码的特性保证了唯一解码。 3. <strong>数据传输效率</strong>：在某些情况下，Casual decoder可能具有更高的数据传输效率。由于它可以即时处理和输出部分解码结果，可以更早地获取解码的信息，而不需要等待所有输入符号。 4. <strong>错误容忍性</strong>：如果输入符号中可能存在错误或丢失的情况，Prefix decoder可能更具容错性。由于它需要等待所有输入符号，可以在收到所有输入后进行完整的解码，并且能够检测到错误或丢失的符号。 综上所述，没有一个解码器可以被普遍视为更好，选择合适的解码器取决于具体的需求和约束条件。对于某些应用场景，Casual decoder可能更合适，而在其他情况下，Prefix decoder可能更适用。重要的是根据具体的需求和应用场景来评估和选择合适的解码器。</p>
+<h2 id="rope位置编码">RoPE位置编码</h2>
+<p>对于向量 q，使用 RoPE 添加位置编码后，用复数可以表示为：<span class="math inline">\(q e^{i m \theta}\)</span>，其中 <span class="math inline">\(\theta_i=10000^{-2i/d}​\)</span> 与经典的 Transformer 绝对位置编码相同。通过将向量以复数方式推理， RoPE 巧妙地实现了以添加绝对位置编码的方式，在 attention 中计算了相对位置信息。</p>
+<p>RoPE 命名联系到了复数乘法的几何意义：对于复数 <span class="math inline">\(z=a+bi\)</span>，他可以表示为复平面上的向量。其中 x 轴为实部，y 轴为虚部。根据向量与 x 轴的夹角 <span class="math inline">\(ϕ\)</span>，我们可以将向量表示为 <span class="math inline">\(z=L(cosϕ+i * sinϕ)\)</span> ，其中 L 为向量模长。因此，向量的乘法变为了： <span class="math display">\[
+z_1 z_2=L_1 L_2\left(\cos \left(\phi_1+\phi_2\right)+\sin \left(\phi_1+\phi_2\right)\right)
+\]</span></p>
+<p>所以，复数乘法也可以看作在复平面上的向量旋转及转换。</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307102042004.png" />
+
+</div>
+<h2 id="如何理解sinusoidal-position-embedding里面任意两个相同距离时间步之间的向量距离也相同">如何理解Sinusoidal Position Embedding里面任意两个相同距离时间步之间的向量距离也相同</h2>
+<blockquote>
+<p>https://www.qinglite.cn/doc/12476476a18a86265</p>
+</blockquote>
+<p>在Sinusoidal Position Embedding中，每个时间步的位置向量由两个正弦函数和余弦函数的组合构成。具体而言，对于每个时间步t和每个维度i，位置向量的计算公式如下：</p>
+<p><span class="math inline">\(PE(t, i) = sin(t / 10000^{(2i/d_model)})\)</span>，当i为偶数 <span class="math inline">\(PE(t, i) = cos(t / 10000^{(2i/d_model)})\)</span>，当i为奇数</p>
+<p>其中，t表示时间步，i表示维度，d_model表示位置向量的维度。</p>
+<p>由于正弦函数和余弦函数的周期性特点，当时间步之间的距离相同时，位置向量中对应维度的数值是相同的。这意味着任意两个相同距离的时间步之间的向量距离也相同，因为它们在相同的维度上具有相同的数值。</p>
+<h2 id="alibi-位置编码">ALiBi 位置编码</h2>
+<p><img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307102108595.png" /> 直接走预设</p>
+<h3 id="alibi和rope都是用于在transformer模型中引入位置信息的方法但rope在处理长序列时表现更好">ALiBi和RoPE都是用于在Transformer模型中引入位置信息的方法，但RoPE在处理长序列时表现更好</h3>
+<h2 id="swiglu-激活函数">SwiGLU 激活函数</h2>
+<h4 id="gated-linear-unit">Gated Linear Unit</h4>
+<p>GLU激活函数的定义为：<span class="math inline">\(GLU(x) = x ⊗ σ(g(x))\)</span>。其中，x是输入向量，⊗表示逐元素相乘，σ表示Sigmoid函数，g(x)是通过全连接层或卷积层得到的中间向量。</p>
+<p>GLU激活函数通过门控机制实现对输入的选择性过滤，帮助网络捕捉长期依赖关系和上下文信息。这种机制在处理序列数据和NLP任务中具有重要的作用，可以提高模型的性能和效果</p>
+<pre><code>import torch
+import torch.nn as nn
+
+class GLU(nn.Module):
+    def __init__(self, input_dim, output_dim):
+        super(GLU, self).__init__()
+        self.linear = nn.Linear(input_dim, output_dim)
+
+    def forward(self, x):
+        gate = torch.sigmoid(self.linear(x))
+        output = x * gate
+        return output</code></pre>
+<p>SwiGLU是一种激活函数，是GLU的一种变体。SwiGLU的定义如下：<span class="math inline">\(SwiGLU (x, W, V, b, c, β) = Swish β (x W + b) ⊗ (x V + c)\)</span>。<span class="math inline">\(Swish β (x) = x * sigmoid(βx)\)</span>，其中<span class="math inline">\(β\)</span>是指定常数</p>
+<p>SwiGLU激活函数的优点是它结合了SWISH和GLU两者的特点 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qinduohao333/article/details/131085549">[url1]</a>。Swish激活函数具备无上界有下届、平滑、非单调的特性，Swish在深层模型上效果优于ReLU <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/630197707">[url2]</a>。GLU（Gated Linear Unit）激活函数是一种用于神经网络的激活函数，它具有门控机制，可以帮助网络更好地捕捉序列数据中的长期依赖关系<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/621058772">[3]</a>。</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307111540793.png" />
+
+</div>
+<p>非单调激活函数的好处是它可以避免梯度消失问题，从而提高模型的训练效率</p>
+<h2 id="gelu">GeLU</h2>
+<p><span class="math display">\[
+\operatorname{GELU}(\mathrm{x})=0.5 \mathrm{x}\left(1+\tanh \left[\sqrt{2 / \pi}\left(\mathrm{x}+0.044715 \mathrm{x}^3\right)\right]\right)
+\]</span> <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307111601795.png" /> GELU的优点是，它在处理负数时不会像ReLU一样将输入裁剪到0，这可能导致梯度消失的问题。</p>
+<ul>
+<li><p>具有更光滑的导数：</p></li>
+<li><p>GELU函数的导数是连续的，这使得在训练深度神经网络时可以更容易地传播梯度，避免了ReLU函数在 处的导数不连续的问题，从而减少了训练过程中出现的梯度消失问题</p></li>
+<li><p>可以加速收敛：</p></li>
+<li><p>GELU函数在激活函数的非线性变换中引入了类似于sigmoid函数的变换，这使得GELU函数的输出可以落在一个更广的范围内，有助于加速模型的收敛速度。</p></li>
+</ul>
+<h3 id="swiglu和geglu的对比">SwiGLU和GeGLU的对比</h3>
 <ol style="list-style-type: decimal">
-<li><p>初始化：初始化状态值函数Q(s, a)和其他相关的参数，如学习率、折扣因子等。</p></li>
-<li><p>选择动作：根据当前状态<span class="math inline">\(s\)</span>，使用某种策略（如<span class="math inline">\(ε-greedy\)</span>策略）选择一个动作<span class="math inline">\(a\)</span>。<span class="math inline">\(ε-greedy\)</span>策略以ε的概率选择随机动作，以<span class="math inline">\(1-ε\)</span>的概率选择具有最大Q值的动作。</p></li>
-<li><p>执行动作并观察环境：执行选择的动作<span class="math inline">\(a\)</span>，与环境进行交互，观察新状态<span class="math inline">\(s&#39;\)</span>和奖励<span class="math inline">\(r\)</span>。</p></li>
-<li><p>更新值函数：使用Bellman方程更新状态动作值函数Q(s, a)。根据Bellman方程，将当前状态动作对的估计值Q(s, a)更新为当前奖励r加上下一状态的最大动作值对应的Q值的乘积，加上一个折扣因子γ，再加上之前的估计值的一部分。</p></li>
+<li>定义：
+<ul>
+<li>SwiGLU：SwiGLU的定义为Swish(xW + b) ⊗ (xV + c)，其中Swish是带有参数β的Swish激活函数。</li>
+<li>GeGLU：GeGLU的定义为GELU(xW) ⊗ xV，其中GELU是高斯误差线性单元激活函数。</li>
+</ul></li>
+<li>激活函数比较：
+<ul>
+<li>SwiGLU：SwiGLU是GLU的变种，它使用Swish激活函数而不是ReLU或GELU。Swish是ReLU的平滑近似，对于负值具有非零梯度。由于其平滑性、非单调性和门控机制，SwiGLU在各种任务中表现优于其他激活函数，包括Swish和GLU。</li>
+<li>GeGLU：GeGLU是GLU的另一种变种，它使用GELU激活函数。GELU是ReLU的平滑近似，在GPT-2和BERT等语言模型和Transformer模型中使用。它避免了梯度消失的问题，并且在0处具有连续的导数，有时可以加快训练速度。</li>
+</ul></li>
 </ol>
-<p><span class="math inline">\(Q(s, a) = Q(s, a) + α * (r + γ * max Q(s&#39;, a&#39;) - Q(s, a))\)</span></p>
-<p>其中，<span class="math inline">\(α\)</span>是学习率，<span class="math inline">\(γ\)</span>是折扣因子，<span class="math inline">\(max Q(s&#39;, a&#39;)\)</span>表示在新状态<span class="math inline">\(s&#39;\)</span>下所有可能的动作中具有最大<span class="math inline">\(Q\)</span>值的动作。</p>
-<ol start="5" style="list-style-type: decimal">
-<li>更新状态和重复步骤2-4：将当前状态更新为新状态<span class="math inline">\(s&#39;\)</span>，重复执行步骤2至步骤4，选择动作、执行动作、观察奖励和新状态，并更新值函数，直到达到停止条件（如达到最大训练轮数、达到目标回报等）。</li>
-</ol>
-<p>Q-learning的基本思想是通过不断更新值函数来逼近最优策略的值函数，从而得到最优策略。通过迭代的方式，Q-learning能够收敛到最优的值函数和最优的策略。</p>
-<h2 id="过程">过程</h2>
-<p>Q-learning是一种基于值迭代的强化学习算法，它的流程如下：</p>
-<ol style="list-style-type: decimal">
-<li>初始化状态值函数<span class="math inline">\(Q(s,a)\)</span>。</li>
-<li>在每个时间步<span class="math inline">\(t\)</span>，根据当前状态<span class="math inline">\(s_t\)</span>选择一个动作<span class="math inline">\(a_t\)</span>，并执行该动作。</li>
-<li>观察执行动作<span class="math inline">\(a_t\)</span>后得到的奖励<span class="math inline">\(r_{t+1}\)</span>和下一个状态<span class="math inline">\(s_{t+1}\)</span>。</li>
-<li>根据下一个状态<span class="math inline">\(s_{t+1}\)</span>和当前状态值函数<span class="math inline">\(Q(s,a)\)</span>计算下一个状态的最大价值<span class="math inline">\(V(s_{t+1})=\max_a Q(s_{t+1},a)\)</span>。</li>
-<li>根据贝尔曼方程更新当前状态值函数<span class="math inline">\(Q(s_t,a_t) \leftarrow Q(s_t,a_t) + \alpha(r_{t+1} + \gamma V(s_{t+1}) - Q(s_t,a_t))\)</span>。</li>
-<li>重复步骤2-5，直到收敛。</li>
-</ol>
-<h2 id="为什么q-learning会收敛">为什么q-learning会收敛</h2>
-<p>在Q-learning算法中，每次选择的动作是基于当前状态值函数<span class="math inline">\(Q(s,a)\)</span>的<span class="math inline">\(\epsilon\)</span>-贪心策略，即以<span class="math inline">\(1-\epsilon\)</span>的概率选择当前状态下最优的动作，以<span class="math inline">\(\epsilon\)</span>的概率随机选择一个动作。在初始阶段，由于状态值函数<span class="math inline">\(Q(s,a)\)</span>的不准确性，随机选择动作可以帮助算法探索更多的状态和动作，从而更好地优化策略。随着算法的迭代，状态值函数<span class="math inline">\(Q(s,a)\)</span>会逐渐收敛到真实值，此时算法会逐渐减小<span class="math inline">\(\epsilon\)</span>的值，使得选择最优动作的概率越来越大。因此，Q-learning算法可以逐步收敛到最优策略。</p>
+<h2 id="normal">normal</h2>
+<h4 id="layer-normal">layer normal</h4>
+<p><span class="math inline">\(\text{LayerNorm}(x_i) = \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}}\)</span></p>
+<p>其中 <span class="math inline">\(x_i\)</span> 表示输入的第 <span class="math inline">\(i\)</span> 个特征，<span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\sigma\)</span> 分别表示这个特征的均值和标准差，<span class="math inline">\(\epsilon\)</span> 是一个很小的数</p>
+<p>Layer normalization 的计算是在每个样本的特征维度上进行的</p>
+<p>通过标准化、缩放和平移操作，Layer normalization 可以使每个样本的特征在不同样本之间更加一致，有助于减少不同样本之间的差异，从而提高模型的泛化能力。此外，Layer normalization 还可以帮助解决神经网络中的梯度消失和梯度爆炸问题，促进模型的收敛和训练效果</p>
+<h4 id="rms-normal">rms normal</h4>
+<p>RMSNorm（Root Mean Square Layer Normalization）是一种深度学习中的归一化方法，它与 Layer Normalization 的主要区别在于去掉了减去均值的部分，计算公式为：<span class="math display">\[\text{RMSNorm}(a_i) = \frac{a_i}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}a_i^2}}\]</span> 其中 <span class="math inline">\(a_i\)</span> 表示输入的第 <span class="math inline">\(i\)</span> 个特征，<span class="math inline">\(n\)</span> 表示特征的数量。</p>
+<p>当应用RMS Normalization时，信号的均值并不影响信号的能量，<strong>因为均值只是信号的直流分量，而能量主要集中在信号的变化部分</strong>。因此，RMS Normalization仅使用信号的均方根值进行缩放，而不考虑均值。</p>
+<p>而且节约时间和效率</p>
+<h2 id="deep-norm">deep norm</h2>
+<p>Deep Norm 是一种深度学习中的归一化方法，它是对 Layer Normalization 的改进，它在每个子层之间添加了一个归一化层，以便在不同的子层之间进行归一化。Deep Norm 的计算公式如下：</p>
+<p><span class="math display">\[
+x_{l+1}=L N\left(\alpha x+G_l\left(x_l, \theta_l\right)\right)
+\]</span></p>
+<p>其中， <span class="math inline">\(\alpha\)</span> 是一个常数（ <span class="math inline">\(\alpha\)</span>&gt;1 ）， <span class="math inline">\(G_l\left(x_l, \theta_l\right)\)</span>是参数为 <span class="math inline">\(\theta_l\)</span>的第 <span class="math inline">\(l\)</span>个Transformer子层（即注意力或前馈网络）的函数。DeepNet还将残差内部的权重<span class="math inline">\(\theta_l\)</span> 扩展了常数参数 <span class="math inline">\(\beta\)</span> 。</p>
+<p>作者通过实验证实了Deep Norm在训练深层transformer模型的时候具备近乎恒定的更新规模，成功训练了1000层transformer的模型，认为Deep Norm在具备 _ **Post-LN 的良好性能_ 的同时又有 _Pre-LN 的稳定训练**_ <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307112034774.png" /> 从上图可看出，相比于Post-LN结构梯度分布的不稳定，Pre-LN在各层之间梯度范数几乎保持不变，这种结构明显更利于优化器进行优化。而在进行一定轮数的 warm-up后，Post-LN的梯度范数也基本保持不变，并且其量级非常小(上图中绿色)，这也验证了Post-LN在warm-up阶段的训练不稳定性问题。 通过以上实验可发现，当使用Pre-LN结构时，warm-up阶段已不再是必需，并且Pre-LN结构可以大幅提升Transformer的收敛速度。对于机器翻译任务（IWSLT/WMT)，不需要warm-up的Pre-LN结构可以比Post-LN收敛快1倍左右，而在BERT上，Pre-LN在下游任务上达到和Post-LN相同的性能也只需要后者迭代轮数的1/3左右，并且最终的效果也更好。</p>
 
 </div>
 
@@ -530,16 +598,16 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2023/07/08/LargeLanguageModels/llama_bloom_chatglm%E5%8C%BA%E5%88%AB/">
+              <a href="/2023/07/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  llama bloom chatglm对比
+                  强化学习ppo
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2023/07/08/LargeLanguageModels/xlnet/">
-                xlnet
+              <a href="/2023/07/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/q-learning/">
+                q-learning
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
