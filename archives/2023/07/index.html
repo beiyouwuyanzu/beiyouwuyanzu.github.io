@@ -473,116 +473,18 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+			<a href="/2023/07/12/LargeLanguageModels/llama_bloom_chatglm%E5%8C%BA%E5%88%AB/">
 				<h2 class="index-title">
-					损失函数
-				</h2>
-				<div class="index-brief">
-					1. 均方误差
-均方误差(MSE，Mean Squared Error)：均方误差是回归任务中最常用的损失函数之一，用于衡量模型的输出与真实值之间的平均差的平方。 \[L(Y|f(x)) = (1/n) * ∑(Yi - f(xi))^2\]
-其中\(Yi\)是真实值，\(f(xi)\)是模型预
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
-				<h2 class="index-title">
-					激活函数
-				</h2>
-				<div class="index-brief">
-					总览
-
-
-以下内容摘自paddledoc ## 1. sigmoid  优点：
-
-
-函数的输出映射在 (0,1)之间，单调连续，输出范围有限，优化稳定，可以用作输出层；
-求导容易；
-
-缺点：
-
-由于其软饱和性，一旦落入饱和区梯度就会接近于0，根据反向传播的链式法则，容易产生梯度
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
-				<h2 class="index-title">
-					LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
-				</h2>
-				<div class="index-brief">
-					1. RMSNorm(均方根)（Root Mean Square）：对每个Transformer子层的输入进行归一化
-RMSNorm计算公式: \(y = \frac{x}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_i^2+\epsilon}}\)
-其中，\(x\)是输入
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/LoRA/">
-				<h2 class="index-title">
-					LoRA
-				</h2>
-				<div class="index-brief">
-					LoRA
-常规微调期间的训练过程
-假设 W 表示给定神经网络层中的权重矩阵。然后，使用常规反向传播，我们可以获得权重更新 ΔW，它通常计算为损失乘以学习率的负梯度： ΔW = α ( -∇ LW).
-然后，当我们有 ΔW 时，我们可以更新原始权重如下：W' = W + ΔW。如下图所示（为简单
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
-				<h2 class="index-title">
-					alpaca-lora实现
+					llama_bloom_chatglm区别
 				</h2>
 				<div class="index-brief">
 					
-羊驼模型发展历史 
 
-lora代码实现
-
-调用
-  &gt;&gt;&gt; from peft import LoraModel, LoraConfig
-
-  &gt;&gt;&gt; config = LoraConfig(
-  ...     peft_type=&quot
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
+				    <span>2023-07-12</span>
                     
                             
                     
@@ -590,39 +492,18 @@ lora代码实现
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
+			<a href="/2023/07/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo/">
 				<h2 class="index-title">
-					llama 模型结构
-				</h2>
-				<div class="index-brief">
-					trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model)
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/peft_model/">
-				<h2 class="index-title">
-					PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
+					强化学习ppo
 				</h2>
 				<div class="index-brief">
 					
-https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 Ch
+
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
+				    <span>2023-07-12</span>
                     
                             
                     
@@ -630,20 +511,20 @@ https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b10
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/transformer/">
+			<a href="/2023/07/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/q-learning/">
 				<h2 class="index-title">
-					transformer
+					q-learning
 				</h2>
 				<div class="index-brief">
-					如何理解transformer中decoder的k, v来自encoder的输出
-class TransformerDecoder(nn.Module):
-    def __init__(self, decoder_layer, num_layers):
-        super(Tran
+					Q-learning是一种经典的强化学习算法，用于学习最优策略的值函数。以下是Q-learning的基本流程：
+
+初始化：初始化状态值函数Q(s, a)和其他相关的参数，如学习率、折扣因子等。
+选择动作：根据当前状态\(s\)，使用某种策略（如\(ε-greedy\)策略）选择一个动作\(a\
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
+				    <span>2023-07-08</span>
                     
                             
                     
@@ -651,58 +532,22 @@ class TransformerDecoder(nn.Module):
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/stableDiffusion/">
+			<a href="/2023/07/08/LargeLanguageModels/xlnet/">
 				<h2 class="index-title">
-					stable diffusion
+					xlnet
 				</h2>
 				<div class="index-brief">
-					1. 使用stable diffusion + dreambooth 生成明星图片
+					XLNet：Generalized Autoregressive Pretraining for Language Understanding
 
+转自paddledoc
 
-
-
-2. 使用stable diffusion + dreambooth 生成动漫风格个人头像
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
+1. 从AR和AE模型到XLNet模型
+自回归模型（Autoregressive Model, AR），通过估计一串文
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
-				<h2 class="index-title">
-					MMoE 模型
-				</h2>
-				<div class="index-brief">
-					MMoE 模型
-多任务学习的三种架构：1) 共享底部模型，2) 单门混合专家模型 (MoE)，以及 3) 多门混合专家模型 (MMoE)。前两个架构提供上下文并显示最终 MMoE 架构的增量步骤。 
-
-Shared-bottom model
-共享底部模型是最简单和最常见的多任务学习架构。该模
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-07</span>
+				    <span>2023-07-08</span>
                     
                             
                     
@@ -711,8 +556,6 @@ Shared-bottom model
 	
 	
 	<div id="index-paginator">
-		
-			<a class="extend prev" rel="prev" href="/">&lt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&gt;</a>
 		
 	</div>
 </div>

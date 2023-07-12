@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		q-learning | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -351,7 +353,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/07/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/q-learning/">
                      
 										    q-learning
@@ -470,253 +472,135 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	q-learning
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
-				<h2 class="index-title">
-					损失函数
-				</h2>
-				<div class="index-brief">
-					1. 均方误差
-均方误差(MSE，Mean Squared Error)：均方误差是回归任务中最常用的损失函数之一，用于衡量模型的输出与真实值之间的平均差的平方。 \[L(Y|f(x)) = (1/n) * ∑(Yi - f(xi))^2\]
-其中\(Yi\)是真实值，\(f(xi)\)是模型预
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
+		<span>
+			阅读量:<span id="/2023/07/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/q-learning/" class="leancloud_visitors" data-flag-title="q-learning"></span>
+		</span>
 	
-		<div class="index-li">
-			<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
-				<h2 class="index-title">
-					激活函数
-				</h2>
-				<div class="index-brief">
-					总览
+	<span>wang yaqi</span>
+	<span>2023-07-08 21:04:50</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
 
+    
+		<span>Tags：</span>
+            
+    
+		</div>
 
-以下内容摘自paddledoc ## 1. sigmoid  优点：
-
-
-函数的输出映射在 (0,1)之间，单调连续，输出范围有限，优化稳定，可以用作输出层；
-求导容易；
-
-缺点：
-
-由于其软饱和性，一旦落入饱和区梯度就会接近于0，根据反向传播的链式法则，容易产生梯度
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/LLaMA%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/">
-				<h2 class="index-title">
-					LLaMA的模型架构——RMSNorm/SwiGLU/RoPE/Transformer
-				</h2>
-				<div class="index-brief">
-					1. RMSNorm(均方根)（Root Mean Square）：对每个Transformer子层的输入进行归一化
-RMSNorm计算公式: \(y = \frac{x}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_i^2+\epsilon}}\)
-其中，\(x\)是输入
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/LoRA/">
-				<h2 class="index-title">
-					LoRA
-				</h2>
-				<div class="index-brief">
-					LoRA
-常规微调期间的训练过程
-假设 W 表示给定神经网络层中的权重矩阵。然后，使用常规反向传播，我们可以获得权重更新 ΔW，它通常计算为损失乘以学习率的负梯度： ΔW = α ( -∇ LW).
-然后，当我们有 ΔW 时，我们可以更新原始权重如下：W' = W + ΔW。如下图所示（为简单
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
-				<h2 class="index-title">
-					alpaca-lora实现
-				</h2>
-				<div class="index-brief">
-					
-羊驼模型发展历史 
-
-lora代码实现
-
-调用
-  &gt;&gt;&gt; from peft import LoraModel, LoraConfig
-
-  &gt;&gt;&gt; config = LoraConfig(
-  ...     peft_type=&quot
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
-				<h2 class="index-title">
-					llama 模型结构
-				</h2>
-				<div class="index-brief">
-					trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model)
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/peft_model/">
-				<h2 class="index-title">
-					PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
-				</h2>
-				<div class="index-brief">
-					
-https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 Ch
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/transformer/">
-				<h2 class="index-title">
-					transformer
-				</h2>
-				<div class="index-brief">
-					如何理解transformer中decoder的k, v来自encoder的输出
-class TransformerDecoder(nn.Module):
-    def __init__(self, decoder_layer, num_layers):
-        super(Tran
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/stableDiffusion/">
-				<h2 class="index-title">
-					stable diffusion
-				</h2>
-				<div class="index-brief">
-					1. 使用stable diffusion + dreambooth 生成明星图片
-
-
-
-
-2. 使用stable diffusion + dreambooth 生成动漫风格个人头像
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
-				<h2 class="index-title">
-					MMoE 模型
-				</h2>
-				<div class="index-brief">
-					MMoE 模型
-多任务学习的三种架构：1) 共享底部模型，2) 单门混合专家模型 (MoE)，以及 3) 多门混合专家模型 (MMoE)。前两个架构提供上下文并显示最终 MMoE 架构的增量步骤。 
-
-Shared-bottom model
-共享底部模型是最简单和最常见的多任务学习架构。该模
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-07</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<a class="extend prev" rel="prev" href="/">&lt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&gt;</a>
-		
-	</div>
 </div>
 
+<div id="article-content">
+	<p>Q-learning是一种经典的强化学习算法，用于学习最优策略的值函数。以下是Q-learning的基本流程：</p>
+<ol style="list-style-type: decimal">
+<li><p>初始化：初始化状态值函数Q(s, a)和其他相关的参数，如学习率、折扣因子等。</p></li>
+<li><p>选择动作：根据当前状态<span class="math inline">\(s\)</span>，使用某种策略（如<span class="math inline">\(ε-greedy\)</span>策略）选择一个动作<span class="math inline">\(a\)</span>。<span class="math inline">\(ε-greedy\)</span>策略以ε的概率选择随机动作，以<span class="math inline">\(1-ε\)</span>的概率选择具有最大Q值的动作。</p></li>
+<li><p>执行动作并观察环境：执行选择的动作<span class="math inline">\(a\)</span>，与环境进行交互，观察新状态<span class="math inline">\(s&#39;\)</span>和奖励<span class="math inline">\(r\)</span>。</p></li>
+<li><p>更新值函数：使用Bellman方程更新状态动作值函数Q(s, a)。根据Bellman方程，将当前状态动作对的估计值Q(s, a)更新为当前奖励r加上下一状态的最大动作值对应的Q值的乘积，加上一个折扣因子γ，再加上之前的估计值的一部分。</p></li>
+</ol>
+<p><span class="math inline">\(Q(s, a) = Q(s, a) + α * (r + γ * max Q(s&#39;, a&#39;) - Q(s, a))\)</span></p>
+<p>其中，<span class="math inline">\(α\)</span>是学习率，<span class="math inline">\(γ\)</span>是折扣因子，<span class="math inline">\(max Q(s&#39;, a&#39;)\)</span>表示在新状态<span class="math inline">\(s&#39;\)</span>下所有可能的动作中具有最大<span class="math inline">\(Q\)</span>值的动作。</p>
+<ol start="5" style="list-style-type: decimal">
+<li>更新状态和重复步骤2-4：将当前状态更新为新状态<span class="math inline">\(s&#39;\)</span>，重复执行步骤2至步骤4，选择动作、执行动作、观察奖励和新状态，并更新值函数，直到达到停止条件（如达到最大训练轮数、达到目标回报等）。</li>
+</ol>
+<p>Q-learning的基本思想是通过不断更新值函数来逼近最优策略的值函数，从而得到最优策略。通过迭代的方式，Q-learning能够收敛到最优的值函数和最优的策略。</p>
+<h2 id="过程">过程</h2>
+<p>Q-learning是一种基于值迭代的强化学习算法，它的流程如下：</p>
+<ol style="list-style-type: decimal">
+<li>初始化状态值函数<span class="math inline">\(Q(s,a)\)</span>。</li>
+<li>在每个时间步<span class="math inline">\(t\)</span>，根据当前状态<span class="math inline">\(s_t\)</span>选择一个动作<span class="math inline">\(a_t\)</span>，并执行该动作。</li>
+<li>观察执行动作<span class="math inline">\(a_t\)</span>后得到的奖励<span class="math inline">\(r_{t+1}\)</span>和下一个状态<span class="math inline">\(s_{t+1}\)</span>。</li>
+<li>根据下一个状态<span class="math inline">\(s_{t+1}\)</span>和当前状态值函数<span class="math inline">\(Q(s,a)\)</span>计算下一个状态的最大价值<span class="math inline">\(V(s_{t+1})=\max_a Q(s_{t+1},a)\)</span>。</li>
+<li>根据贝尔曼方程更新当前状态值函数<span class="math inline">\(Q(s_t,a_t) \leftarrow Q(s_t,a_t) + \alpha(r_{t+1} + \gamma V(s_{t+1}) - Q(s_t,a_t))\)</span>。</li>
+<li>重复步骤2-5，直到收敛。</li>
+</ol>
+<h2 id="为什么q-learning会收敛">为什么q-learning会收敛</h2>
+<p>在Q-learning算法中，每次选择的动作是基于当前状态值函数<span class="math inline">\(Q(s,a)\)</span>的<span class="math inline">\(\epsilon\)</span>-贪心策略，即以<span class="math inline">\(1-\epsilon\)</span>的概率选择当前状态下最优的动作，以<span class="math inline">\(\epsilon\)</span>的概率随机选择一个动作。在初始阶段，由于状态值函数<span class="math inline">\(Q(s,a)\)</span>的不准确性，随机选择动作可以帮助算法探索更多的状态和动作，从而更好地优化策略。随着算法的迭代，状态值函数<span class="math inline">\(Q(s,a)\)</span>会逐渐收敛到真实值，此时算法会逐渐减小<span class="math inline">\(\epsilon\)</span>的值，使得选择最优动作的概率越来越大。因此，Q-learning算法可以逐步收敛到最优策略。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/07/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  强化学习ppo
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/07/08/LargeLanguageModels/xlnet/">
+                xlnet
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
