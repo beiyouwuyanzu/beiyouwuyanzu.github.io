@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods | 
+		强化学习ppo代码阅读：MOSS-RLHF | 
 	 
 	Wangyaqi&#39;s personal site [notice:图片浏览须科学上网,公式渲染需要刷新]
 	</title>
@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2023/05/08/LargeLanguageModels/peft_model/">
                      
 										    peft_model
@@ -397,7 +397,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/07/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB/">
                      
 										    强化学习ppo代码阅读
@@ -484,16 +484,16 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
+	强化学习ppo代码阅读：MOSS-RLHF
 </h1>
 <div class="article-meta">
 	
 		<span>
-			阅读量:<span id="/2023/05/08/LargeLanguageModels/peft_model/" class="leancloud_visitors" data-flag-title="PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods"></span>
+			阅读量:<span id="/2023/07/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB/" class="leancloud_visitors" data-flag-title="强化学习ppo代码阅读：MOSS-RLHF"></span>
 		</span>
 	
 	<span>wang yaqi</span>
-	<span>2023-05-08 21:04:50</span>
+	<span>2023-07-17 21:34:50</span>
 		<div id="article-categories">
     
 		<span>Categories：</span>
@@ -509,59 +509,145 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<blockquote>
-<p>https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 <a target="_blank" rel="noopener" href="https://github.com/Facico/Chinese-Vicuna/blob/master/finetune.py">Chinese-Vicuna/finetune.py at master · Facico/Chinese-Vicuna (github.com)</a></p>
+	<h1 id="大模型强化学习ppomoss_rlhf源码阅读">大模型强化学习ppo:moss_rlhf源码阅读</h1>
+<blockquote>
+<p>代码地址: https://github.com/OpenLMLab/MOSS-RLHF/blob/main/train_ppo.py#L106C6-L106C6</p>
 </blockquote>
-<h2 id="特点">特点</h2>
-<p>Parameter-Efficient Fine-Tuning (PEFT) 方法可以使预训练语言模型 (PLM) 高效适应各种下游应用程序，而无需微调模型的所有参数。微调大型 PLM 的成本通常高得令人望而却步。在这方面，PEFT 方法仅微调少量（额外）模型参数，从而大大降低了计算和存储成本。最近最先进的 PEFT 技术实现了与完全微调相当的性能。</p>
-<h2 id="微调方法">微调方法</h2>
+<h2 id="通常ppo的主要流程">通常PPO的主要流程</h2>
+<p>PPO（Proximal Policy Optimization）是一种常用的强化学习算法，用于优化策略函数。PPO通过限制策略更新的幅度，保证策略更新的稳定性，从而提高学习效率。下面是PPO算法的主要流程：</p>
 <ol style="list-style-type: decimal">
-<li>LoRA: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.09685">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</a></li>
-<li>Prefix Tuning: <a target="_blank" rel="noopener" href="https://aclanthology.org/2021.acl-long.353/">Prefix-Tuning: Optimizing Continuous Prompts for Generation</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2110.07602.pdf">P-Tuning v2: Prompt Tuning Can Be Comparable to Fine-tuning Universally Across Scales and Tasks</a></li>
-<li>P-Tuning: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.10385">GPT Understands, Too</a></li>
-<li>Prompt Tuning: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.08691">The Power of Scale for Parameter-Efficient Prompt Tuning</a></li>
-<li>AdaLoRA: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.10512">Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning</a></li>
+<li>初始化策略函数和值函数参数。</li>
+<li>重复执行以下步骤：</li>
 </ol>
-<p>对应在peft代码里的实现</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">PEFT_TYPE_TO_MODEL_MAPPING  <span class="op">=</span> &#123;
+<ol style="list-style-type: lower-alpha">
+<li>收集经验：使用当前策略与环境进行交互，收集一定数量的样本轨迹（trajectories）。</li>
+<li>估计优势函数：使用GAE（Generalized Advantage Estimation）或其他方法估计样本轨迹中的优势函数估计值。</li>
+<li>更新策略：使用样本轨迹和优势函数估计进行策略更新。
+<ol style="list-style-type: lower-roman">
+<li>计算旧策略的动作概率：使用旧的策略参数计算样本轨迹中每个状态的动作概率。</li>
+<li>计算更新比率：计算新策略与旧策略之间的概率比值，用于限制策略更新的幅度。</li>
+<li>计算策略损失函数：构建一个损失函数，包括策略的目标函数和更新比率的约束项。常用的目标函数是带有优势函数估计的似然比目标。</li>
+<li>执行策略更新：通过最小化策略损失函数来更新策略参数，可以使用梯度下降或其他优化算法。</li>
+</ol></li>
+<li>更新值函数：使用样本轨迹中的奖励信号来更新值函数参数。可以使用基于TD误差的方法，如均方误差最小化。</li>
+<li>重复步骤a-d直到达到停止条件（如达到最大迭代次数或目标性能）。</li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li>返回训练好的策略函数。</li>
+</ol>
+<p>PPO的关键思想是在策略更新过程中引入一个剪切项或者KL散度约束，以限制策略更新的幅度。这样可以确保新策略在性能上不会显著远离旧策略，从而提高训练的稳定性。PPO算法有不同的变体，如PPO-Clip和PPO-Penalty，它们使用不同的方法来限制策略更新幅度，但基本的流程和思想是相似的。</p>
+<p>请注意，上述流程只是PPO算法的一个概述，具体实现可能会有一些细微的差异，取决于具体的应用和问题设置。</p>
+<h2 id="整体架构">整体架构</h2>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202307151106823.png" />
 
-    PeftType.LORA: LoraModel,
+</div>
+<h2 id="重复惩罚">重复惩罚</h2>
+<pre class="python3"><code>if repetition_penalty &gt; 1.:
+                penalty_tokens = decoder_input[:, init_length:]
+                penalty_scores = torch.gather(score, dim=1, index=penalty_tokens)
+                penalty_scores = torch.where(penalty_scores &lt; 0., penalty_scores * repetition_penalty, penalty_scores / repetition_penalty)
+                score = score.scatter_(dim=1, index=penalty_tokens, src=penalty_scores)</code></pre>
+<p>解读: 1. 第一步获取当输出的全部token 2. 第二步把重复部分的token的score提取出来 3. 第三步对分数进行比例缩放 4. 第四步按照<code>self[i][index[i][j][k]][k] *= src[i][j][k]  # if dim == 1</code>重新组织分数</p>
+<h2 id="奖惩模型-llamarewardmodel">奖惩模型: LlamaRewardModel</h2>
+<p>用的LlamaForCausalLM 最后的隐藏层, 加上一个linear 变换成一个分数值</p>
+<h2 id="policy_model">policy_model</h2>
+<p>Llama: models/sft_model</p>
+<h2 id="critic_model">critic_model</h2>
+<p>LlamaRewardModel: models/moss-rlhf-reward-model-7B-zh/recover</p>
+<h2 id="核心训练流程-ppotrainer">核心训练流程: PPOTrainer</h2>
+<h3 id="优化器-optim.lr_scheduler.lambdalr">优化器: optim.lr_scheduler.LambdaLR</h3>
+<h3 id="训练主流程">训练主流程</h3>
+<pre><code>self.make_experiences()</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">context_vec_sampled, resp_vec_sampled, sampled_vec <span class="op">=</span> <span class="va">self</span>.concat_context_and_response(context_vec,responses_vec)
+sampled_vec <span class="op">=</span> torch.tensor(pad_sequences(sampled_vec, pad_value<span class="op">=</span><span class="va">self</span>.tokenizer.pad_token_id, padding<span class="op">=</span><span class="st">&#39;left&#39;</span>), 
+                           dtype<span class="op">=</span>torch.<span class="bu">long</span>, device<span class="op">=</span><span class="va">self</span>.accelerator.device)
+bsz <span class="op">=</span> sampled_vec.size(<span class="dv">0</span>)
 
-    PeftType.PROMPT_TUNING: PromptEmbedding,
+rewards, <span class="op">*</span>_ <span class="op">=</span> <span class="va">self</span>.reward_model_forward(sampled_vec)</code></pre></div>
+<p>先从concat_context_and_response抽样出可能的答复, 然后用奖励模型计算reward打分</p>
+<h3 id="抽样过程">抽样过程</h3>
+<p>就是调用了llama的generate方法, 只生成一个回复</p>
+<h3 id="训练流程">训练流程</h3>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">rewards, <span class="op">*</span>_ <span class="op">=</span> <span class="va">self</span>.reward_model_forward(sampled_vec) <span class="co"># 获取奖励结果</span>
+ref_logits, <span class="op">*</span>_ <span class="op">=</span> <span class="va">self</span>.ref_model_forward(sampled_vec) <span class="co"># 参考模型 计算优势估计</span>
+logits, <span class="op">*</span>_ <span class="op">=</span> <span class="va">self</span>.policy_model_forward(sampled_vec) <span class="co"># 策略模型生成动作</span>
+values, <span class="op">*</span>_ <span class="op">=</span> <span class="va">self</span>.critic_model_forward(sampled_vec) <span class="co"># 批评模型生成惩罚</span>
 
-    PeftType.P_TUNING: PromptEncoder,
 
-    PeftType.PREFIX_TUNING: PrefixEncoder,
+kl_penalty <span class="op">=</span> (<span class="op">-</span><span class="va">self</span>.kl_penalty_weight <span class="op">*</span> (logprobs <span class="op">-</span> ref_logprobs)).cpu() <span class="co"># kl 惩罚</span></code></pre></div>
+<p>最后组织的结果</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">                sample <span class="op">=</span> &#123;
+                    <span class="st">&#39;context_vec&#39;</span>: context_vec_sampled[i],
+                    <span class="st">&#39;context&#39;</span>: <span class="va">self</span>.tokenizer.decode(context_vec_sampled[i], skip_special_tokens<span class="op">=</span><span class="va">False</span>),
+                    <span class="st">&#39;resp_vec&#39;</span>: resp_vec_sampled[i],
+                    <span class="st">&#39;resp&#39;</span>: <span class="va">self</span>.tokenizer.decode(resp_vec_sampled[i], skip_special_tokens<span class="op">=</span><span class="va">False</span>),
+                    <span class="st">&#39;reward&#39;</span>: penalized_rewards[<span class="op">-</span>resp_length:].tolist(),
+                    <span class="st">&#39;values&#39;</span>: values[i][<span class="op">-</span>resp_length:].tolist(),
+                    <span class="st">&#39;ref_logprobs&#39;</span>: ref_logprobs[i][<span class="op">-</span>resp_length:].tolist(),
+                    <span class="st">&#39;logprobs&#39;</span>: logprobs[i][<span class="op">-</span>resp_length:].tolist(),
+                    <span class="st">&#39;ppl_value&#39;</span>: ppl_value[i],
+                    <span class="st">&#39;ppl0_value&#39;</span>: ppl0_value[i]
+                &#125;</code></pre></div>
+<p>其中最终的reward来源于</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">                penalized_rewards <span class="op">=</span> kl_penalty[i].clone()
+                penalized_rewards[<span class="op">-</span><span class="dv">1</span>] <span class="op">+=</span> rewards[i]</code></pre></div>
+<p>即奖励模型的reward和kl_penalty(参考模型和动作模型的kl损失)的组合</p>
+<h3 id="模型总结">模型总结</h3>
+<p>整个ppo过程中一共用到了4个模型 1. policy_model 生成动作和策略, 最终输出的模型 2. ref_model 参考模型, 用于计算策略模型的优势估计、价值估计或其他相关信息。参考模型可以是过去的策略模型，也可以是通过经验数据训练的模型。 3. critic_model 指价值函数模型(GAE)，用于估计状态的价值或优势 4. reward_model 给出单步的奖惩结果</p>
+<h3 id="回顾这四个模型">回顾这四个模型</h3>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">    <span class="co"># load policy model</span>
+    logging.info(<span class="ss">f&quot;Loading policy model from: </span><span class="sc">&#123;</span>opt<span class="sc">.</span>policy_model_path<span class="sc">&#125;</span><span class="ss">...&quot;</span>)
+    policy_model <span class="op">=</span> Llama.from_pretrained(opt.policy_model_path, opt, tokenizer)
+    policy_model._set_gradient_checkpointing(policy_model.model, opt.gradient_checkpoint)
 
-    PeftType.ADALORA: AdaLoraModel,
+    <span class="co"># load critic model</span>
+    logging.info(<span class="ss">f&quot;Loading critic model from: </span><span class="sc">&#123;</span>opt<span class="sc">.</span>critic_model_path<span class="sc">&#125;</span><span class="ss">...&quot;</span>)
+    critic_model <span class="op">=</span> LlamaRewardModel.from_pretrained(opt.critic_model_path, opt, tokenizer)
+    critic_model._set_gradient_checkpointing(critic_model.model, opt.gradient_checkpoint)
 
-    PeftType.ADAPTION_PROMPT: AdaptionPromptModel,
+    <span class="co"># load reference model</span>
+    logging.info(<span class="ss">f&quot;Loading reference model from: </span><span class="sc">&#123;</span>opt<span class="sc">.</span>policy_model_path<span class="sc">&#125;</span><span class="ss">...&quot;</span>)
+    ref_model <span class="op">=</span> Llama.from_pretrained(opt.policy_model_path, opt, tokenizer)
 
-&#125;</code></pre></div>
-<h2 id="应用示例">应用示例</h2>
-<p>llama应用的, 也是peft中主流的优化方法是LoRA</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">model <span class="op">=</span> LlamaForCausalLM.from_pretrained(
-    args.model_path,
-    load_in_8bit<span class="op">=</span><span class="va">True</span>,
-    device_map<span class="op">=</span>device_map,
-)
-tokenizer <span class="op">=</span> LlamaTokenizer.from_pretrained(
-    args.model_path, add_eos_token<span class="op">=</span><span class="va">True</span>
-)
-
-model <span class="op">=</span> prepare_model_for_int8_training(model)
-
-config <span class="op">=</span> LoraConfig(
-    r<span class="op">=</span>LORA_R,
-    lora_alpha<span class="op">=</span>LORA_ALPHA,
-    target_modules<span class="op">=</span>TARGET_MODULES,
-    lora_dropout<span class="op">=</span>LORA_DROPOUT,
-    bias<span class="op">=</span><span class="st">&quot;none&quot;</span>,
-    task_type<span class="op">=</span><span class="st">&quot;CAUSAL_LM&quot;</span>,
-)
-model <span class="op">=</span> get_peft_model(model, config)</code></pre></div>
-<h2 id="实现解析">实现解析</h2>
-<p>在这里将base_model封装成lora结构的形式 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202305061729090.png" /></p>
+    <span class="co"># load reward model</span>
+    logging.info(<span class="ss">f&quot;Loading reward model from: </span><span class="sc">&#123;</span>opt<span class="sc">.</span>critic_model_path<span class="sc">&#125;</span><span class="ss">...&quot;</span>)
+    reward_model <span class="op">=</span> LlamaRewardModel.from_pretrained(opt.critic_model_path, opt, tokenizer)</code></pre></div>
+<p>可以看到ref_model 和 policy_model用的是一个model, 这是因为让强化学习的过程中, 和原来的模型不要偏差太远.用两者的kl散度损失来约束</p>
+<h3 id="优势估计计算方法">优势估计计算方法</h3>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">    <span class="kw">def</span> get_advantages_and_returns(<span class="va">self</span>, rewards: List[<span class="bu">float</span>], values: List[<span class="bu">float</span>]):
+        <span class="co">&#39;&#39;&#39;</span>
+<span class="co">        Copied from TRLX: https://github.com/CarperAI/trlx/blob/main/trlx/models/modeling_ppo.py</span>
+<span class="co">        &#39;&#39;&#39;</span>
+        response_length <span class="op">=</span> <span class="bu">len</span>(values)
+        advantages_reversed <span class="op">=</span> []
+        lastgaelam <span class="op">=</span> <span class="dv">0</span>
+        <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">reversed</span>(<span class="bu">range</span>(response_length)):
+            nextvalues <span class="op">=</span> values[t <span class="op">+</span> <span class="dv">1</span>] <span class="cf">if</span> t <span class="op">&lt;</span> response_length <span class="op">-</span> <span class="dv">1</span> <span class="cf">else</span> <span class="fl">0.0</span>
+            delta <span class="op">=</span> rewards[t] <span class="op">+</span> <span class="va">self</span>.gamma <span class="op">*</span> nextvalues <span class="op">-</span> values[t]
+            lastgaelam <span class="op">=</span> delta <span class="op">+</span> <span class="va">self</span>.gamma <span class="op">*</span> <span class="va">self</span>.lam <span class="op">*</span> lastgaelam
+            advantages_reversed.append(lastgaelam)
+            
+        advantages <span class="op">=</span> advantages_reversed[::<span class="op">-</span><span class="dv">1</span>]
+        returns <span class="op">=</span> [a <span class="op">+</span> v <span class="cf">for</span> a, v <span class="kw">in</span> <span class="bu">zip</span>(advantages, values)]
+        <span class="cf">assert</span> <span class="bu">len</span>(returns) <span class="op">==</span> <span class="bu">len</span>(advantages) <span class="op">==</span> <span class="bu">len</span>(values)
+        <span class="cf">return</span> advantages, returns</code></pre></div>
+<p>可以看出, 优势估计就是根据reward 和 values计算出来的 <code>advantages, returns = self.get_advantages_and_returns(sample['reward'], sample['values'])</code> 其中values来自批评模型<code>values, *_ = self.critic_model_forward(sampled_vec)</code></p>
+<h3 id="gae原理">GAE原理</h3>
+<p>GAE（Generalized Advantage Estimation）是一种用于强化学习的方法，旨在估计状态值函数或动作值函数的优势估计。</p>
+<p>在强化学习中，优势函数衡量了一个状态或动作相对于平均预期回报的好坏程度。GAE通过对优势函数的估计，可以为策略更新提供更准确的信号。</p>
+<p>GAE的计算原理基于一个重要的概念——马尔可夫性质。根据马尔可夫性质，当前状态的未来回报与过去状态无关，只与当前状态相关。这使得我们可以通过观察经验轨迹中的状态转换来估计优势函数。</p>
+<p>具体来说，GAE使用一个参数λ（lambda）来平衡未来回报的折扣和引导性。对于每个状态转换，GAE计算出一个优势估计Advantage Estimate，该估计结合了一阶和二阶的TD（Temporal Difference）误差。</p>
+<p>GAE 的计算公式为：<span class="math display">\[\widehat{A}_t = \delta_t + (\gamma \lambda)\delta_{t+1} + (\gamma \lambda)^2\delta_{t+2} + \cdots + (\gamma \lambda)^{T-t+1}\delta_{T-1} + (\gamma \lambda)^{T-t}V(s_T) - V(s_t)\]</span> 其中，<span class="math inline">\(\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)\)</span> 是时序差分的误差项，<span class="math inline">\(\gamma\)</span> 是折扣因子，<span class="math inline">\(\lambda\)</span> 是 GAE 中的超参数。</p>
+<p>GAE的计算步骤如下：</p>
+<ol style="list-style-type: decimal">
+<li>遍历经验轨迹中的每个时间步 t。</li>
+<li>计算t时刻的TD误差δ，即当前状态的奖励加上折扣因子γ乘以下一状态值的估计减去当前状态值的估计。 δ = r_t + γ * V(s_{t+1}) - V(s_t)</li>
+<li>定义一个累积因子A，初始值为0。</li>
+<li>遍历从当前时间步开始的未来时间步，计算累积因子A。 A ← A * λ * γ + δ 这里λ是一个介于0和1之间的参数，用于平衡未来回报的折扣和引导性。λ越接近1，越关注未来回报；λ越接近0，越关注即时回报。</li>
+<li>根据累积因子A计算优势估计Advantage Estimate。 GAE(t) = A</li>
+</ol>
+<p>GAE的优势估计可以用于策略梯度方法中，如Actor-Critic算法，用于计算策略更新的目标。通过使用GAE，可以提高对优势函数的估计，从而改善策略的更新效果。</p>
 
 </div>
 
@@ -569,16 +655,11 @@ model <span class="op">=</span> get_peft_model(model, config)</code></pre></div>
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  llama 模型结构
-              </a>
-            
         </div>
         <div class="item right">
             
-              <a href="/2023/05/08/LargeLanguageModels/transformer/">
-                transformer
+              <a href="/2023/07/08/LargeLanguageModels/llama_bloom_chatglm%E5%8C%BA%E5%88%AB/">
+                llama bloom chatglm对比
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
