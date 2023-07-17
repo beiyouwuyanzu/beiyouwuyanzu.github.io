@@ -580,9 +580,10 @@ RMSNorm计算公式: \(y = \frac{x}{\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_i^2+\epsilo
 				</h2>
 				<div class="index-brief">
 					LoRA
-常规微调期间的训练过程
-假设 W 表示给定神经网络层中的权重矩阵。然后，使用常规反向传播，我们可以获得权重更新 ΔW，它通常计算为损失乘以学习率的负梯度： ΔW = α ( -∇ LW).
-然后，当我们有 ΔW 时，我们可以更新原始权重如下：W' = W + ΔW。如下图所示（为简单
+优缺点
+
+推理的时候\(WX=W_0X+BAX=(W_0+BA)X\)，因此可以直接合并权重矩阵减少推理时间和空间开销，在切换下游任务的时候减去\(BA\)并加上新的\(B^`A^`\)即可
+优点：大大减少了下游任务的可训练参数，因为不需要保存大部分参数的优化器状态甚至梯度，降低了
 					...
 				</div>
 			</a>
@@ -755,21 +756,5 @@ class TransformerDecoder(nn.Module):
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
 	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
