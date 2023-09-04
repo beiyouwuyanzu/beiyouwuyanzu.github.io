@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		预训练模型变种的设计思路和建模方法 | 
 	 
 	Wangyaqi&#39;s personal site &lt;span style=&#34;color:wheat;font-size:x-small&#34;&gt;图片浏览须科学上网,公式渲染需要刷新&lt;/span&gt;
 	</title>
@@ -263,7 +265,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/09/04/LargeLanguageModels/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%8F%98%E7%A7%8D%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%92%8C%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">
                      
 										    预训练模型变种的设计思路和建模方法
@@ -525,163 +527,198 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	预训练模型变种的设计思路和建模方法
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
-				<h2 class="index-title">
-					alpaca-lora实现
-				</h2>
-				<div class="index-brief">
-					
-羊驼模型发展历史 
-
-lora代码实现
-
-调用
-  &gt;&gt;&gt; from peft import LoraModel, LoraConfig
-
-  &gt;&gt;&gt; config = LoraConfig(
-  ...     peft_type=&quot
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
+		<span>
+			阅读量:<span id="/2023/09/04/LargeLanguageModels/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%8F%98%E7%A7%8D%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%92%8C%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/" class="leancloud_visitors" data-flag-title="预训练模型变种的设计思路和建模方法"></span>
+		</span>
 	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
-				<h2 class="index-title">
-					llama 模型结构
-				</h2>
-				<div class="index-brief">
-					trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model)
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/peft_model/">
-				<h2 class="index-title">
-					PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
-				</h2>
-				<div class="index-brief">
-					
-https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 Ch
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/transformer/">
-				<h2 class="index-title">
-					transformer
-				</h2>
-				<div class="index-brief">
-					如何理解transformer中decoder的k, v来自encoder的输出
-class TransformerDecoder(nn.Module):
-    def __init__(self, decoder_layer, num_layers):
-        super(Tran
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/stableDiffusion/">
-				<h2 class="index-title">
-					stable diffusion
-				</h2>
-				<div class="index-brief">
-					1. 使用stable diffusion + dreambooth 生成明星图片
+	<span>wang yaqi</span>
+	<span>2023-09-04 23:42:47</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
 
+    
+		<span>Tags：</span>
+            
+    
+		</div>
 
-
-
-2. 使用stable diffusion + dreambooth 生成动漫风格个人头像
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
-				<h2 class="index-title">
-					MMoE 模型
-				</h2>
-				<div class="index-brief">
-					MMoE 模型
-多任务学习的三种架构：1) 共享底部模型，2) 单门混合专家模型 (MoE)，以及 3) 多门混合专家模型 (MMoE)。前两个架构提供上下文并显示最终 MMoE 架构的增量步骤。 
-
-Shared-bottom model
-共享底部模型是最简单和最常见的多任务学习架构。该模
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-07</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<a class="extend prev" rel="prev" href="/archives/2023/05/">&lt;</a><a class="page-number" href="/archives/2023/05/">1</a><span class="page-number current">2</span>
-		
-	</div>
 </div>
 
+<div id="article-content">
+	<h2 id="一.-xlnet">一. XLNet</h2>
+<ol style="list-style-type: decimal">
+<li>使用自回归语言模型结构，同时避免自编码模型中引入人造标记[mask]的问题</li>
+<li>使用双向上下文，不像传统自回归语言模型只能用单向的历史信息</li>
+<li>使用Transformer-XL作为主体框架，拥有更好的性能 #### 双流注意力</li>
+<li>内容表示
+<ol style="list-style-type: decimal">
+<li>原始的transformer表示方法， 可以同时建模单词<span class="math inline">\(x_i\)</span>及其上下文</li>
+</ol></li>
+<li>查询表示
+<ol style="list-style-type: decimal">
+<li>能建模上下文信息<span class="math inline">\(x_{z_{i} : i - 1}\)</span>以及目标位置<span class="math inline">\(z_i\)</span>, 但不能看到单词<span class="math inline">\(x_i\)</span></li>
+</ol></li>
+</ol>
+<h2 id="roberta">RoBERTa</h2>
+<ol style="list-style-type: decimal">
+<li>动态掩码</li>
+<li>舍弃NSP任务</li>
+<li>其他优化
+<ol style="list-style-type: decimal">
+<li>更多的预训练数据</li>
+<li>更大的批次以及更长的预训练步数</li>
+<li>更大的词表</li>
+</ol></li>
+</ol>
+<h2 id="albert">ALBERT</h2>
+<ol style="list-style-type: decimal">
+<li>词向量因式分解
+<ol style="list-style-type: decimal">
+<li>Transformer隐含层维度H要远大于词向量维度E</li>
+<li>词向量矩阵参数量降低至原来的1/8</li>
+</ol></li>
+<li>跨层参数共享</li>
+<li>句子顺序预测</li>
+</ol>
+<h2 id="electra">ELECTRA</h2>
+<ol style="list-style-type: decimal">
+<li>生成器，在[mask]的位置原来的词</li>
+<li>判别器， 判断输入句子每个词是否被替换 （判别器用于下游任务）</li>
+</ol>
+<hr />
+<h1 id="长文本建模模型">长文本建模模型</h1>
+<h2 id="transformer-xl">transformer-XL</h2>
+<ol style="list-style-type: decimal">
+<li>状态复用的块界别循环
+<ol style="list-style-type: decimal">
+<li>最大依赖长度 和n 和层数L呈线性增长。<span class="math inline">\(\mathcal{O}(nL)\)</span></li>
+</ol></li>
+<li>相对位置编码
+<ol style="list-style-type: decimal">
+<li>第i个词和第j个词的注意力值<span class="math inline">\(a_{i, j}\)</span>为： 基于内容的相关度+内容相关的位置偏置+全局内容偏置+全局位置偏置</li>
+</ol></li>
+</ol>
+<h2 id="reformer">Reformer</h2>
+<ol style="list-style-type: decimal">
+<li>Q，K共享，减少注意力计算</li>
+<li>局部敏感哈希LSH</li>
+<li>可逆transformer。 降低内存占用空间。 时间换空间 ```python import torch import torch.nn.functional as F</li>
+</ol>
+<p>def lsh(x, num_hashes, num_buckets): # x: 输入张量，形状为(batch_size, sequence_length, hidden_size) # num_hashes: 要使用的哈希函数数量 # num_buckets: 要哈希到的桶数</p>
+<pre><code># 计算随机投影向量
+proj = torch.randn(num_hashes, x.shape[-1], requires_grad=False)
+
+# 计算哈希码
+codes = F.linear(x, proj).sign()
+
+# 哈希到桶中
+buckets = codes @ torch.arange(num_hashes, device=codes.device).long().pow(2*num_hashes-1).flip(0)
+buckets = buckets % num_buckets
+
+return buckets</code></pre>
+<p>```</p>
+<h3 id="longformer">longformer</h3>
+<ol style="list-style-type: decimal">
+<li>稀疏注意力
+<ol style="list-style-type: decimal">
+<li>窗口滑动注意力</li>
+<li>扩张滑动窗口注意力</li>
+<li>全局注意力</li>
+</ol></li>
+</ol>
+<h1 id="生成模型">生成模型</h1>
+<h2 id="bart">BART</h2>
+<p>相对transformer的区别 1. 使用GeLU代替ReLUctant 2. 参数根据正态分布进行初始化 训练任务 1. 通过对含有噪声的输入文本进行去噪重构进行预训练</p>
+<h2 id="unilm">UniLM</h2>
+<p>核心思想是通过使用不同的自注意力掩码矩阵控制每个词的注意力范围。从而实现不同的语言模型对于信息流的控制</p>
+<h2 id="t5">T5</h2>
+<p>将不同形式的任务统一转化为条件式生成任务。就需要一个统一的文本到文本的生成模型，就可以使用同样的训练方法预解码过程完成不同的自然语言处理任务。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/09/04/LargeLanguageModels/DPO/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Direct Preference Optimization: Your Language Model is Secretly a Reward Model
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/07/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB/">
+                强化学习ppo代码阅读：MOSS-RLHF
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: 'IGK6A3UjpP5uO7JWtA2JoBuS-gzGzoHsz',
+			appKey: 'RRf6JtF145uakqoa7Hv1Ahr8',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
+	
+	
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>

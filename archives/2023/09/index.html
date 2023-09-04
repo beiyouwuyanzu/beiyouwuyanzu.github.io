@@ -528,26 +528,44 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/alpaca_LoRA%E5%AE%9E%E7%8E%B0/">
+			<a href="/2023/09/04/LargeLanguageModels/Toolformer/">
 				<h2 class="index-title">
-					alpaca-lora实现
+					大模型优化方法Toolformer
+				</h2>
+				<div class="index-brief">
+					Toolformer
+
+Toolformer是由Meta于2023年2月的论文《Toolformer: Language Models Can Teach Themselves to Use Tools》中提出的一种解决LLM，尤其是10b以下规模的LLM能力局限的一种方法。 https://a
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2023-09-04</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2023/09/04/LargeLanguageModels/%E7%A8%80%E7%96%8F%E5%8F%98%E6%8D%A2%E5%99%A8/">
+				<h2 class="index-title">
+					Sparse Transformers
 				</h2>
 				<div class="index-brief">
 					
-羊驼模型发展历史 
+https://arxiv.org/pdf/1904.10509.pdf 
 
-lora代码实现
 
-调用
-  &gt;&gt;&gt; from peft import LoraModel, LoraConfig
 
-  &gt;&gt;&gt; config = LoraConfig(
-  ...     peft_type=&quot
+
+
+GPT-3与GPT-2采用相同的模型和架构，包含初始化、预归一化和可逆分词等部分。不同之处在于GPT-3的transformer的层中采用了交替的密集和局部带状稀疏注意力（提升计算效率）模式，类似于
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
+				    <span>2023-09-04</span>
                     
                             
                     
@@ -555,39 +573,20 @@ lora代码实现
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/llama_visualization/">
+			<a href="/2023/09/04/LargeLanguageModels/DPO/">
 				<h2 class="index-title">
-					llama 模型结构
-				</h2>
-				<div class="index-brief">
-					trainable params: 4194304 || all params: 6742609920 || trainable%: 0.06220594176090199
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model)
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/peft_model/">
-				<h2 class="index-title">
-					PEFT State-of-the-art Parameter-Efficient Fine-Tuning [PEFT] methods
+					Direct Preference Optimization: Your Language Model is Secretly a Reward Model
 				</h2>
 				<div class="index-brief">
 					
-https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b1059b73aab9043b118ff19b0cf96263ea86248a/src/peft/peft_model.py#L102 Ch
+https://arxiv.org/abs/2305.18290 https://zhuanlan.zhihu.com/p/634705904
+
+ DPO 针对人类偏好进行优化，同时避免强化学习。现有的利用人类反馈微调语言模型的方法首先将奖励模型拟合到提示数据集和人类对响应对的偏好，然后使用
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
+				    <span>2023-09-04</span>
                     
                             
                     
@@ -595,79 +594,24 @@ https://github.com/huggingface/peft https://github.com/huggingface/peft/blob/b10
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/05/08/LargeLanguageModels/transformer/">
+			<a href="/2023/09/04/LargeLanguageModels/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%8F%98%E7%A7%8D%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%92%8C%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">
 				<h2 class="index-title">
-					transformer
+					预训练模型变种的设计思路和建模方法
 				</h2>
 				<div class="index-brief">
-					如何理解transformer中decoder的k, v来自encoder的输出
-class TransformerDecoder(nn.Module):
-    def __init__(self, decoder_layer, num_layers):
-        super(Tran
+					一. XLNet
+
+使用自回归语言模型结构，同时避免自编码模型中引入人造标记[mask]的问题
+使用双向上下文，不像传统自回归语言模型只能用单向的历史信息
+使用Transformer-XL作为主体框架，拥有更好的性能 #### 双流注意力
+内容表示
+
+原始的transformer表示方
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/08/%E9%A1%B9%E7%9B%AE%E9%9B%86%E5%90%88/stableDiffusion/">
-				<h2 class="index-title">
-					stable diffusion
-				</h2>
-				<div class="index-brief">
-					1. 使用stable diffusion + dreambooth 生成明星图片
-
-
-
-
-2. 使用stable diffusion + dreambooth 生成动漫风格个人头像
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-08</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/05/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/MMoE/">
-				<h2 class="index-title">
-					MMoE 模型
-				</h2>
-				<div class="index-brief">
-					MMoE 模型
-多任务学习的三种架构：1) 共享底部模型，2) 单门混合专家模型 (MoE)，以及 3) 多门混合专家模型 (MMoE)。前两个架构提供上下文并显示最终 MMoE 架构的增量步骤。 
-
-Shared-bottom model
-共享底部模型是最简单和最常见的多任务学习架构。该模
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-05-07</span>
+				    <span>2023-09-04</span>
                     
                             
                     
@@ -676,8 +620,6 @@ Shared-bottom model
 	
 	
 	<div id="index-paginator">
-		
-			<a class="extend prev" rel="prev" href="/archives/2023/05/">&lt;</a><a class="page-number" href="/archives/2023/05/">1</a><span class="page-number current">2</span>
 		
 	</div>
 </div>
