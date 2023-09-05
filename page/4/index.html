@@ -583,108 +583,23 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2023/09/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/HNSW%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E7%9A%84%E5%8E%9F%E7%90%86/">
+			<a href="/2021/12/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/nlp/crf/">
 				<h2 class="index-title">
-					HNSW向量检索的原理
-				</h2>
-				<div class="index-brief">
-					HNSW（Hierarchical Navigable Small World）是一种高效的向量检索算法，它可以在大规模向量集上实现快速近似最近邻搜索。这个算法最初由Yu. A. Malkov和D. A. Yashunin在2016年的论文《Efficient and Robust Approxim
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-05</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/09/05/LargeLanguageModels/%E9%80%9A%E7%94%A8%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96UIE/">
-				<h2 class="index-title">
-					通用信息抽取UIE
-				</h2>
-				<div class="index-brief">
-					统一信息抽取任务输出结构的结构化抽取语言SEL
-用的模型还是T5 &gt; https://github.com/PaddlePaddle/PaddleNLP/blob/develop/examples/information_extraction/DuUIE/run_seq2struct.py#
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-05</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/09/05/LargeLanguageModels/%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E6%89%A9%E5%B1%95%E9%95%BF%E5%BA%A6%E7%9A%84%E5%8F%98%E5%8C%96/">
-				<h2 class="index-title">
-					不同的位置编码扩展长度的变化
-				</h2>
-				<div class="index-brief">
-					在Meta和合作机构于21年发表的论文「TRAIN SHORT, TEST LONG」[2]中，作者展示了采用这一思路的评估结论。它比较了Sinusoidal，Rotary Position和T5 Bias三种位置embedding算法在固定长度训练，变长的序列输入做预测时，perplexity指标
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-05</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/09/05/LargeLanguageModels/llama2/">
-				<h2 class="index-title">
-					llama2
-				</h2>
-				<div class="index-brief">
-					 训练方法: 1. 公开语料预训练 2. sft 3. RLHF: 拒绝采样, PPO 说明: 与模型增强并行的迭代奖励建模数据积累很重要.
-升级点
-
-训练语料正价40%
-上下文长度增加一倍
-使用分组查询注意力(GQA)
-
-预训练
-
-2万亿token
-
-沿用llama1配置
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-05</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/09/05/LargeLanguageModels/gpt_training/">
-				<h2 class="index-title">
-					GPT训练论文
+					CRF笔记
 				</h2>
 				<div class="index-brief">
 					
-Training language models to follow instructions with human feedback https://arxiv.org/pdf/2203.02155.pdf
+参考: https://medium.com/ml2vec/overview-of-conditional-random-fields-68a2a20fa541
 
-数据集
+背景
 
-检查公共前缀的instruct来进行启发式去重
-每个用户ID限制
+CRF用于切词, 序列标注等.
+普通的分类模型是对单个字词的分类任务, CRF考虑了前后文的联系, 对当前的片段进
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-09-05</span>
+				    <span>2021-12-17</span>
                     
                             
                     
@@ -692,44 +607,27 @@ Training language models to follow instructions with human feedback https://arxi
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/09/04/LargeLanguageModels/Toolformer/">
+			<a href="/2021/12/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/paper/asr%E8%AF%84%E4%BC%B0/">
 				<h2 class="index-title">
-					大模型优化方法Toolformer
-				</h2>
-				<div class="index-brief">
-					Toolformer
-
-Toolformer是由Meta于2023年2月的论文《Toolformer: Language Models Can Teach Themselves to Use Tools》中提出的一种解决LLM，尤其是10b以下规模的LLM能力局限的一种方法。 https://a
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-04</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/09/04/LargeLanguageModels/%E7%A8%80%E7%96%8F%E5%8F%98%E6%8D%A2%E5%99%A8/">
-				<h2 class="index-title">
-					Sparse Transformers
+					asr评估
 				</h2>
 				<div class="index-brief">
 					
-https://arxiv.org/pdf/1904.10509.pdf 
+论文 《 Meaning Error Rate: ASR domain-specific metric framework》
 
+目标
+构建一个指标模型, 考虑不同场景、不同词识别错误的不同损失, 用来评估ASR识别质量
+背景
 
+当前已有的ASR评估指标:
 
+WER: 字错误率
 
-
-GPT-3与GPT-2采用相同的模型和架构，包含初始化、预归一化和可逆分词等部分。不同之处在于GPT-3的transformer的层中采用了交替的密集和局部带状稀疏注意力（提升计算效率）模式，类似于
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-09-04</span>
+				    <span>2021-12-15</span>
                     
                             
                     
@@ -737,69 +635,36 @@ GPT-3与GPT-2采用相同的模型和架构，包含初始化、预归一化和�
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2023/09/04/LargeLanguageModels/DPO/">
+			<a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/kaggle_note/text_classification/">
 				<h2 class="index-title">
-					Direct Preference Optimization: Your Language Model is Secretly a Reward Model
+					text_classification
 				</h2>
 				<div class="index-brief">
 					
-https://arxiv.org/abs/2305.18290 https://zhuanlan.zhihu.com/p/634705904
+原文链接: https://www.kaggle.com/revathiprakash/jigsaw-ensemble-lb-0-859/notebook
 
- DPO 针对人类偏好进行优化，同时避免强化学习。现有的利用人类反馈微调语言模型的方法首先将奖励模型拟合到提示数据集和人类对响应对的偏好，然后使用
+阅读笔记
+sklearn库
+
+sklearn.ensemble 集成学习的常用库
+
+bagging
+随机森林
+adabo
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2023-09-04</span>
+				    <span>2021-12-13</span>
                     
                             
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/09/04/LargeLanguageModels/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%8F%98%E7%A7%8D%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%92%8C%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">
-				<h2 class="index-title">
-					预训练模型变种的设计思路和建模方法
-				</h2>
-				<div class="index-brief">
-					一. XLNet
-
-使用自回归语言模型结构，同时避免自编码模型中引入人造标记[mask]的问题
-使用双向上下文，不像传统自回归语言模型只能用单向的历史信息
-使用Transformer-XL作为主体框架，拥有更好的性能 #### 双流注意力
-内容表示
-
-原始的transformer表示方
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-09-04</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2023/07/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0ppo%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB/">
-				<h2 class="index-title">
-					强化学习ppo代码阅读：MOSS-RLHF
-				</h2>
-				<div class="index-brief">
-					大模型强化学习ppo:moss_rlhf源码阅读
-
-代码地址: https://github.com/OpenLMLab/MOSS-RLHF/blob/main/train_ppo.py#L106C6-L106C6
-
-通常PPO的主要流程
-PPO（Proximal Policy Optim
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-07-17</span>
-                    
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/nlp/">nlp</a>
+										
+                                    </span>
+                                
                             
                     
                 </div>
@@ -808,7 +673,7 @@ PPO（Proximal Policy Optim
 	
 	<div id="index-paginator">
 		
-			<span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="page-number" href="/archives/2023/page/3/">3</a><a class="extend next" rel="next" href="/archives/2023/page/2/">&gt;</a>
+			<a class="extend prev" rel="prev" href="/page/3/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
 		
 	</div>
 </div>

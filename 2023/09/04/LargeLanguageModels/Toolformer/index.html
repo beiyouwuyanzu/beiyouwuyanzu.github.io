@@ -200,6 +200,28 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
+									<a href="/2023/09/05/LargeLanguageModels/gpt_training/">
+                     
+										    gpt_training
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/09/05/LargeLanguageModels/llama2/">
+                     
+										    llama2
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
 									<a href="/2023/07/08/LargeLanguageModels/llama_bloom_chatglm%E5%8C%BA%E5%88%AB/">
                      
 										    llama_bloom_chatglm区别
@@ -255,9 +277,31 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
+									<a href="/2023/09/05/LargeLanguageModels/%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E6%89%A9%E5%B1%95%E9%95%BF%E5%BA%A6%E7%9A%84%E5%8F%98%E5%8C%96/">
+                     
+										    不同的位置编码扩展长度的变化
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
 									<a href="/2023/09/04/LargeLanguageModels/%E7%A8%80%E7%96%8F%E5%8F%98%E6%8D%A2%E5%99%A8/">
                      
 										    稀疏变换器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/09/05/LargeLanguageModels/%E9%80%9A%E7%94%A8%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96UIE/">
+                     
+										    通用信息抽取UIE
                      
 									</a>
 								</li>
@@ -368,6 +412,17 @@ var _hmt = _hmt || [];
 									<a href="/2023/05/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/GBRANK/">
                      
 										    GBRANK
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/09/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/HNSW%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E7%9A%84%E5%8E%9F%E7%90%86/">
+                     
+										    HNSW向量检索的原理
                      
 									</a>
 								</li>
@@ -571,7 +626,7 @@ var _hmt = _hmt || [];
 <img src="https://raw.githubusercontent.com/dijiatrustlight/Chart_bed/master/img/202308171555511.png" />
 
 </div>
-<p>计算API Call对后续生成结果是否有帮助是通过定义一个交叉熵的loss函数，并计算由于调用API Call引起的loss函数差值是否超过阈值<span class="math inline">\(\tau_f\)</span>，实践中<span class="math inline">\(\tau_f=1.0\)</span>。 <img src="en-resource://database/3164:1" alt="23e89bb1944f43fd766e5db933c453c1.png" /> 插入API Call后的文本和对应调用后loss差值示例，可以看到会有一些正例被误过滤。 <img src="en-resource://database/3165:1" alt="2f9052e99a75b2cdf01c54867e7243d0.png" /></p>
+<p>计算API Call对后续生成结果是否有帮助是通过定义一个交叉熵的loss函数，并计算由于调用API Call引起的loss函数差值是否超过阈值<span class="math inline">\(\tau_f\)</span>，实践中<span class="math inline">\(\tau_f=1.0\)</span>。 <span class="math display">\[L_i(\mathbf{z})=-\sum_{j=i}^nw_{j-i}\cdot\log p_M(x_j\mid\mathbf{z},x_{1:j-1})\]</span> 插入API Call后的文本和对应调用后loss差值示例，可以看到会有一些正例被误过滤。 <span class="math display">\[\begin{aligned}L_i^+&amp;=L_i(\mathsf{e}(c_i,r_i))\\L_i^-&amp;=\min\left(L_i(\varepsilon),L_i(\mathsf{e}(c_i,\varepsilon))\right)\end{aligned}\]</span></p>
 <h4 id="为什么用交叉熵">为什么用交叉熵</h4>
 <p>推测: 因为这里API生成的是一个文本序列, 交叉熵是比较这个结果文本序列和模型预期生成的差别, 如果差别太大就不适合这个模型去学习 #### 这样做为什么有效 如果调用API和使用结果有用, 则会对预测下一个token有帮助, 也就是loss减小.于此对应的就是和不使用apiCALL和不返回结果去做对比</p>
 <h3 id="优势与局限">优势与局限</h3>
@@ -631,6 +686,11 @@ var _hmt = _hmt || [];
 
     <div class="post-guide">
         <div class="item left">
+            
+              <a href="/2023/09/05/LargeLanguageModels/gpt_training/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  GPT训练论文
+              </a>
             
         </div>
         <div class="item right">
@@ -726,5 +786,21 @@ var _hmt = _hmt || [];
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
 	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
